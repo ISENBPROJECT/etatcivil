@@ -1,0 +1,21 @@
+{
+    "home": {
+         "devise":"UN PEUPLE UN BUT UNE FOI",
+        "title": "Bienvenue",
+        "subtitle": "Application de Gestion des Etats civils",
+        "consulat":"Consulat du Sénégal à Bordeaux",
+        "logged": {
+            "message": "Vous êtes connecté en tant que \"{{username}}\"."
+        },
+        "question": "Si vous avez des questions à propos de JHipster:",
+        "link": {
+            "homepage": "Page d'accueil de JHipster",
+            "stackoverflow": "JHipster sur Stack Overflow",
+            "bugtracker": "JHipster bug tracker",
+            "chat": "JHipster public chat room",
+            "follow": "Suivez @java_hipster sur Twitter"
+        },
+        "like": "Si vous aimez JHipster, donnez nous une étoile sur",
+        "github": "GitHub"
+    }
+}

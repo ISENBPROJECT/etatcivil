@@ -1,0 +1,34 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "one-to-many",
+      "relationshipName": "declarationNaissance",
+      "otherEntityName": "declarationNaissance",
+      "otherEntityRelationshipName": "identifiantPieceJustificatif"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "nomFichier",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "chemin",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "changelogDate": "20160728171153",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "entityTableName": "piece_justificatif"
+}

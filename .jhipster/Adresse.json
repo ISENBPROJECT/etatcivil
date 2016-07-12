@@ -1,0 +1,40 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "one-to-one",
+      "relationshipName": "identifiantPersonne",
+      "otherEntityName": "personne",
+      "ownerSide": false,
+      "otherEntityRelationshipName": "adresse"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "codePostale",
+      "fieldType": "Long",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "ville",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "adresseComplementaire",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20160728171151",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "entityTableName": "adresse"
+}

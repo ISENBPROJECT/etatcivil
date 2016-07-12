@@ -1,0 +1,47 @@
+
+entity Personne {
+	nom String required,
+    prenom String required,
+    dateNaissance LocalDate
+}
+
+entity Adresse {
+	codePostale Long required,
+	ville String required,
+    adresseComplementaire String
+}
+
+entity DeclarationNaissance {
+    dateDeclaration LocalDate required,
+    identifiantEnfant Long required,
+    identifiantPere Long required,
+    identifiantMere Long required,
+    mentionMarginale String
+}
+
+entity PieceJustificatif {
+ 	nomFichier String required,
+    chemin String required
+}
+
+relationship OneToOne {
+ Personne{adresse} to Adresse{identifiantPersonne(id)}
+}
+
+relationship OneToMany {
+  Personne{declarationNaissance} to DeclarationNaissance{identifiantPersonne(id)}
+}
+
+relationship OneToMany {
+  PieceJustificatif{declarationNaissance} to  DeclarationNaissance{identifiantPieceJustificatif(id)}
+}
+
+dto DeclarationNaissance with mapstruct
+dto Personne with mapstruct
+dto Adresse with mapstruct
+dto PieceJustificatif with mapstruct
+
+service DeclarationNaissance with serviceClass
+service Personne with serviceClass
+service PieceJustificatif with serviceClass
+service Adresse with serviceClass

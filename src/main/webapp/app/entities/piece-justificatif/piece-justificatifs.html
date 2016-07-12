@@ -1,0 +1,58 @@
+<div>
+    <h2 translate="etatcivilApp.pieceJustificatif.home.title">Piece Justificatifs</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="piece-justificatif.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  translate="etatcivilApp.pieceJustificatif.home.createLabel">
+                        Create new Piece Justificatif
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span translate="global.field.id">ID</span></th>
+                    <th><span translate="etatcivilApp.pieceJustificatif.nomFichier">Nom Fichier</span></th>
+                    <th><span translate="etatcivilApp.pieceJustificatif.chemin">Chemin</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="pieceJustificatif in vm.pieceJustificatifs track by pieceJustificatif.id">
+                    <td><a ui-sref="piece-justificatif-detail({id:pieceJustificatif.id})">{{pieceJustificatif.id}}</a></td>
+                    <td>{{pieceJustificatif.nomFichier}}</td>
+                    <td>{{pieceJustificatif.chemin}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="piece-justificatif-detail({id:pieceJustificatif.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="piece-justificatif.edit({id:pieceJustificatif.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="piece-justificatif.delete({id:pieceJustificatif.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
