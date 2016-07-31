@@ -16,10 +16,12 @@ entity DeclarationNaissance {
     identifiantEnfant Long required,
     identifiantPere Long required,
     identifiantMere Long required,
-    mentionMarginale String
+    mentionMarginale String,
+	numeroCarteIdentite Long ,
+	numeroPassPort Long 
 }
 
-entity PieceJustificatif {
+entity Fichier {
  	nomFichier String required,
     chemin String required
 }
@@ -33,15 +35,15 @@ relationship OneToMany {
 }
 
 relationship OneToMany {
-  PieceJustificatif{declarationNaissance} to  DeclarationNaissance{identifiantPieceJustificatif(id)}
+  Fichier{declarationNaissance} to  DeclarationNaissance{identifiantFichier(id)}
 }
 
 dto DeclarationNaissance with mapstruct
 dto Personne with mapstruct
 dto Adresse with mapstruct
-dto PieceJustificatif with mapstruct
+dto Fichier with mapstruct
 
 service DeclarationNaissance with serviceClass
 service Personne with serviceClass
-service PieceJustificatif with serviceClass
+service Fichier with serviceClass
 service Adresse with serviceClass

@@ -1,6 +1,6 @@
 {
     "global": {
-        "title": "Etatcivil",
+        "title": "Gestion des Etats Civils",
         "browsehappy": "Vous utilisez un <strong>ancien</strong> navigateur. Veuillez <a href=\"http://browsehappy.com/?locale=fr\">mettre à jour votre navigateur</a> pour une meilleure expérience.",
         "menu": {
             "home": "Accueil",
@@ -8,7 +8,7 @@
             "entities": {
                 "main": "Entités",
                 "adresse": "Adresse",
-                "pieceJustificatif": "Piece Justificatif",
+                "fichier": "Fichier",
                 "personne": "Personne",
                 "declarationNaissance": "Declaration Naissance",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
@@ -123,5 +123,5 @@
         "emailexists": "E-mail is already in use!",
         "idexists": "A new {{entityName}} cannot already have an ID"
     },
-    "footer": "Ceci est votre pied de page"
+    "footer": "Consulat général du Sénégal � Bordeaux"
 }
