@@ -1,0 +1,30 @@
+
+<div>
+    <h2><span translate="etatcivilApp.personne.detail.title">Personne</span> {{vm.personne.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span translate="etatcivilApp.personne.nom">Nom</span></dt>
+        <dd>
+            <span>{{vm.personne.nom}}</span>
+        </dd>
+        <dt><span translate="etatcivilApp.personne.prenom">Prenom</span></dt>
+        <dd>
+            <span>{{vm.personne.prenom}}</span>
+        </dd>
+        <dt><span translate="etatcivilApp.personne.dateNaissance">Date Naissance</span></dt>
+        <dd>
+            <span>{{vm.personne.dateNaissance | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span translate="etatcivilApp.personne.adresse">Adresse</span></dt>
+        <dd>
+            <a ui-sref="adresse-detail({id:vm.personne.adresseId})">{{vm.personne.adresseId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

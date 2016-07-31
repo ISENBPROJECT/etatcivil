@@ -1,0 +1,30 @@
+{
+    "etatcivilApp": {
+        "declarationNaissance" : {
+            "home": {
+                "title": "Declaration Naissances",
+                "createLabel": "Create a new Declaration Naissance",
+                "createOrEditLabel": "Create or edit a Declaration Naissance",
+                "search": "Search for Declaration Naissance"
+            },
+            "created": "A new Declaration Naissance is created with identifier {{ param }}",
+            "updated": "A Declaration Naissance is updated with identifier {{ param }}",
+            "deleted": "A Declaration Naissance is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Declaration Naissance {{ id }}?"
+            },
+            "detail": {
+                "title": "Declaration Naissance"
+            },
+            "dateDeclaration": "Date Declaration",
+            "identifiantEnfant": "Identifiant Enfant",
+            "identifiantPere": "Identifiant Pere",
+            "identifiantMere": "Identifiant Mere",
+            "mentionMarginale": "Mention Marginale",
+            "numeroCarteIdentite": "Numero Carte Identite",
+            "numeroPassPort": "Numero Pass Port",
+            "identifiantPersonne": "Identifiant Personne",
+            "identifiantFichier": "Identifiant Fichier"
+        }
+    }
+}

@@ -1,0 +1,72 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "many-to-one",
+      "relationshipName": "identifiantPersonne",
+      "otherEntityName": "personne",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "many-to-one",
+      "relationshipName": "identifiantFichier",
+      "otherEntityName": "fichier",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "dateDeclaration",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "identifiantEnfant",
+      "fieldType": "Long",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "identifiantPere",
+      "fieldType": "Long",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "identifiantMere",
+      "fieldType": "Long",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 5,
+      "fieldName": "mentionMarginale",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 6,
+      "fieldName": "numeroCarteIdentite",
+      "fieldType": "Long"
+    },
+    {
+      "fieldId": 7,
+      "fieldName": "numeroPassPort",
+      "fieldType": "Long"
+    }
+  ],
+  "changelogDate": "20160731100030",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "entityTableName": "declaration_naissance"
+}

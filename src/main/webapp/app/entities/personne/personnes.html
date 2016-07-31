@@ -1,0 +1,64 @@
+<div>
+    <h2 translate="etatcivilApp.personne.home.title">Personnes</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="personne.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  translate="etatcivilApp.personne.home.createLabel">
+                        Create new Personne
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span translate="global.field.id">ID</span></th>
+                    <th><span translate="etatcivilApp.personne.nom">Nom</span></th>
+                    <th><span translate="etatcivilApp.personne.prenom">Prenom</span></th>
+                    <th><span translate="etatcivilApp.personne.dateNaissance">Date Naissance</span></th>
+                    <th><span translate="etatcivilApp.personne.adresse">Adresse</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="personne in vm.personnes track by personne.id">
+                    <td><a ui-sref="personne-detail({id:personne.id})">{{personne.id}}</a></td>
+                    <td>{{personne.nom}}</td>
+                    <td>{{personne.prenom}}</td>
+                        <td>{{personne.dateNaissance | date:'mediumDate'}}</td>
+                    <td>
+                        <a ui-sref="adresse-detail({id:personne.adresseId})">{{personne.adresseId}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="personne-detail({id:personne.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="personne.edit({id:personne.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="personne.delete({id:personne.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

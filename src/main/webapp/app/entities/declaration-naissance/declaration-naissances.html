@@ -1,0 +1,76 @@
+<div>
+    <h2 translate="etatcivilApp.declarationNaissance.home.title">Declaration Naissances</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="declaration-naissance.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  translate="etatcivilApp.declarationNaissance.home.createLabel">
+                        Create new Declaration Naissance
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span translate="global.field.id">ID</span></th>
+                    <th><span translate="etatcivilApp.declarationNaissance.dateDeclaration">Date Declaration</span></th>
+                    <th><span translate="etatcivilApp.declarationNaissance.identifiantEnfant">Identifiant Enfant</span></th>
+                    <th><span translate="etatcivilApp.declarationNaissance.identifiantPere">Identifiant Pere</span></th>
+                    <th><span translate="etatcivilApp.declarationNaissance.identifiantMere">Identifiant Mere</span></th>
+                    <th><span translate="etatcivilApp.declarationNaissance.mentionMarginale">Mention Marginale</span></th>
+                    <th><span translate="etatcivilApp.declarationNaissance.numeroCarteIdentite">Numero Carte Identite</span></th>
+                    <th><span translate="etatcivilApp.declarationNaissance.numeroPassPort">Numero Pass Port</span></th>
+                    <th><span translate="etatcivilApp.declarationNaissance.identifiantPersonne">Identifiant Personne</span></th>
+                    <th><span translate="etatcivilApp.declarationNaissance.identifiantFichier">Identifiant Fichier</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="declarationNaissance in vm.declarationNaissances track by declarationNaissance.id">
+                    <td><a ui-sref="declaration-naissance-detail({id:declarationNaissance.id})">{{declarationNaissance.id}}</a></td>
+                        <td>{{declarationNaissance.dateDeclaration | date:'mediumDate'}}</td>
+                    <td>{{declarationNaissance.identifiantEnfant}}</td>
+                    <td>{{declarationNaissance.identifiantPere}}</td>
+                    <td>{{declarationNaissance.identifiantMere}}</td>
+                    <td>{{declarationNaissance.mentionMarginale}}</td>
+                    <td>{{declarationNaissance.numeroCarteIdentite}}</td>
+                    <td>{{declarationNaissance.numeroPassPort}}</td>
+                    <td>
+                        <a ui-sref="personne-detail({id:declarationNaissance.identifiantPersonneId})">{{declarationNaissance.identifiantPersonneId}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="fichier-detail({id:declarationNaissance.identifiantFichierId})">{{declarationNaissance.identifiantFichierId}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="declaration-naissance-detail({id:declarationNaissance.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="declaration-naissance.edit({id:declarationNaissance.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="declaration-naissance.delete({id:declarationNaissance.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
