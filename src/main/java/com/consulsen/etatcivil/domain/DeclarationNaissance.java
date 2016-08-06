@@ -27,31 +27,24 @@ public class DeclarationNaissance implements Serializable {
     @Column(name = "date_declaration", nullable = false)
     private LocalDate dateDeclaration;
 
-    @NotNull
-    @Column(name = "identifiant_enfant", nullable = false)
-    private Long identifiantEnfant;
 
-    @NotNull
-    @Column(name = "identifiant_pere", nullable = false)
-    private Long identifiantPere;
+    @ManyToOne (cascade = {CascadeType.ALL})
+    @JoinColumn(name="identifiant_enfant")
+    private Personne identifiantEnfant;
 
-    @NotNull
-    @Column(name = "identifiant_mere", nullable = false)
-    private Long identifiantMere;
+    @ManyToOne (cascade = {CascadeType.ALL})
+    @JoinColumn(name="identifiant_pere")
+    private Personne identifiantPere;
+
+    @ManyToOne (cascade = {CascadeType.ALL})
+    @JoinColumn(name="identifiant_mere")
+    private Personne identifiantMere;
 
     @Column(name = "mention_marginale")
     private String mentionMarginale;
 
-    @Column(name = "numero_carte_identite")
-    private Long numeroCarteIdentite;
-
-    @Column(name = "numero_pass_port")
-    private Long numeroPassPort;
-
-    @ManyToOne
-    private Personne identifiantPersonne;
-
-    @ManyToOne
+    @ManyToOne (cascade = {CascadeType.ALL})
+    @JoinColumn(name="identifiant_fichier_id")
     private Fichier identifiantFichier;
 
     public Long getId() {
@@ -70,31 +63,51 @@ public class DeclarationNaissance implements Serializable {
         this.dateDeclaration = dateDeclaration;
     }
 
-    public Long getIdentifiantEnfant() {
-        return identifiantEnfant;
-    }
+ 
 
-    public void setIdentifiantEnfant(Long identifiantEnfant) {
-        this.identifiantEnfant = identifiantEnfant;
-    }
+    /**
+	 * @return the identifiantEnfant
+	 */
+	public Personne getIdentifiantEnfant() {
+		return identifiantEnfant;
+	}
 
-    public Long getIdentifiantPere() {
-        return identifiantPere;
-    }
+	/**
+	 * @param identifiantEnfant the identifiantEnfant to set
+	 */
+	public void setIdentifiantEnfant(Personne identifiantEnfant) {
+		this.identifiantEnfant = identifiantEnfant;
+	}
 
-    public void setIdentifiantPere(Long identifiantPere) {
-        this.identifiantPere = identifiantPere;
-    }
+	/**
+	 * @return the identifiantPere
+	 */
+	public Personne getIdentifiantPere() {
+		return identifiantPere;
+	}
 
-    public Long getIdentifiantMere() {
-        return identifiantMere;
-    }
+	/**
+	 * @param identifiantPere the identifiantPere to set
+	 */
+	public void setIdentifiantPere(Personne identifiantPere) {
+		this.identifiantPere = identifiantPere;
+	}
 
-    public void setIdentifiantMere(Long identifiantMere) {
-        this.identifiantMere = identifiantMere;
-    }
+	/**
+	 * @return the identifiantMere
+	 */
+	public Personne getIdentifiantMere() {
+		return identifiantMere;
+	}
 
-    public String getMentionMarginale() {
+	/**
+	 * @param identifiantMere the identifiantMere to set
+	 */
+	public void setIdentifiantMere(Personne identifiantMere) {
+		this.identifiantMere = identifiantMere;
+	}
+
+	public String getMentionMarginale() {
         return mentionMarginale;
     }
 
@@ -102,29 +115,7 @@ public class DeclarationNaissance implements Serializable {
         this.mentionMarginale = mentionMarginale;
     }
 
-    public Long getNumeroCarteIdentite() {
-        return numeroCarteIdentite;
-    }
 
-    public void setNumeroCarteIdentite(Long numeroCarteIdentite) {
-        this.numeroCarteIdentite = numeroCarteIdentite;
-    }
-
-    public Long getNumeroPassPort() {
-        return numeroPassPort;
-    }
-
-    public void setNumeroPassPort(Long numeroPassPort) {
-        this.numeroPassPort = numeroPassPort;
-    }
-
-    public Personne getIdentifiantPersonne() {
-        return identifiantPersonne;
-    }
-
-    public void setIdentifiantPersonne(Personne personne) {
-        this.identifiantPersonne = personne;
-    }
 
     public Fichier getIdentifiantFichier() {
         return identifiantFichier;
@@ -154,17 +145,16 @@ public class DeclarationNaissance implements Serializable {
         return Objects.hashCode(id);
     }
 
-    @Override
-    public String toString() {
-        return "DeclarationNaissance{" +
-            "id=" + id +
-            ", dateDeclaration='" + dateDeclaration + "'" +
-            ", identifiantEnfant='" + identifiantEnfant + "'" +
-            ", identifiantPere='" + identifiantPere + "'" +
-            ", identifiantMere='" + identifiantMere + "'" +
-            ", mentionMarginale='" + mentionMarginale + "'" +
-            ", numeroCarteIdentite='" + numeroCarteIdentite + "'" +
-            ", numeroPassPort='" + numeroPassPort + "'" +
-            '}';
-    }
+    /* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "DeclarationNaissance [id=" + id + ", dateDeclaration=" + dateDeclaration + ", identifiantEnfant="
+				+ identifiantEnfant + ", identifiantPere=" + identifiantPere + ", identifiantMere=" + identifiantMere
+				+ ", mentionMarginale=" + mentionMarginale + ", numeroCarteIdentite="
+				+ ", identifiantFichier=" + identifiantFichier + "]";
+	}
+    
+    
 }

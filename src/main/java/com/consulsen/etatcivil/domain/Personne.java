@@ -37,11 +37,11 @@ public class Personne implements Serializable {
     @Column(name = "date_naissance")
     private LocalDate dateNaissance;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(unique = true)
     private Adresse adresse;
 
-    @OneToMany(mappedBy = "identifiantPersonne")
+    @OneToMany(mappedBy = "id")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<DeclarationNaissance> declarationNaissances = new HashSet<>();
