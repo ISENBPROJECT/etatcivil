@@ -24,7 +24,7 @@ public class PersonneDTO implements Serializable {
     private LocalDate dateNaissance;
 
 
-    private Long adresseId;
+    private AdresseDTO adresse;
     
     public Long getId() {
         return id;
@@ -55,15 +55,23 @@ public class PersonneDTO implements Serializable {
         this.dateNaissance = dateNaissance;
     }
 
-    public Long getAdresseId() {
-        return adresseId;
-    }
+  
 
-    public void setAdresseId(Long adresseId) {
-        this.adresseId = adresseId;
-    }
+    /**
+	 * @return the adresse
+	 */
+	public AdresseDTO getAdresse() {
+		return adresse;
+	}
 
-    @Override
+	/**
+	 * @param adresse the adresse to set
+	 */
+	public void setAdresse(AdresseDTO adresse) {
+		this.adresse = adresse;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

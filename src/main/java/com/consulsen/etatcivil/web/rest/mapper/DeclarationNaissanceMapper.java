@@ -2,27 +2,39 @@ package com.consulsen.etatcivil.web.rest.mapper;
 
 import com.consulsen.etatcivil.domain.*;
 import com.consulsen.etatcivil.web.rest.dto.DeclarationNaissanceDTO;
+import com.consulsen.etatcivil.web.rest.dto.PersonneDTO;
 
 import org.mapstruct.*;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.ManyToOne;
+
 /**
  * Mapper for the entity DeclarationNaissance and its DTO DeclarationNaissanceDTO.
  */
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = {PersonneMapper.class,FichierMapper.class})
+
+
 public interface DeclarationNaissanceMapper {
 
-    @Mapping(source = "identifiantPersonne.id", target = "identifiantPersonneId")
-    @Mapping(source = "identifiantFichier.id", target = "identifiantFichierId")
+ 
+    @Mapping(source = "identifiantEnfant", target = "informationEnfant")
+    @Mapping(source = "identifiantPere", target = "informationPere")
+    @Mapping(source = "identifiantMere", target = "informationMere")
+    @Mapping(source = "identifiantFichier", target = "fichier")
     DeclarationNaissanceDTO declarationNaissanceToDeclarationNaissanceDTO(DeclarationNaissance declarationNaissance);
 
-    List<DeclarationNaissanceDTO> declarationNaissancesToDeclarationNaissanceDTOs(List<DeclarationNaissance> declarationNaissances);
+    //List<DeclarationNaissanceDTO> declarationNaissancesToDeclarationNaissanceDTOs(List<DeclarationNaissance> declarationNaissances);
+  
+    @Mapping(source = "informationEnfant", target = "identifiantEnfant")
+    @Mapping(source = "informationPere", target = "identifiantPere")
+    @Mapping(source = "informationMere", target = "identifiantMere")
+    @Mapping(source = "fichier", target = "identifiantFichier")
 
-    @Mapping(source = "identifiantPersonneId", target = "identifiantPersonne")
-    @Mapping(source = "identifiantFichierId", target = "identifiantFichier")
     DeclarationNaissance declarationNaissanceDTOToDeclarationNaissance(DeclarationNaissanceDTO declarationNaissanceDTO);
 
-    List<DeclarationNaissance> declarationNaissanceDTOsToDeclarationNaissances(List<DeclarationNaissanceDTO> declarationNaissanceDTOs);
+    //List<DeclarationNaissance> declarationNaissanceDTOsToDeclarationNaissances(List<DeclarationNaissanceDTO> declarationNaissanceDTOs);
 
     default Personne personneFromId(Long id) {
         if (id == null) {
