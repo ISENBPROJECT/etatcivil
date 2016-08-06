@@ -2,7 +2,10 @@ package com.consulsen.etatcivil.service;
 
 import com.consulsen.etatcivil.domain.DeclarationNaissance;
 import com.consulsen.etatcivil.repository.DeclarationNaissanceRepository;
+import com.consulsen.etatcivil.web.rest.dto.AdresseDTO;
 import com.consulsen.etatcivil.web.rest.dto.DeclarationNaissanceDTO;
+import com.consulsen.etatcivil.web.rest.dto.FichierDTO;
+import com.consulsen.etatcivil.web.rest.dto.PersonneDTO;
 import com.consulsen.etatcivil.web.rest.mapper.DeclarationNaissanceMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,8 +43,13 @@ public class DeclarationNaissanceService {
         DeclarationNaissance declarationNaissance = declarationNaissanceMapper.declarationNaissanceDTOToDeclarationNaissance(declarationNaissanceDTO);
         declarationNaissance = declarationNaissanceRepository.save(declarationNaissance);
         DeclarationNaissanceDTO result = declarationNaissanceMapper.declarationNaissanceToDeclarationNaissanceDTO(declarationNaissance);
+     
         return result;
     }
+    
+    
+    
+    
 
     /**
      *  Get all the declarationNaissances.
@@ -51,7 +59,7 @@ public class DeclarationNaissanceService {
     @Transactional(readOnly = true) 
     public List<DeclarationNaissanceDTO> findAll() {
         log.debug("Request to get all DeclarationNaissances");
-        List<DeclarationNaissanceDTO> result = declarationNaissanceRepository.findAll().stream()
+          List<DeclarationNaissanceDTO> result = declarationNaissanceRepository.findAll().stream()
             .map(declarationNaissanceMapper::declarationNaissanceToDeclarationNaissanceDTO)
             .collect(Collectors.toCollection(LinkedList::new));
         return result;
