@@ -6,7 +6,7 @@
                 ng-click="vm.clear()">&times;</button>
         <h4 class="modal-title" id="myDeclarationNaissanceLabel" translate="etatcivilApp.declarationNaissance.home.createOrEditLabel">Create or edit a Declaration Naissance</h4>
     </div>
-    <div class="modal-body">
+    <div >
         <jhi-alert-error></jhi-alert-error>
         <div class="form-group" ng-show="vm.declarationNaissance.id">
             <label for="id" translate="global.field.id">ID</label>
@@ -29,22 +29,29 @@
                 </p>
             </div>
         </div>
+        
+         <!--   ##################################   PARTIE ENFANT ######################################## -->
+    
         <div class="form-group">
-            <label class="control-label" translate="etatcivilApp.declarationNaissance.identifiantEnfant" for="field_identifiantEnfant">Identifiant Enfant</label>
-            <input type="number" class="form-control" name="identifiantEnfant" id="field_identifiantEnfant"
-                    ng-model="vm.declarationNaissance.identifiantEnfant"
-                    required />
-            <div ng-show="editForm.identifiantEnfant.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.identifiantEnfant.$error.required" translate="entity.validation.required">
-                    This field is required.
-                </p>
-                <p class="help-block"
-                    ng-show="editForm.identifiantEnfant.$error.number" translate="entity.validation.number">
-                    This field should be a number.
-                </p>
-            </div>
-        </div>
+                 
+       
+	            <label class="control-label" translate="etatcivilApp.declarationNaissance.identifiantEnfant" for="field_identifiantEnfant">Identifiant Enfant</label>
+	            <input type="number" class="form-control" name="identifiantEnfant" id="field_identifiantEnfant"ng-model="vm.declarationNaissance.identifiantEnfant" required />
+	            <div ng-show="editForm.identifiantEnfant.$invalid">
+	                <p class="help-block"
+	                    ng-show="editForm.identifiantEnfant.$error.required" translate="entity.validation.required">
+	                    This field is required.
+	                </p>
+	                <p class="help-block"
+	                    ng-show="editForm.identifiantEnfant.$error.number" translate="entity.validation.number">
+	                    This field should be a number.
+	                </p>
+	            </div>
+       
+      </div>
+          </fieldset>
+        
+
         <div class="form-group">
             <label class="control-label" translate="etatcivilApp.declarationNaissance.identifiantPere" for="field_identifiantPere">Identifiant Pere</label>
             <input type="number" class="form-control" name="identifiantPere" id="field_identifiantPere"
@@ -109,6 +116,10 @@
             </select>
         </div>
     </div>
+    
+    <form>
+ 
+</form>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
@@ -118,3 +129,6 @@
         </button>
     </div>
 </form>
+
+
+

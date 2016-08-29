@@ -5,9 +5,9 @@
         .module('etatcivilApp')
         .controller('DeclarationNaissanceDialogController', DeclarationNaissanceDialogController);
 
-    DeclarationNaissanceDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'DeclarationNaissance', 'Personne', 'Fichier'];
+    DeclarationNaissanceDialogController.$inject = ['$timeout', '$scope', '$stateParams', 'entity', 'DeclarationNaissance', 'Personne', 'Fichier'];
 
-    function DeclarationNaissanceDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, DeclarationNaissance, Personne, Fichier) {
+    function DeclarationNaissanceDialogController ($timeout, $scope, $stateParams, entity, DeclarationNaissance, Personne, Fichier) {
         var vm = this;
 
         vm.declarationNaissance = entity;
@@ -23,7 +23,7 @@
         });
 
         function clear () {
-            $uibModalInstance.dismiss('cancel');
+            //$uibModalInstance.dismiss('cancel');
         }
 
         function save () {
@@ -37,7 +37,7 @@
 
         function onSaveSuccess (result) {
             $scope.$emit('etatcivilApp:declarationNaissanceUpdate', result);
-            $uibModalInstance.close(result);
+            //$uibModalInstance.close(result);
             vm.isSaving = false;
         }
 

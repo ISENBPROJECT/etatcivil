@@ -7,23 +7,23 @@
 
     stateConfig.$inject = ['$stateProvider'];
 
+
     function stateConfig($stateProvider) {
-        $stateProvider.state('home', {
-            parent: 'app',
-            url: '/home',
+        $stateProvider.state('login', {
+            url: '/',
             data: {
                 authorities: []
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/home/home.html',
-                    controller: 'HomeController',
+                    templateUrl: 'app/components/login/login.html',
+                    controller: 'LoginController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
                 mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
-                    $translatePartialLoader.addPart('home');
+                    $translatePartialLoader.addPart('login');
                     return $translate.refresh();
                 }]
             }

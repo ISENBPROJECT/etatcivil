@@ -56,39 +56,42 @@
             }
         })
         .state('declaration-naissance.new', {
-            parent: 'declaration-naissance',
+            parent: 'home',
             url: '/new',
             data: {
                 authorities: ['ROLE_USER']
             },
-            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
-                $uibModal.open({
-                    templateUrl: 'app/entities/declaration-naissance/declaration-naissance-dialog.html',
-                    controller: 'DeclarationNaissanceDialogController',
-                    controllerAs: 'vm',
-                    backdrop: 'static',
-                    size: 'lg',
-                    resolve: {
-                        entity: function () {
-                            return {
-                                dateDeclaration: null,
-                                identifiantEnfant: null,
-                                identifiantPere: null,
-                                identifiantMere: null,
-                                mentionMarginale: null,
-                                numeroCarteIdentite: null,
-                                numeroPassPort: null,
-                                id: null
-                            };
-                        }
-                    }
-                }).result.then(function() {
-                    $state.go('declaration-naissance', null, { reload: true });
-                }, function() {
-                    $state.go('declaration-naissance');
-                });
-            }]
+            
+            
+            views: {
+                'content@': {
+                	 templateUrl: 'app/entities/declaration-naissance/declaration-naissance-dialog.html',
+                     controller: 'DeclarationNaissanceDialogController',
+                     controllerAs: 'vm',
+                     backdrop: 'static',
+                     size: 'lg',
+                }
+            },
+            resolve: {
+                entity: function () {
+                    return {
+                        dateDeclaration: null,
+                        identifiantEnfant: null,
+                        identifiantPere: null,
+                        identifiantMere: null,
+                        mentionMarginale: null,
+                        numeroCarteIdentite: null,
+                        numeroPassPort: null,
+                        id: null
+                    };
+                }
+            }
+    
         })
+        
+        
+        
+        
         .state('declaration-naissance.edit', {
             parent: 'declaration-naissance',
             url: '/{id}/edit',
