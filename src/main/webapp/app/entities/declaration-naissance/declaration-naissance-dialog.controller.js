@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,7 +7,7 @@
 
     DeclarationNaissanceDialogController.$inject = ['$timeout', '$scope', '$stateParams', 'entity', 'DeclarationNaissance', 'Personne', 'Fichier'];
 
-    function DeclarationNaissanceDialogController ($timeout, $scope, $stateParams, entity, DeclarationNaissance, Personne, Fichier) {
+    function DeclarationNaissanceDialogController($timeout, $scope, $stateParams, entity, DeclarationNaissance, Personne, Fichier) {
         var vm = this;
 
         vm.declarationNaissance = entity;
@@ -17,16 +17,15 @@
         vm.save = save;
         vm.personnes = Personne.query();
         vm.fichiers = Fichier.query();
-
-        $timeout(function (){
+        $timeout(function () {
             angular.element('.form-group:eq(1)>input').focus();
         });
 
-        function clear () {
+        function clear() {
             //$uibModalInstance.dismiss('cancel');
         }
 
-        function save () {
+        function save() {
             vm.isSaving = true;
             if (vm.declarationNaissance.id !== null) {
                 DeclarationNaissance.update(vm.declarationNaissance, onSaveSuccess, onSaveError);
@@ -35,19 +34,20 @@
             }
         }
 
-        function onSaveSuccess (result) {
+        function onSaveSuccess(result) {
             $scope.$emit('etatcivilApp:declarationNaissanceUpdate', result);
             //$uibModalInstance.close(result);
             vm.isSaving = false;
         }
 
-        function onSaveError () {
+        function onSaveError() {
             vm.isSaving = false;
         }
 
+
         vm.datePickerOpenStatus.dateDeclaration = false;
 
-        function openCalendar (date) {
+        function openCalendar(date) {
             vm.datePickerOpenStatus[date] = true;
         }
     }

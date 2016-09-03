@@ -29,13 +29,13 @@
             <!-- Angular views -->
         </div>
 
-        <div class="footer" ng-cloak>
-            <p translate="footer">This is your footer</p>
+        <div style="color: #FFFFFF; " class="footer navbar-fixed-bottom" ng-cloak>
+           <h5><p translate="footer">This is your footer</p></h5>
         </div>
     </div>
-    
-    
-    
+
+
+
 
     <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
     <script>
@@ -49,6 +49,9 @@
 
     <!-- build:js app/vendor.js -->
     <!-- bower:js -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/messageformat/messageformat.js"></script>
     <script src="bower_components/json3/lib/json3.js"></script>
@@ -99,12 +102,6 @@
     <script src="app/layouts/error/error.state.js"></script>
     <script src="app/home/home.state.js"></script>
     <script src="app/home/home.controller.js"></script>
-    
-    <script src="app/components/login/login.state.js"></script>
-    <script src="app/components/login/login.controller.js"></script>
-    <script src="app/components/login/login.service.js"></script>
-
-    
     <script src="app/entities/personne/personne-dialog.controller.js"></script>
     <script src="app/entities/personne/personne-detail.controller.js"></script>
     <script src="app/entities/personne/personne-delete-dialog.controller.js"></script>
@@ -118,6 +115,7 @@
     <script src="app/entities/fichier/fichier.service.js"></script>
     <script src="app/entities/fichier/fichier.controller.js"></script>
     <script src="app/entities/entity.state.js"></script>
+    <script src="app/entities/declaration-naissance/declaration-test.controller.js"></script>
     <script src="app/entities/declaration-naissance/declaration-naissance-dialog.controller.js"></script>
     <script src="app/entities/declaration-naissance/declaration-naissance-detail.controller.js"></script>
     <script src="app/entities/declaration-naissance/declaration-naissance-delete-dialog.controller.js"></script>
@@ -141,6 +139,7 @@
     <script src="app/components/util/data-util.service.js"></script>
     <script src="app/components/util/capitalize.filter.js"></script>
     <script src="app/components/util/base64.service.js"></script>
+    <script src="app/components/login/login.state.js"></script>
     <script src="app/components/login/login.service.js"></script>
     <script src="app/components/login/login.controller.js"></script>
     <script src="app/components/language/language.service.js"></script>
