@@ -1,23 +1,30 @@
-(function() {
+(function () {
     'use strict';
 
     angular
         .module('etatcivilApp')
         .controller('DeclarationTestController', DeclarationTestController);
 
-    DeclarationTestController.$inject = ['$scope', '$state', 'DeclarationNaissance'];
+    DeclarationTestController.$inject = ['$timeout', '$scope', '$stateParams', 'entity', 'DeclarationNaissance', 'Personne','Fichier'];
 
-    function DeclarationTestController ($scope, $state, DeclarationNaissance) {
+    function DeclarationTestController($timeout, $scope, $stateParams, entity, DeclarationNaissance, Personne,Fichier) {
         var vm = this;
+        vm.declarationNaissance = entity;
+        vm.datePickerOpenStatus = {};
+        vm.openCalendar = openCalendar;
+        vm.save = save;
+        vm.datePickerOpenStatus.dateDeclaration = false;
+        vm.datePickerOpenStatus.dateNaissance = false;
+        vm.personnes = Personne.query();
+        vm.fichiers = Fichier.query();
 
-        vm.declarationNaissances = [];
+        function openCalendar(date) {
+            vm.datePickerOpenStatus[date] = true;
+        }
 
-        loadAll();
-
-        function loadAll() {
-            DeclarationNaissance.query(function(result) {
-                vm.declarationNaissances = result;
-            });
+        function save() {
+            vm.isSaving = true;
+            DeclarationNaissance.save(vm.declarationNaissance);
         }
     }
 })();

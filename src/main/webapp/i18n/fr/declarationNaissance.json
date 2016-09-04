@@ -18,13 +18,19 @@
             },
             "dateDeclaration": "Date Déclaration",
             "identifiantEnfant": "Identifiant Enfant",
-            "identifiantPere": "Identifiant Pere",
-            "identifiantMere": "Identifiant Mere",
+            "identifiantPere": "Identifiant Père",
+            "identifiantMere": "Identifiant Mère",
             "mentionMarginale": "Mention Marginale",
             "numeroCarteIdentite": "Numéro Carte d'Identité",
             "numeroPassPort": "Numéro Pass Port",
             "identifiantPersonne": "Identifiant Personne",
-            "identifiantFichier": "Identifiant Fichier"
+            "identifiantFichier": "Identifiant Fichier",
+            "name":"Nom",
+            "firstname":"prénom",
+            "dateNaissance":"Date de naissance",
+            "adressComplement":"Adresse Complémentaire",
+            "ville":"Ville",
+            "codepostale":"Code postal"
         }
     }
 }
