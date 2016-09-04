@@ -11,19 +11,22 @@
 
     <!--   ##################################   PARTIE ENFANT ######################################## -->
 
-    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo2"
-            style="background-color: #ddd; padding: 18px;
+    <button type="button" class="accordion" data-toggle="collapse" data-target="#demo2"
+            style="background-color: #ECECEC; padding: 18px;
                 width: 100%;
                 border: none;
                 text-align: left;
-                outline: none;
-                font-size: 15px;margin-bottom: 7%;">je teste un fieldset
+                outline: none;color: #006dcc;
+                border-radius: 15px;
+                font-size: 15px;margin-bottom: 1%;">
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+        je teste un fieldset
     </button>
 
 
     <div id="demo2" class="collapse">
         <div class="form-group">
-            <label class="control-label" translate="global.pageDeclaration.identifiantMere"
+            <label class="control-label" translate="etatcivilApp.declarationNaissance.identifiantMere"
                    for="field_identifiantMere">Identifiant Mere</label>
             <input type="number" class="form-control" name="identifiantMere" id="field_identifiantMere"
                    ng-model="vm.declarationNaissance.identifiantMere"
@@ -55,13 +58,15 @@
         </div>
     </div>
 
-    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo1"
-                 style="background-color: #ddd; padding: 18px;
+    <button type="button" data-toggle="collapse" data-target="#demo1"
+            style="background-color: #ECECEC; padding: 18px;
                 width: 100%;
                 border: none;
                 text-align: left;
-                outline: none;
-                font-size: 15px; margin-bottom: 7%;">je teste un fieldset
+                outline: none;color: #006dcc;
+                font-size: 15px; margin-bottom: 1%;">
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+        je teste un fieldset
     </button>
 
 
@@ -124,15 +129,15 @@
     </div>
 
 
-    <button  type="button" class="accordion" data-toggle="collapse" data-target="#demo"
-           style="background-color: #ddd; padding: 18px;
+    <button  type="button" data-toggle="collapse" data-target="#demo"
+             style="background-color: #ECECEC; padding: 18px;
                 width: 100%;
                 border: none;
                 text-align: left;
                 outline: none;
-                font-size: 15px; margin-bottom: 7%;">
-        <span ng-show="collapse" class="glyphicon glyphicon-plus"></span>
-        <span class="glyphicon glyphicon-minus"></span>je teste un fieldset
+                font-size: 15px; margin-bottom: 1%; color: #006dcc;">
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+       je teste un fieldset
 
     </button>
 
@@ -168,7 +173,7 @@
     <form>
 
     </form>
-    <div class="modal-footer">
+    <div class="modal-footer navbar-fixed-bottom" style="background-color: #414856">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
             translate="entity.action.cancel">Cancel</span>

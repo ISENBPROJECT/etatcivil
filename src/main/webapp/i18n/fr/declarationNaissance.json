@@ -3,28 +3,33 @@
         "declarationNaissance" : {
             "home": {
                 "title": "DeclarationNaissances",
-                "createLabel": "Créer un nouveau Declaration Naissance",
-                "createOrEditLabel": "Créer ou éditer un Declaration Naissance",
-                "search": "Recherche pour Declaration Naissance"
+                "createLabel": "Créer une nouvelle Déclaration de Naissance",
+                "createOrEditLabel": "Créer ou éditer une Déclaration de Naissance",
+                "search": "Rechercher une Declaration de Naissance"
             },
-            "created": "Un nouveau Declaration Naissance a été créé avec l'identifiant {{ param }}",
-            "updated": "Le Declaration Naissance avec l'identifiant {{ param }} a été mis à jour",
-            "deleted": "Le Declaration Naissance avec l'identifiant {{ param }} a été supprimé",
+            "created": "Une nouvelle Déclaration de Naissance a été créée avec l'identifiant {{ param }}",
+            "updated": "Le Déclaration de Naissance avec l'identifiant {{ param }} a été mise à jour",
+            "deleted": "Le Déclaration de Naissance avec l'identifiant {{ param }} a été supprimée",
             "delete": {
-                "question": "Etes-vous certain de vouloir supprimer le Declaration Naissance {{ id }} ?"
+                "question": "Etes-vous certain de vouloir supprimer la Déclaration de Naissance {{ id }} ?"
             },
             "detail": {
-                "title": "Declaration Naissance"
+                "title": "Déclaration Naissance"
             },
-            "dateDeclaration": "Date Declaration",
+            "dateDeclaration": "Date Déclaration",
             "identifiantEnfant": "Identifiant Enfant",
             "identifiantPere": "Identifiant Pere",
             "identifiantMere": "Identifiant Mere",
             "mentionMarginale": "Mention Marginale",
-            "numeroCarteIdentite": "Numero Carte Identite",
-            "numeroPassPort": "Numero Pass Port",
+            "numeroCarteIdentite": "Numéro Carte d'Identité",
+            "numeroPassPort": "Numéro Pass Port",
             "identifiantPersonne": "Identifiant Personne",
-            "identifiantFichier": "Identifiant Fichier"
+            "identifiantFichier": "Identifiant Fichier",
+            "nom" : "Nom",
+            "prenom" : "Prenom",
+            "dateNaissance": "Date de naissance",
+            "codePostal" :"Code postal",
+            "ville" : "Ville"
         }
     }
 }

@@ -31,6 +31,28 @@
                 }]
             }
         })
+            .state('declaration-test', {
+                parent: 'entity',
+                url: '/declaration-test',
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'etatcivilApp.declarationNaissance.home.title'
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'app/entities/declaration-naissance/declaration-test.html',
+                        controller: 'DeclarationTestController',
+                        controllerAs: 'vm'
+                    }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('declarationNaissance');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
+                }
+            })
         .state('declaration-naissance-detail', {
             parent: 'entity',
             url: '/declaration-naissance/{id}',
@@ -61,8 +83,8 @@
             data: {
                 authorities: ['ROLE_USER']
             },
-            
-            
+
+
             views: {
                 'content@': {
                 	 templateUrl: 'app/entities/declaration-naissance/declaration-naissance-dialog.html',
@@ -86,12 +108,12 @@
                     };
                 }
             }
-    
+
         })
-        
-        
-        
-        
+
+
+
+
         .state('declaration-naissance.edit', {
             parent: 'declaration-naissance',
             url: '/{id}/edit',
