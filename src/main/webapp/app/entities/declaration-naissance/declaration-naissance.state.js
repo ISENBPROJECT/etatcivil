@@ -59,7 +59,7 @@
                             informationPere: {nom :null, prenom :null, dateNaissance :null, adresse:{codePostale:null,ville:null,adresseComplementaire:null}},
                             informationMere: {nom :null, prenom :null, dateNaissance :null, adresse:{codePostale:null,ville:null,adresseComplementaire:null}},
                             mentionMarginale: null,
-                            fichier:{nomFichier:'carte identite',chemin:'c/piecesjointe/dossier/justificatifs'}
+                            fichier:{}
                         };
                     }
                 }

@@ -20,6 +20,9 @@
 
     <div id="demo2" class="collapse">
 
+        <input type="file" name="file" multiple
+               onchange="angular.element(this).scope().vm.uploadedFile(this)" />
+
         <!--nom-->
         <div class="form-group">
             <label class="control-label" translate="etatcivilApp.declarationNaissance.name"
@@ -150,9 +153,6 @@
             </div>
         </div>
 
-        <label class="btn btn-default btn-file">
-            Telecharger PJ <input type="file" style="display: none;">
-        </label>
     </div>
 
 
@@ -400,6 +400,7 @@
         </button>
     </div>
 </form>
+
 
 
 

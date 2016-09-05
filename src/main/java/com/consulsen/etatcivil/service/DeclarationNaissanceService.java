@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,38 +26,39 @@ import java.util.stream.Collectors;
 public class DeclarationNaissanceService {
 
     private final Logger log = LoggerFactory.getLogger(DeclarationNaissanceService.class);
-    
+
     @Inject
     private DeclarationNaissanceRepository declarationNaissanceRepository;
-    
+
     @Inject
     private DeclarationNaissanceMapper declarationNaissanceMapper;
-    
+
     /**
      * Save a declarationNaissance.
-     * 
+     *
      * @param declarationNaissanceDTO the entity to save
      * @return the persisted entity
      */
     public DeclarationNaissanceDTO save(DeclarationNaissanceDTO declarationNaissanceDTO) {
         log.debug("Request to save DeclarationNaissance : {}", declarationNaissanceDTO);
+        File file = new File(String.valueOf(declarationNaissanceDTO.getFichier()));
         DeclarationNaissance declarationNaissance = declarationNaissanceMapper.declarationNaissanceDTOToDeclarationNaissance(declarationNaissanceDTO);
         declarationNaissance = declarationNaissanceRepository.save(declarationNaissance);
         DeclarationNaissanceDTO result = declarationNaissanceMapper.declarationNaissanceToDeclarationNaissanceDTO(declarationNaissance);
-     
+
         return result;
     }
-    
-    
-    
-    
+
+
+
+
 
     /**
      *  Get all the declarationNaissances.
-     *  
+     *
      *  @return the list of entities
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public List<DeclarationNaissanceDTO> findAll() {
         log.debug("Request to get all DeclarationNaissances");
           List<DeclarationNaissanceDTO> result = declarationNaissanceRepository.findAll().stream()
@@ -71,7 +73,7 @@ public class DeclarationNaissanceService {
      *  @param id the id of the entity
      *  @return the entity
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public DeclarationNaissanceDTO findOne(Long id) {
         log.debug("Request to get DeclarationNaissance : {}", id);
         DeclarationNaissance declarationNaissance = declarationNaissanceRepository.findOne(id);
@@ -81,7 +83,7 @@ public class DeclarationNaissanceService {
 
     /**
      *  Delete the  declarationNaissance by id.
-     *  
+     *
      *  @param id the id of the entity
      */
     public void delete(Long id) {
