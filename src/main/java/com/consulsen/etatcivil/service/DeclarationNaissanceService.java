@@ -1,22 +1,21 @@
 package com.consulsen.etatcivil.service;
 
-import com.consulsen.etatcivil.domain.DeclarationNaissance;
-import com.consulsen.etatcivil.repository.DeclarationNaissanceRepository;
-import com.consulsen.etatcivil.web.rest.dto.AdresseDTO;
-import com.consulsen.etatcivil.web.rest.dto.DeclarationNaissanceDTO;
-import com.consulsen.etatcivil.web.rest.dto.FichierDTO;
-import com.consulsen.etatcivil.web.rest.dto.PersonneDTO;
-import com.consulsen.etatcivil.web.rest.mapper.DeclarationNaissanceMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.stereotype.Service;
-
-import javax.inject.Inject;
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.inject.Inject;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.consulsen.etatcivil.domain.DeclarationNaissance;
+import com.consulsen.etatcivil.repository.DeclarationNaissanceRepository;
+import com.consulsen.etatcivil.web.rest.dto.DeclarationNaissanceDTO;
+import com.consulsen.etatcivil.web.rest.mapper.DeclarationNaissanceMapper;
 
 /**
  * Service Implementation for managing DeclarationNaissance.
@@ -89,5 +88,25 @@ public class DeclarationNaissanceService {
     public void delete(Long id) {
         log.debug("Request to delete DeclarationNaissance : {}", id);
         declarationNaissanceRepository.delete(id);
+    }
+    
+    /**
+     *  Get declarationNaissance by criteria.
+     *
+     *  @param personneDTO
+ 	 *	@param declarationNaissanceDTO
+     *  @return the entity
+     */
+    @Transactional(readOnly = true) 
+    public List<DeclarationNaissanceDTO> findByCriteria(DeclarationNaissanceDTO declarationNaissanceDTO) {
+    	 log.debug("Request to get DeclarationNaissances by criteria");
+    	 String nom = "%" + declarationNaissanceDTO.getInformationEnfant().getNom() +"%";
+    	 String prenom = "%" + declarationNaissanceDTO.getInformationEnfant().getPrenom() +"%";
+    	 
+         List<DeclarationNaissanceDTO> result = declarationNaissanceRepository.findByCriteria(declarationNaissanceDTO.getId(), nom,
+        		 prenom, declarationNaissanceDTO.getInformationEnfant().getDateNaissance()).stream()
+           .map(declarationNaissanceMapper::declarationNaissanceToDeclarationNaissanceDTO)
+           .collect(Collectors.toCollection(LinkedList::new));
+       return result;
     }
 }

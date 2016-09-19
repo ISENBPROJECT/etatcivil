@@ -1,27 +1,38 @@
 package com.consulsen.etatcivil.web.rest;
 
-import com.codahale.metrics.annotation.Timed;
-import com.consulsen.etatcivil.domain.DeclarationNaissance;
-import com.consulsen.etatcivil.service.DeclarationNaissanceService;
-import com.consulsen.etatcivil.web.rest.util.HeaderUtil;
-import com.consulsen.etatcivil.web.rest.dto.DeclarationNaissanceDTO;
-import com.consulsen.etatcivil.web.rest.mapper.DeclarationNaissanceMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.net.URLDecoder;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import java.time.LocalDate;
+
+import org.apache.commons.lang.StringUtils;
+import org.joda.time.format.DateTimeFormat;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.codahale.metrics.annotation.Timed;
+import com.consulsen.etatcivil.service.DeclarationNaissanceService;
+import com.consulsen.etatcivil.web.rest.dto.DeclarationNaissanceDTO;
+import com.consulsen.etatcivil.web.rest.dto.PersonneDTO;
+import com.consulsen.etatcivil.web.rest.mapper.DeclarationNaissanceMapper;
+import com.consulsen.etatcivil.web.rest.util.HeaderUtil;
 
 /**
  * REST controller for managing DeclarationNaissance.
@@ -37,6 +48,11 @@ public class DeclarationNaissanceResource {
     
     @Inject
     private DeclarationNaissanceMapper declarationNaissanceMapper;
+    
+    private static String UNDEFINED = "undefined";
+    private String [] datePattern = {"yyyy-MM-dd"};
+    final org.joda.time.format.DateTimeFormatter dtf = DateTimeFormat.forPattern("yyyy-MMM-dd");
+
     
     /**
      * POST  /declaration-naissances : Create a new declarationNaissance.
@@ -134,4 +150,39 @@ public class DeclarationNaissanceResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("declarationNaissance", id.toString())).build();
     }
 
+    @RequestMapping(value = "/searchDeclaration",
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<DeclarationNaissanceDTO> serachDeclarationNaissance(@Valid @RequestBody String data) {
+        log.debug("REST request to search DeclarationNaissance");
+        Long numeroRegistre;
+        String nom;
+        String prenom;
+        LocalDate dateNaissance;
+        data = StringUtils.substring(data, 0);
+        String[] datasSearch = StringUtils.split(data,",");
+        DeclarationNaissanceDTO declarationNaissanceDTO = new DeclarationNaissanceDTO();
+        PersonneDTO personneDTO = new PersonneDTO();
+        nom = datasSearch[1].startsWith(UNDEFINED) ? "": datasSearch[1];
+        personneDTO.setNom(nom);
+        prenom = datasSearch[2].startsWith(UNDEFINED) ? "": datasSearch[2];
+        personneDTO.setPrenom(prenom);
+		dateNaissance = datasSearch[3].startsWith(UNDEFINED) ? null: LocalDate.parse(datasSearch[3]);
+		personneDTO.setDateNaissance(dateNaissance);
+        declarationNaissanceDTO.setInformationEnfant(personneDTO);
+        numeroRegistre = datasSearch[0].startsWith(UNDEFINED) ? null: Long.parseLong(datasSearch[0]);
+        declarationNaissanceDTO.setId(numeroRegistre);
+        return declarationNaissanceService.findByCriteria(declarationNaissanceDTO);
+    }
+
+    @RequestMapping(value = "/uploadFile",
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+        @Timed
+        public ResponseEntity<File> upload(@Valid @RequestBody String filename) throws URISyntaxException, IOException {
+        URL url = new URL("C:\\Users\\mroum\\OneDrive\\Images");
+            File file = new File(URLDecoder.decode(url.getFile(),"UTF-8"));
+            return  null;
+        }
 }
