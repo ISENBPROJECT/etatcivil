@@ -31,6 +31,28 @@
                     }]
                 }
             })
+             .state('declaration-naissance-recherche', {
+                parent: 'entity',
+                url: '/declaration-naissance-recherche',
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'etatcivilApp.declarationNaissance.home.title'
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'app/entities/declaration-naissance/declaration-naissances-recherche.html',
+                        controller: 'DeclarationNaissanceRechercheController',
+                        controllerAs: 'vm'
+                    }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('declarationNaissance');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
+                }
+            })
             .state('declaration-test', {
                 parent: 'entity',
                 url: '/declaration-test',

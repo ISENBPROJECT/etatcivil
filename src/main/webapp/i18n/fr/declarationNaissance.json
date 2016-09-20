@@ -16,6 +16,9 @@
             "detail": {
                 "title": "Déclaration Naissance"
             },
+            "action": {
+                "search": "Rechercher"
+            },
             "dateDeclaration": "Date Déclaration",
             "identifiantEnfant": "Identifiant Enfant",
             "identifiantPere": "Identifiant Père",
@@ -26,11 +29,14 @@
             "identifiantPersonne": "Identifiant Personne",
             "identifiantFichier": "Identifiant Fichier",
             "name":"Nom",
-            "firstname":"prénom",
+            "firstname":"Prénom",
             "dateNaissance":"Date de naissance",
             "adressComplement":"Adresse Complémentaire",
             "ville":"Ville",
-            "codepostale":"Code postal"
+            "codepostale":"Code postal",
+            "dadfirstname":"Prénom père",
+            "momfirstname":"Prénom manan",
+            "numberRegisgtre":"N° registre"
         }
     }
 }

@@ -40,4 +40,11 @@
 
 
     }
+
+    function DeclarationNaissance($resource, DateUtils) {
+        var resourceUrl =  'api/searchDeclaration/';
+        return $resource(resourceUrl, {}, {
+            'search': { method: 'POST', isArray: true}
+        });
+    }
 })();
