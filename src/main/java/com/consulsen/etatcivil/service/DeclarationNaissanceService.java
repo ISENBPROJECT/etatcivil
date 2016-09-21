@@ -1,6 +1,11 @@
 package com.consulsen.etatcivil.service;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,6 +36,10 @@ public class DeclarationNaissanceService {
 
     @Inject
     private DeclarationNaissanceMapper declarationNaissanceMapper;
+    
+    private static String path_source = "C:\\Users\\Serigne26\\Pictures\\";
+	private static String path_destination = "D:\\Outils\\";
+
 
     /**
      * Save a declarationNaissance.
@@ -109,4 +118,20 @@ public class DeclarationNaissanceService {
            .collect(Collectors.toCollection(LinkedList::new));
        return result;
     }
+    
+    
+    /**
+     * @param file
+     */
+    public void copyFileToPJDirectory(String file) { log.debug("Copie file to the directory pj");
+    // String file = "PV.pdf";
+	Path source = Paths.get(path_source + file);
+   	 Path destination = Paths.get(path_destination + file);
+   	 try {
+		Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+   }
 }
