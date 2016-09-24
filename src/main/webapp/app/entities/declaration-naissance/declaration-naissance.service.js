@@ -40,4 +40,19 @@
 
 
     }
+
+    function DeclarationNaissance($resource) {
+        var resourceUrl =  'api/uploadFile/';
+        return $resource(resourceUrl, {}, {
+            'upload': {
+                method: 'POST',
+                transformRequest: function (data) {
+                    if (data) {
+                        data = angular.toJson(data);
+                    }
+                    return data;
+                }
+            }
+        });
+    }
 })();

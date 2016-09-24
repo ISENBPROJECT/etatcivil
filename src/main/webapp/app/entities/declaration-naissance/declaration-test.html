@@ -1,5 +1,24 @@
 <form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
 
+    <h4>Upload on file select</h4>
+    <button ngf-select="uploadFiles($files, $invalidFiles)" multiple enctype="multipart/form-data"
+          ngf-drop-available="true" >
+        Select Files</button>
+    <br><br>
+    Files:
+    <ul>
+        <li ng-repeat="f in files">{{f.name}} {{f.$errorParam}}
+            <span ng-show="f.progress >= 0">
+        <div style="width:{{f.progress}}%"
+             ng-bind="f.progress + '%'"></div>
+      </span>
+        </li>
+        <li ng-repeat="f in errFiles">{{f.name}} {{f.$error}} {{f.$errorParam}}
+        </li>
+    </ul>
+    {{errorMsg}}
+
+
 
     <jhi-alert-error></jhi-alert-error>
 

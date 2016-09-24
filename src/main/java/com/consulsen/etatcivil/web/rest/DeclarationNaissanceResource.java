@@ -8,14 +8,17 @@ import com.consulsen.etatcivil.web.rest.dto.DeclarationNaissanceDTO;
 import com.consulsen.etatcivil.web.rest.mapper.DeclarationNaissanceMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
+import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.LinkedList;
@@ -31,13 +34,13 @@ import java.util.stream.Collectors;
 public class DeclarationNaissanceResource {
 
     private final Logger log = LoggerFactory.getLogger(DeclarationNaissanceResource.class);
-        
+
     @Inject
     private DeclarationNaissanceService declarationNaissanceService;
-    
+
     @Inject
     private DeclarationNaissanceMapper declarationNaissanceMapper;
-    
+
     /**
      * POST  /declaration-naissances : Create a new declarationNaissance.
      *
@@ -98,6 +101,16 @@ public class DeclarationNaissanceResource {
         return declarationNaissanceService.findAll();
     }
 
+
+    @RequestMapping(value = "/declaration-naissances-recherche",
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<DeclarationNaissanceDTO> seacrhDeclarationNaissances(@RequestBody DeclarationNaissanceDTO declarationNaissanceDTO) {
+        log.debug("REST request to get all DeclarationNaissances");
+        return declarationNaissanceService.findAll();
+    }
+
     /**
      * GET  /declaration-naissances/:id : get the "id" declarationNaissance.
      *
@@ -134,4 +147,13 @@ public class DeclarationNaissanceResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("declarationNaissance", id.toString())).build();
     }
 
+
+    @RequestMapping(value = "/uploadFile",
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<File> upload(@Valid @RequestBody File file) throws URISyntaxException {
+       System.out.println("coucou");
+        return null;
+    }
 }
