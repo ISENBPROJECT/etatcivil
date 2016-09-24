@@ -41,18 +41,10 @@
 
     }
 
-    function DeclarationNaissance($resource) {
-        var resourceUrl =  'api/uploadFile/';
+    function DeclarationNaissance($resource, DateUtils) {
+        var resourceUrl =  'api/searchDeclaration/';
         return $resource(resourceUrl, {}, {
-            'upload': {
-                method: 'POST',
-                transformRequest: function (data) {
-                    if (data) {
-                        data = angular.toJson(data);
-                    }
-                    return data;
-                }
-            }
+            'search': { method: 'POST', isArray: true}
         });
     }
 })();

@@ -1,22 +1,26 @@
 package com.consulsen.etatcivil.service;
 
-import com.consulsen.etatcivil.domain.DeclarationNaissance;
-import com.consulsen.etatcivil.repository.DeclarationNaissanceRepository;
-import com.consulsen.etatcivil.web.rest.dto.AdresseDTO;
-import com.consulsen.etatcivil.web.rest.dto.DeclarationNaissanceDTO;
-import com.consulsen.etatcivil.web.rest.dto.FichierDTO;
-import com.consulsen.etatcivil.web.rest.dto.PersonneDTO;
-import com.consulsen.etatcivil.web.rest.mapper.DeclarationNaissanceMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.stereotype.Service;
-
-import javax.inject.Inject;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.inject.Inject;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.consulsen.etatcivil.domain.DeclarationNaissance;
+import com.consulsen.etatcivil.repository.DeclarationNaissanceRepository;
+import com.consulsen.etatcivil.web.rest.dto.DeclarationNaissanceDTO;
+import com.consulsen.etatcivil.web.rest.mapper.DeclarationNaissanceMapper;
 
 /**
  * Service Implementation for managing DeclarationNaissance.
@@ -32,6 +36,10 @@ public class DeclarationNaissanceService {
 
     @Inject
     private DeclarationNaissanceMapper declarationNaissanceMapper;
+    
+    private static String path_source = "C:\\Users\\Serigne26\\Pictures\\";
+	private static String path_destination = "D:\\Outils\\";
+
 
     /**
      * Save a declarationNaissance.
@@ -90,4 +98,40 @@ public class DeclarationNaissanceService {
         log.debug("Request to delete DeclarationNaissance : {}", id);
         declarationNaissanceRepository.delete(id);
     }
+    
+    /**
+     *  Get declarationNaissance by criteria.
+     *
+     *  @param personneDTO
+ 	 *	@param declarationNaissanceDTO
+     *  @return the entity
+     */
+    @Transactional(readOnly = true) 
+    public List<DeclarationNaissanceDTO> findByCriteria(DeclarationNaissanceDTO declarationNaissanceDTO) {
+    	 log.debug("Request to get DeclarationNaissances by criteria");
+    	 String nom = "%" + declarationNaissanceDTO.getInformationEnfant().getNom() +"%";
+    	 String prenom = "%" + declarationNaissanceDTO.getInformationEnfant().getPrenom() +"%";
+    	 
+         List<DeclarationNaissanceDTO> result = declarationNaissanceRepository.findByCriteria(declarationNaissanceDTO.getId(), nom,
+        		 prenom, declarationNaissanceDTO.getInformationEnfant().getDateNaissance()).stream()
+           .map(declarationNaissanceMapper::declarationNaissanceToDeclarationNaissanceDTO)
+           .collect(Collectors.toCollection(LinkedList::new));
+       return result;
+    }
+    
+    
+    /**
+     * @param file
+     */
+    public void copyFileToPJDirectory(String file) { log.debug("Copie file to the directory pj");
+    // String file = "PV.pdf";
+	Path source = Paths.get(path_source + file);
+   	 Path destination = Paths.get(path_destination + file);
+   	 try {
+		Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+   }
 }
