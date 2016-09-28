@@ -12,33 +12,17 @@
         
         vm.declarationNaissances = [];
         vm.search = search;
-
-        loadAll();
-        function loadAll() {
-            DeclarationNaissance.query(function(result) {
-                vm.declarationNaissances = result;
-                console.log(vm.declarationNaissances)
-            });
-        }
-//        console.log(vm.declarationNaissance.informationEnfant.prenom);
-//        function search() {
-//            DeclarationNaissance.search(function(result) {
-//                vm.declarationNaissances = result;
-//            });
-//        }
-//        
+     
         function search(){
-//            DeclarationNaissance.search(vm.declarationNaissance, onSaveSuccess, onSaveError);
         	console.log(vm.declarationNaissance.informationEnfant.nom);
         	console.log(vm.declarationNaissance.informationEnfant.prenom);
         	var dataSearch = vm.declarationNaissance.id+','+vm.declarationNaissance.informationEnfant.nom+','
         		+vm.declarationNaissance.informationEnfant.prenom+','+vm.declarationNaissance.informationEnfant.dateNaissance;
-            DeclarationNaissance.search(dataSearch);
-
+            DeclarationNaissance.search(dataSearch, onSaveSuccess, onSaveError);
         }
         
         function onSaveSuccess(result) {
-            vm.isSaving = false;
+        	 vm.declarationNaissances = result;
         }
 
         function onSaveError() {
