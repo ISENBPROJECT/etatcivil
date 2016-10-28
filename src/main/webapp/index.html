@@ -12,6 +12,8 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css">
+    <link rel="stylesheet" href="bower_components/bootstrap-material-design/dist/css/bootstrap-material-design.css">
+    <link rel="stylesheet" href="bower_components/bootstrap-material-design/dist/css/ripples.css">
     <!-- endinject -->
     <!-- endbuild -->
     <!-- build:css content/css/main.css -->
@@ -25,14 +27,17 @@
     <page-ribbon></page-ribbon>
     <div ui-view="navbar" ng-cloak></div>
     <div class="container">
-        <div class="well" ui-view="content">
+        <div  ui-view="content">
             <!-- Angular views -->
         </div>
 
-        <div class="footer" ng-cloak>
-            <p translate="footer">This is your footer</p>
+        <div style="color: #FFFFFF; " class="footer " ng-cloak>
+           <h5><p translate="footer">This is your footer</p></h5>
         </div>
     </div>
+
+
+
 
     <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
     <script>
@@ -51,6 +56,8 @@
     <script src="bower_components/json3/lib/json3.js"></script>
     <script src="bower_components/sockjs-client/dist/sockjs.js"></script>
     <script src="bower_components/stomp-websocket/lib/stomp.min.js"></script>
+    <script src="bower_components/arrive/src/arrive.js"></script>
+    <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -69,6 +76,8 @@
     <script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
     <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
     <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+    <script src="bower_components/bootstrap-material-design/dist/js/material.js"></script>
+    <script src="bower_components/bootstrap-material-design/dist/js/ripples.js"></script>
     <!-- endinject -->
     <!-- endbuild -->
 
@@ -109,6 +118,8 @@
     <script src="app/entities/fichier/fichier.service.js"></script>
     <script src="app/entities/fichier/fichier.controller.js"></script>
     <script src="app/entities/entity.state.js"></script>
+    <script src="app/entities/declaration-naissance/declaration-test.controller.js"></script>
+    <script src="app/entities/declaration-naissance/declaration-naissance-recherche.controller.js"></script>
     <script src="app/entities/declaration-naissance/declaration-naissance-dialog.controller.js"></script>
     <script src="app/entities/declaration-naissance/declaration-naissance-detail.controller.js"></script>
     <script src="app/entities/declaration-naissance/declaration-naissance-delete-dialog.controller.js"></script>
@@ -132,6 +143,7 @@
     <script src="app/components/util/data-util.service.js"></script>
     <script src="app/components/util/capitalize.filter.js"></script>
     <script src="app/components/util/base64.service.js"></script>
+    <script src="app/components/login/login.state.js"></script>
     <script src="app/components/login/login.service.js"></script>
     <script src="app/components/login/login.controller.js"></script>
     <script src="app/components/language/language.service.js"></script>
@@ -157,6 +169,7 @@
     <script src="app/blocks/config/localstorage.config.js"></script>
     <script src="app/blocks/config/http.config.js"></script>
     <script src="app/blocks/config/compile.config.js"></script>
+    <script src="app/blocks/config/bootstrap-material.config.js"></script>
     <script src="app/blocks/config/alert.config.js"></script>
     <script src="app/app.state.js"></script>
     <script src="app/app.constants.js"></script>

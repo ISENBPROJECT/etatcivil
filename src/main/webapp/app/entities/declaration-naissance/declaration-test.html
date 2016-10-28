@@ -1,0 +1,425 @@
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <h4>Upload on file select</h4>
+    <button ngf-select="uploadFiles($files, $invalidFiles)" multiple enctype="multipart/form-data"
+          ngf-drop-available="true" >
+        Select Files</button>
+    <br><br>
+    Files:
+    <ul>
+        <li ng-repeat="f in files">{{f.name}} {{f.$errorParam}}
+            <span ng-show="f.progress >= 0">
+        <div style="width:{{f.progress}}%"
+             ng-bind="f.progress + '%'"></div>
+      </span>
+        </li>
+        <li ng-repeat="f in errFiles">{{f.name}} {{f.$error}} {{f.$errorParam}}
+        </li>
+    </ul>
+    {{errorMsg}}
+
+
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <!--   ##################################   PARTIE ENFANT ######################################## -->
+
+    <button type="button" class="accordion" data-toggle="collapse" data-target="#demo2"
+            style="background-color: #ECECEC; padding: 18px;
+                width: 100%;
+                border: none;
+                text-align: left;
+                outline: none;color: #006dcc;
+                border-radius: 15px;
+                font-size: 15px;margin-bottom: 1%;">
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+        INFORMATIONS DE L'ENFANT
+    </button>
+
+
+    <div id="demo2" class="collapse">
+
+        <input type="file" name="file" multiple
+               onchange="angular.element(this).scope().vm.uploadedFile(this)" />
+
+        <!--nom-->
+        <div class="form-group">
+            <label class="control-label" translate="etatcivilApp.declarationNaissance.name"
+                   for="field_child_name">Nom</label>
+            <input type="text" class="form-control" name="childName" id="field_child_name"
+                   ng-model="vm.declarationNaissance.informationEnfant.nom" required
+            />
+            <div ng-show="editForm.informationEnfant.nom.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.informationEnfant.nom.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+
+
+        </div>
+
+        <!--prenom-->
+        <div class="form-group">
+            <label class="control-label" translate="etatcivilApp.declarationNaissance.firstname"
+                   for="field_child_firstname">Nom</label>
+            <input type="text" class="form-control" name="childName" id="field_child_firstname"
+                   ng-model="vm.declarationNaissance.informationEnfant.prenom" required
+            />
+            <div ng-show="editForm.informationEnfant.prenom.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.informationEnfant.prenom.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <!--ville-->
+        <div class="form-group">
+            <label class="control-label" translate="etatcivilApp.declarationNaissance.ville"
+                   for="field_child_city">Ville</label>
+            <input type="text" class="form-control" name="childName" id="field_child_city"
+                   ng-model="vm.declarationNaissance.informationEnfant.adresse.ville" required
+            />
+            <div ng-show="editForm.informationEnfant.adresse.ville.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.informationEnfant.adresse.ville.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <!--code postal-->
+        <div class="form-group">
+            <label class="control-label" translate="etatcivilApp.declarationNaissance.codepostale"
+                   for="field_child_postalCode">code postal</label>
+            <input type="text" class="form-control" name="childName" id="field_child_postalCode"
+                   ng-model="vm.declarationNaissance.informationEnfant.adresse.codePostale" required
+            />
+            <div ng-show="editForm.informationEnfant.adresse.codePostale.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.informationEnfant.adresse.codePostale.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <!--adresse complementaire-->
+        <div class="form-group">
+            <label class="control-label" translate="etatcivilApp.declarationNaissance.adressComplement"
+                   for="field_child_complement_adress">adresse complementaire</label>
+            <input type="text" class="form-control" name="childName" id="field_child_complement_adress"
+                   ng-model="vm.declarationNaissance.informationEnfant.adresse.adresseComplementaire" required
+            />
+            <div ng-show="editForm.informationEnfant.adresse.adresseComplementaire.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.informationEnfant.adresse.adresseComplementaire.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <!--mention marginale-->
+        <div class="form-group">
+            <label class="control-label" translate="etatcivilApp.declarationNaissance.mentionMarginale"
+                   for="field_mentionMarginale">Mention Marginale</label>
+            <input type="text" class="form-control" name="mentionMarginale" id="field_mentionMarginale"
+                   ng-model="vm.declarationNaissance.mentionMarginale"
+            />
+        </div>
+
+        <!--date naissance-->
+        <div class="form-group">
+            <label class="control-label" translate="etatcivilApp.declarationNaissance.dateNaissance"
+                   for="field_dateDeclaration">Date Declaration</label>
+            <div class="input-group">
+                <input id="field_dateNaissance" type="text" class="form-control" name="dateNaissance"
+                       uib-datepicker-popup="{{dateformat}}" ng-model="vm.declarationNaissance.informationEnfant.dateNaissance"
+                       is-open="vm.datePickerOpenStatus.dateNaissance"
+                       required/>
+                <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateNaissance')"><i
+                            class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+            <div ng-show="editForm.declarationNaissance.dateNaissance.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.declarationNaissance.dateNaissance.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <!--date declaration-->
+        <div class="form-group">
+            <label class="control-label" translate="etatcivilApp.declarationNaissance.dateDeclaration"
+                   for="field_dateDeclaration">Date Declaration</label>
+            <div class="input-group">
+                <input id="field_dateDeclaration" type="text" class="form-control" name="dateDeclaration"
+                       uib-datepicker-popup="{{dateformat}}" ng-model="vm.declarationNaissance.dateDeclaration"
+                       is-open="vm.datePickerOpenStatus.dateDeclaration"
+                       required/>
+                <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDeclaration')"><i
+                            class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+            <div ng-show="editForm.declarationNaissance.dateDeclaration.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.declarationNaissance.dateDeclaration.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!--   ##################################   PARTIE MERE ######################################## -->
+    <button type="button" data-toggle="collapse" data-target="#demo1"
+            style="background-color: #ECECEC; padding: 18px;
+                width: 100%;
+                border: none;
+                text-align: left;border-radius: 15px;
+                outline: none;color: #006dcc;
+                font-size: 15px; margin-bottom: 1%;">
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+        INFORMATIONS DE LA MERE
+    </button>
+
+
+    <div id="demo1" class="collapse">
+
+        <!--nom-->
+        <div class="form-group">
+            <label class="control-label" translate="etatcivilApp.declarationNaissance.name"
+                   for="field_mother_name">Nom</label>
+            <input type="text" class="form-control" name="childName" id="field_mother_name"
+                   ng-model="vm.declarationNaissance.informationMere.nom" required
+            />
+            <div ng-show="editForm.informationMere.nom.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.informationMere.nom.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+
+
+        </div>
+
+        <!--prenom-->
+        <div class="form-group">
+            <label class="control-label" translate="etatcivilApp.declarationNaissance.firstname"
+                   for="field_mother_firstname">Nom</label>
+            <input type="text" class="form-control" name="childName" id="field_mother_firstname"
+                   ng-model="vm.declarationNaissance.informationMere.prenom" required
+            />
+            <div ng-show="editForm.informationMere.prenom.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.informationMere.prenom.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <!--date naissance-->
+        <div class="form-group">
+            <label class="control-label" translate="etatcivilApp.declarationNaissance.dateNaissance"
+                   for="field_mother_dateDeclaration">Date Declaration</label>
+            <div class="input-group">
+                <input id="field_mother_dateDeclaration" type="text" class="form-control" name="dateNaissance"
+                       uib-datepicker-popup="{{dateformat}}" ng-model="vm.declarationNaissance.informationMere.dateNaissance"
+                       is-open="vm.datePickerOpenStatus.dateNaissance"
+                       required/>
+                <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateNaissance')"><i
+                            class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+            <div ng-show="editForm.declarationNaissance.informationMere.dateNaissance.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.declarationNaissance.informationMere.dateNaissance.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <!--ville-->
+        <div class="form-group">
+            <label class="control-label" translate="etatcivilApp.declarationNaissance.ville"
+                   for="field_mother_city">Ville</label>
+            <input type="text" class="form-control" name="childName" id="field_mother_city"
+                   ng-model="vm.declarationNaissance.informationMere.adresse.ville" required
+            />
+            <div ng-show="editForm.informationMere.adresse.ville.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.informationMere.adresse.ville.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <!--code postal-->
+        <div class="form-group">
+            <label class="control-label" translate="etatcivilApp.declarationNaissance.codepostale"
+                   for="field_mother_postalCode">code postal</label>
+            <input type="text" class="form-control" name="childName" id="field_mother_postalCode"
+                   ng-model="vm.declarationNaissance.informationMere.adresse.codePostale" required
+            />
+            <div ng-show="editForm.informationMere.adresse.codePostale.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.informationMere.adresse.codePostale.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <!--adresse complementaire-->
+        <div class="form-group">
+            <label class="control-label" translate="etatcivilApp.declarationNaissance.adressComplement"
+                   for="field_mother_complement_adress">code postal</label>
+            <input type="text" class="form-control" name="childName" id="field_mother_complement_adress"
+                   ng-model="vm.declarationNaissance.informationMere.adresse.adresseComplementaire" required
+            />
+            <div ng-show="editForm.informationMere.adresse.adresseComplementaire.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.informationMere.adresse.adresseComplementaire.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!--   ##################################   PARTIE PERE ######################################## -->
+    <button  type="button" data-toggle="collapse" data-target="#demo"
+             style="background-color: #ECECEC; padding: 18px;
+                width: 100%;
+                border: none;border-radius: 15px;
+                text-align: left;
+                outline: none;
+                font-size: 15px; margin-bottom: 1%; color: #006dcc;">
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+        INFORMATIONS DU PERE
+
+    </button>
+
+    <div id="demo" class="collapse">
+
+        <!--nom-->
+        <div class="form-group">
+            <label class="control-label" translate="etatcivilApp.declarationNaissance.name"
+                   for="field_father_name">Nom</label>
+            <input type="text" class="form-control" name="fatherName" id="field_father_name"
+                   ng-model="vm.declarationNaissance.informationPere.nom" required
+            />
+            <div ng-show="editForm.informationPere.nom.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.informationPere.nom.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+
+
+        </div>
+
+        <!--prenom-->
+        <div class="form-group">
+            <label class="control-label" translate="etatcivilApp.declarationNaissance.firstname"
+                   for="field_father_firstname">Nom</label>
+            <input type="text" class="form-control" name="fatherFirstName" id="field_father_firstname"
+                   ng-model="vm.declarationNaissance.informationPere.prenom" required
+            />
+            <div ng-show="editForm.informationPere.prenom.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.informationPere.prenom.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <!--date naissance-->
+        <div class="form-group">
+            <label class="control-label" translate="etatcivilApp.declarationNaissance.dateNaissance"
+                   for="field_father_dateNaissance">Date Declaration</label>
+            <div class="input-group">
+                <input id="field_father_dateNaissance" type="text" class="form-control" name="dateNaissance"
+                       uib-datepicker-popup="{{dateformat}}" ng-model="vm.declarationNaissance.informationPere.dateNaissance"
+                       is-open="vm.datePickerOpenStatus.dateNaissance"
+                       required/>
+                <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateNaissance')"><i
+                            class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
+            <div ng-show="editForm.declarationNaissance.informationPere.dateNaissance.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.declarationNaissance.informationPere.dateNaissance.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <!--ville-->
+        <div class="form-group">
+            <label class="control-label" translate="etatcivilApp.declarationNaissance.ville"
+                   for="field_father_city">Ville</label>
+            <input type="text" class="form-control" name="childName" id="field_father_city"
+                   ng-model="vm.declarationNaissance.informationPere.adresse.ville" required
+            />
+            <div ng-show="editForm.informationPere.adresse.ville.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.informationPere.adresse.ville.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <!--code postal-->
+        <div class="form-group">
+            <label class="control-label" translate="etatcivilApp.declarationNaissance.codepostale"
+                   for="field_father_postalCode">code postal</label>
+            <input type="text" class="form-control" name="childName" id="field_father_postalCode"
+                   ng-model="vm.declarationNaissance.informationPere.adresse.codePostale" required
+            />
+            <div ng-show="editForm.informationPere.adresse.codePostale.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.informationPere.adresse.codePostale.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <!--adresse complementaire-->
+        <div class="form-group">
+            <label class="control-label" translate="etatcivilApp.declarationNaissance.adressComplement"
+                   for="field_father_complement_adress">code postal</label>
+            <input type="text" class="form-control" name="childName" id="field_father_complement_adress"
+                   ng-model="vm.declarationNaissance.informationPere.adresse.adresseComplementaire" required
+            />
+            <div ng-show="editForm.informationPere.adresse.adresseComplementaire.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.informationPere.adresse.adresseComplementaire.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="modal-footer" style="background-color: #414856">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
+            translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
+
+
+
+

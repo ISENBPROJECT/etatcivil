@@ -1,11 +1,10 @@
 package com.consulsen.etatcivil.web.rest.dto;
 
-import java.time.LocalDate;
-import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.LocalDate;
 import java.util.Objects;
+
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -18,25 +17,18 @@ public class DeclarationNaissanceDTO implements Serializable {
     @NotNull
     private LocalDate dateDeclaration;
 
-    @NotNull
-    private Long identifiantEnfant;
+  
+    private PersonneDTO informationEnfant;
 
-    @NotNull
-    private Long identifiantPere;
 
-    @NotNull
-    private Long identifiantMere;
+    private PersonneDTO informationPere;
+
+    private PersonneDTO informationMere;
 
     private String mentionMarginale;
 
-    private Long numeroCarteIdentite;
-
-    private Long numeroPassPort;
-
-
-    private Long identifiantPersonneId;
     
-    private Long identifiantFichierId;
+    private FichierDTO fichier;
     
     public Long getId() {
         return id;
@@ -52,27 +44,7 @@ public class DeclarationNaissanceDTO implements Serializable {
     public void setDateDeclaration(LocalDate dateDeclaration) {
         this.dateDeclaration = dateDeclaration;
     }
-    public Long getIdentifiantEnfant() {
-        return identifiantEnfant;
-    }
-
-    public void setIdentifiantEnfant(Long identifiantEnfant) {
-        this.identifiantEnfant = identifiantEnfant;
-    }
-    public Long getIdentifiantPere() {
-        return identifiantPere;
-    }
-
-    public void setIdentifiantPere(Long identifiantPere) {
-        this.identifiantPere = identifiantPere;
-    }
-    public Long getIdentifiantMere() {
-        return identifiantMere;
-    }
-
-    public void setIdentifiantMere(Long identifiantMere) {
-        this.identifiantMere = identifiantMere;
-    }
+    
     public String getMentionMarginale() {
         return mentionMarginale;
     }
@@ -80,38 +52,69 @@ public class DeclarationNaissanceDTO implements Serializable {
     public void setMentionMarginale(String mentionMarginale) {
         this.mentionMarginale = mentionMarginale;
     }
-    public Long getNumeroCarteIdentite() {
-        return numeroCarteIdentite;
-    }
 
-    public void setNumeroCarteIdentite(Long numeroCarteIdentite) {
-        this.numeroCarteIdentite = numeroCarteIdentite;
-    }
-    public Long getNumeroPassPort() {
-        return numeroPassPort;
-    }
+    
 
-    public void setNumeroPassPort(Long numeroPassPort) {
-        this.numeroPassPort = numeroPassPort;
-    }
+    
+    
+    
+    /**
+	 * @return the fichier
+	 */
+	public FichierDTO getFichier() {
+		return fichier;
+	}
 
-    public Long getIdentifiantPersonneId() {
-        return identifiantPersonneId;
-    }
+	/**
+	 * @param fichier the fichier to set
+	 */
+	public void setFichier(FichierDTO fichier) {
+		this.fichier = fichier;
+	}
 
-    public void setIdentifiantPersonneId(Long personneId) {
-        this.identifiantPersonneId = personneId;
-    }
+	/**
+	 * @return the informationPere
+	 */
+	public PersonneDTO getInformationPere() {
+		return informationPere;
+	}
 
-    public Long getIdentifiantFichierId() {
-        return identifiantFichierId;
-    }
+	/**
+	 * @param informationPere the informationPere to set
+	 */
+	public void setInformationPere(PersonneDTO informationPere) {
+		this.informationPere = informationPere;
+	}
 
-    public void setIdentifiantFichierId(Long fichierId) {
-        this.identifiantFichierId = fichierId;
-    }
+	/**
+	 * @return the informationMere
+	 */
+	public PersonneDTO getInformationMere() {
+		return informationMere;
+	}
 
-    @Override
+	/**
+	 * @param informationMere the informationMere to set
+	 */
+	public void setInformationMere(PersonneDTO informationMere) {
+		this.informationMere = informationMere;
+	}
+
+	/**
+	 * @return the informationEnfant
+	 */
+	public PersonneDTO getInformationEnfant() {
+		return informationEnfant;
+	}
+
+	/**
+	 * @param informationEnfant the informationEnfant to set
+	 */
+	public void setInformationEnfant(PersonneDTO informationEnfant) {
+		this.informationEnfant = informationEnfant;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -132,17 +135,5 @@ public class DeclarationNaissanceDTO implements Serializable {
         return Objects.hashCode(id);
     }
 
-    @Override
-    public String toString() {
-        return "DeclarationNaissanceDTO{" +
-            "id=" + id +
-            ", dateDeclaration='" + dateDeclaration + "'" +
-            ", identifiantEnfant='" + identifiantEnfant + "'" +
-            ", identifiantPere='" + identifiantPere + "'" +
-            ", identifiantMere='" + identifiantMere + "'" +
-            ", mentionMarginale='" + mentionMarginale + "'" +
-            ", numeroCarteIdentite='" + numeroCarteIdentite + "'" +
-            ", numeroPassPort='" + numeroPassPort + "'" +
-            '}';
-    }
+
 }
