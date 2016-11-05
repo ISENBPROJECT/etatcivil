@@ -190,15 +190,6 @@ public class DeclarationNaissanceResource {
             File file = new File(URLDecoder.decode(url.getFile(),"UTF-8"));
             return  null;
         }
-    
-    
-    @RequestMapping(value = "/imprimer-declaration",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-        @Timed
-        public String creerExtraitNaissance(@Valid @RequestBody DeclarationNaissanceDTO declarationNaissanceDTO) throws URISyntaxException {
-            log.debug("Imprimer declaration : {}", declarationNaissanceDTO);
-            String result = declarationNaissanceService.creerExtraitNaissance(declarationNaissanceDTO);
-            return result;
-        }
 }
+    
+   

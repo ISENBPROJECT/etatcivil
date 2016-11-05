@@ -1,3 +1,4 @@
+/*
 package com.consulsen.etatcivil.web.rest;
 
 import com.consulsen.etatcivil.EtatcivilApp;
@@ -35,11 +36,13 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
+*/
 /**
  * Test class for the DeclarationNaissanceResource REST controller.
  *
  * @see DeclarationNaissanceResource
- */
+ *//*
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = EtatcivilApp.class)
 @WebAppConfiguration
@@ -313,3 +316,4 @@ public class DeclarationNaissanceResourceIntTest {
         assertThat(declarationNaissances).hasSize(databaseSizeBeforeDelete - 1);
     }
 }
+*/
