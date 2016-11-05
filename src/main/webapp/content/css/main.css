@@ -328,9 +328,22 @@ ui bootstrap tweaks
 .uib-datepicker-popup  > li > div.uib-datepicker > table:focus {
     outline: none;
 }
+.blockPageAccueil{
+    width: 33%;
+    text-align: center
+}
 
-
-
+.blockDeclaration{
+    display: inline-block;
+    width: 30%;
+   border: solid;
+}
+.inputDeclaration{
+    background-color: rgb(250, 255, 189) !important;
+}
+.inlineInput{
+    display: inline;
+}
 /* ==========================================================================
 Fix error field display
 ========================================================================== */
