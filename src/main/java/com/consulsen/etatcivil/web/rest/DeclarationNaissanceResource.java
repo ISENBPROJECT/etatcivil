@@ -42,18 +42,18 @@ import com.consulsen.etatcivil.web.rest.util.HeaderUtil;
 public class DeclarationNaissanceResource {
 
     private final Logger log = LoggerFactory.getLogger(DeclarationNaissanceResource.class);
-        
+
     @Inject
     private DeclarationNaissanceService declarationNaissanceService;
-    
+
     @Inject
     private DeclarationNaissanceMapper declarationNaissanceMapper;
-    
+
     private static String UNDEFINED = "undefined";
     private String [] datePattern = {"yyyy-MM-dd"};
     final org.joda.time.format.DateTimeFormatter dtf = DateTimeFormat.forPattern("yyyy-MMM-dd");
 
-    
+
     /**
      * POST  /declaration-naissances : Create a new declarationNaissance.
      *
@@ -69,6 +69,11 @@ public class DeclarationNaissanceResource {
         log.debug("REST request to save DeclarationNaissance : {}", declarationNaissanceDTO);
         if (declarationNaissanceDTO.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("declarationNaissance", "idexists", "A new declarationNaissance cannot already have an ID")).body(null);
+        }
+        try {
+            upload(declarationNaissanceDTO.getFichier().getNomFichier());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         DeclarationNaissanceDTO result = declarationNaissanceService.save(declarationNaissanceDTO);
         return ResponseEntity.created(new URI("/api/declaration-naissances/" + result.getId()))
@@ -181,8 +186,19 @@ public class DeclarationNaissanceResource {
             produces = MediaType.APPLICATION_JSON_VALUE)
         @Timed
         public ResponseEntity<File> upload(@Valid @RequestBody String filename) throws URISyntaxException, IOException {
-        URL url = new URL("C:\\Users\\mroum\\OneDrive\\Images");
+        URL url = new URL("C:\\Users\\mroum\\OneDrive\\Documents\\repetatcivil");
             File file = new File(URLDecoder.decode(url.getFile(),"UTF-8"));
             return  null;
+        }
+    
+    
+    @RequestMapping(value = "/imprimer-declaration",
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+        @Timed
+        public String creerExtraitNaissance(@Valid @RequestBody DeclarationNaissanceDTO declarationNaissanceDTO) throws URISyntaxException {
+            log.debug("Imprimer declaration : {}", declarationNaissanceDTO);
+            String result = declarationNaissanceService.creerExtraitNaissance(declarationNaissanceDTO);
+            return result;
         }
 }
