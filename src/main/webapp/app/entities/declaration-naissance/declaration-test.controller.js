@@ -15,7 +15,9 @@
         vm.openCalendar = openCalendar;
         vm.save = save;
         vm.datePickerOpenStatus.dateDeclaration = false;
-        vm.datePickerOpenStatus.dateNaissance = false;
+        vm.datePickerOpenStatus.dateNaissanceEnfant = false;
+        vm.datePickerOpenStatus.dateNaissancePere = false;
+        vm.datePickerOpenStatus.dateNaissanceMere = false;
         vm.personnes = Personne.query();
         vm.fichiers = Fichier.query();
         vm.uploadFiles = uploadFiles;
