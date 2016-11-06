@@ -1703,17 +1703,17 @@ output {
 }
 .form-control::-moz-placeholder,
 .form-group .form-control::-moz-placeholder {
-  color: #BDBDBD;
+  color: #50bd45;
   font-weight: 400;
 }
 .form-control:-ms-input-placeholder,
 .form-group .form-control:-ms-input-placeholder {
-  color: #BDBDBD;
+  color: #41a929;
   font-weight: 400;
 }
 .form-control::-webkit-input-placeholder,
 .form-group .form-control::-webkit-input-placeholder {
-  color: #BDBDBD;
+  color: #41bd4d;
   font-weight: 400;
 }
 .form-control[readonly],
