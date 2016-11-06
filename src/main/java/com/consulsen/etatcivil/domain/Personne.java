@@ -33,6 +33,11 @@ public class Personne implements Serializable {
     @NotNull
     @Column(name = "prenom", nullable = false)
     private String prenom;
+    
+    
+   
+    @Column(name = "genre", nullable = true)
+    private String genre;
 
     @Column(name = "date_naissance")
     private LocalDate dateNaissance;
@@ -93,8 +98,24 @@ public class Personne implements Serializable {
     public void setDeclarationNaissances(Set<DeclarationNaissance> declarationNaissances) {
         this.declarationNaissances = declarationNaissances;
     }
+    
+    
 
-    @Override
+    /**
+	 * @return the genre
+	 */
+	public String getGenre() {
+		return genre;
+	}
+
+	/**
+	 * @param genre the genre to set
+	 */
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

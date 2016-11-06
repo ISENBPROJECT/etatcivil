@@ -14,6 +14,8 @@ public class DeclarationNaissanceDTO implements Serializable {
 
     private Long id;
 
+    public static String lieuDeclaration = "Bordeaux";
+    
     @NotNull
     private LocalDate dateDeclaration;
 

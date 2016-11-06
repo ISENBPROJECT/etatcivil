@@ -1,11 +1,16 @@
 package com.consulsen.etatcivil.service;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,6 +26,11 @@ import com.consulsen.etatcivil.domain.DeclarationNaissance;
 import com.consulsen.etatcivil.repository.DeclarationNaissanceRepository;
 import com.consulsen.etatcivil.web.rest.dto.DeclarationNaissanceDTO;
 import com.consulsen.etatcivil.web.rest.mapper.DeclarationNaissanceMapper;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfStamper;
+
+
 
 /**
  * Service Implementation for managing DeclarationNaissance.
@@ -51,14 +61,15 @@ public class DeclarationNaissanceService {
         log.debug("Request to save DeclarationNaissance : {}", declarationNaissanceDTO);
         File file = new File(String.valueOf(declarationNaissanceDTO.getFichier()));
         DeclarationNaissance declarationNaissance = declarationNaissanceMapper.declarationNaissanceDTOToDeclarationNaissance(declarationNaissanceDTO);
+       
         declarationNaissance = declarationNaissanceRepository.save(declarationNaissance);
         DeclarationNaissanceDTO result = declarationNaissanceMapper.declarationNaissanceToDeclarationNaissanceDTO(declarationNaissance);
-
+        Long registre = result.getId();
+        creerExtraitNaissance(declarationNaissanceDTO,registre);
+        
+        
         return result;
     }
-
-
-
 
 
     /**
@@ -134,4 +145,80 @@ public class DeclarationNaissanceService {
 		e.printStackTrace();
 	}
    }
+    
+    
+    public String creerExtraitNaissance (DeclarationNaissanceDTO declarationNaissanceDTO, Long registre){ 
+		 PdfReader pdfTemplate;
+		 String acteNaissance = declarationNaissanceDTO.getInformationEnfant().getPrenom()+"_"+declarationNaissanceDTO.getInformationEnfant().getNom()
+				 +"_acte_naissance.pdf";
+		 SimpleDateFormat dateDeclaration = null;
+		 Calendar c = Calendar.getInstance();
+		 int year = c.get(Calendar.YEAR);
+		try {
+			pdfTemplate = new PdfReader("template_acte_naissance.pdf");
+			FileOutputStream fileOutputStream = new FileOutputStream(acteNaissance);
+			ByteArrayOutputStream out = new ByteArrayOutputStream();
+			PdfStamper stamper = new PdfStamper(pdfTemplate, fileOutputStream);
+			stamper.setFormFlattening(true);	
+			stamper.getAcroFields().setField("annee",Integer.toString(year));
+			stamper.getAcroFields().setField("registre", Long.toString(registre));
+			stamper.getAcroFields().setField("dateNaissance", declarationNaissanceDTO.getDateDeclaration().toString());			
+			stamper.getAcroFields().setField("lieu",declarationNaissanceDTO.lieuDeclaration);
+			stamper.getAcroFields().setField("lieuNaissance", declarationNaissanceDTO.getInformationEnfant().getAdresse().getVille());
+			stamper.getAcroFields().setField("sexe", declarationNaissanceDTO.getInformationEnfant().getGenre());
+			stamper.getAcroFields().setField("prenom",declarationNaissanceDTO.getInformationEnfant().getPrenom());
+			stamper.getAcroFields().setField("nom", declarationNaissanceDTO.getInformationEnfant().getNom());
+			stamper.getAcroFields().setField("prenomPere", declarationNaissanceDTO.getInformationPere().getPrenom());
+			stamper.getAcroFields().setField("nomMere",declarationNaissanceDTO.getInformationMere().getPrenom()+" "+declarationNaissanceDTO.getInformationMere().getNom());
+			stamper.getAcroFields().setField("mentionMarginale", declarationNaissanceDTO.getMentionMarginale());
+			stamper.getAcroFields().setField("dateDeclaration","2016-12-11");
+			
+			stamper.close();
+			pdfTemplate.close();
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+		return acteNaissance;
+	 }
+
+//	/**
+//	 * @param declarationNaissanceDTO
+//	 * @param pdfTemplate
+//	 * @param dateDeclaration
+//	 * @param fileOutputStream
+//	 * @throws DocumentException
+//	 * @throws IOException
+//	 */
+//	private void valoriserDonneesTemplate(DeclarationNaissanceDTO declarationNaissanceDTO, PdfReader pdfTemplate,
+//			SimpleDateFormat dateDeclaration, FileOutputStream fileOutputStream,long registre) throws  IOException, DocumentException {
+//		PdfStamper stamper = new PdfStamper(pdfTemplate, fileOutputStream);
+//		stamper.setFormFlattening(true);
+//		
+//		stamper.getAcroFields().setField("annee",Integer.toString(new Date().getYear()));
+//		stamper.getAcroFields().setField("registre", Long.toString(registre));
+//		stamper.getAcroFields().setField("dateNaissance", declarationNaissanceDTO.getDateDeclaration().toString());			
+//		stamper.getAcroFields().setField("lieu",declarationNaissanceDTO.lieuDeclaration);
+//		stamper.getAcroFields().setField("lieuNaissance", declarationNaissanceDTO.getInformationEnfant().getAdresse().getVille());
+//		stamper.getAcroFields().setField("sexe", declarationNaissanceDTO.getInformationEnfant().getGenre());
+//		stamper.getAcroFields().setField("prenom",declarationNaissanceDTO.getInformationEnfant().getPrenom());
+//		stamper.getAcroFields().setField("nom", declarationNaissanceDTO.getInformationEnfant().getNom());
+//		stamper.getAcroFields().setField("prenomPere", declarationNaissanceDTO.getInformationPere().getPrenom());
+//		stamper.getAcroFields().setField("nomMere",declarationNaissanceDTO.getInformationMere().getPrenom()+" "+declarationNaissanceDTO.getInformationMere().getNom());
+//		stamper.getAcroFields().setField("mentionMarginale", declarationNaissanceDTO.getMentionMarginale());
+//		stamper.getAcroFields().setField("dateDeclaration","2016-12-11");
+//		
+//		stamper.close();
+//		pdfTemplate.close();
+//	}
+//    
+    
+   
+
 }

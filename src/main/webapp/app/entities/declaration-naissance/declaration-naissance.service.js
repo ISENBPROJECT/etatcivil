@@ -10,13 +10,13 @@
         var resourceUrl =  'api/declaration-naissances/:id';
 
         return $resource(resourceUrl, {}, {
-            'query': { method: 'GET', isArray: true},
+            'query': { method: 'GET', isArray: false},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {
                     if (data) {
                         data = angular.fromJson(data);
-                        data.dateDeclaration = DateUtils.convertLocalDateFromSer*+-+ver(data.dateDeclaration);
+                        data.dateDeclaration = DateUtils.convertLocalDateToServer(data.dateDeclaration);
                     }
                     return data;
                 }
