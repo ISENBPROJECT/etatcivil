@@ -1,46 +1,79 @@
 
 <div>
-    <h2><span translate="etatcivilApp.declarationNaissance.detail.title">Declaration Naissance</span> {{vm.declarationNaissance.id}}</h2>
-    <hr>
-    <jhi-alert-error></jhi-alert-error>
-    <dl class="dl-horizontal jh-entity-details">
-        <dt><span translate="etatcivilApp.declarationNaissance.dateDeclaration">Date Declaration</span></dt>
-        <dd>
-            <span>{{vm.declarationNaissance.dateDeclaration | date:'mediumDate'}}</span>
-        </dd>
-        <dt><span translate="etatcivilApp.declarationNaissance.identifiantEnfant">Identifiant Enfant</span></dt>
-        <dd>
-            <span>{{vm.declarationNaissance.identifiantEnfant}}</span>
-        </dd>
-        <dt><span translate="etatcivilApp.declarationNaissance.identifiantPere">Identifiant Pere</span></dt>
-        <dd>
-            <span>{{vm.declarationNaissance.identifiantPere}}</span>
-        </dd>
-        <dt><span translate="etatcivilApp.declarationNaissance.identifiantMere">Identifiant Mere</span></dt>
-        <dd>
-            <span>{{vm.declarationNaissance.identifiantMere}}</span>
-        </dd>
-        <dt><span translate="etatcivilApp.declarationNaissance.mentionMarginale">Mention Marginale</span></dt>
-        <dd>
-            <span>{{vm.declarationNaissance.mentionMarginale}}</span>
-        </dd>
-        <dt><span translate="etatcivilApp.declarationNaissance.numeroCarteIdentite">Numero Carte Identite</span></dt>
-        <dd>
-            <span>{{vm.declarationNaissance.numeroCarteIdentite}}</span>
-        </dd>
-        <dt><span translate="etatcivilApp.declarationNaissance.numeroPassPort">Numero Pass Port</span></dt>
-        <dd>
-            <span>{{vm.declarationNaissance.numeroPassPort}}</span>
-        </dd>
-        <dt><span translate="etatcivilApp.declarationNaissance.identifiantPersonne">Identifiant Personne</span></dt>
-        <dd>
-            <a ui-sref="personne-detail({id:vm.declarationNaissance.identifiantPersonneId})">{{vm.declarationNaissance.identifiantPersonneId}}</a>
-        </dd>
-        <dt><span translate="etatcivilApp.declarationNaissance.identifiantFichier">Identifiant Fichier</span></dt>
-        <dd>
-            <a ui-sref="fichier-detail({id:vm.declarationNaissance.identifiantFichierId})">{{vm.declarationNaissance.identifiantFichierId}}</a>
-        </dd>
-    </dl>
+    <h3>Recapitulatif des informations saisies</h3>
+    <br/>
+   <!--#include virtual="recap-information-enfant.html" -->
+
+<br/>
+    <fieldset class="cadre">
+    <legend align="center"  style="margin-bottom: 1%;margin-top:-5%;">
+    
+   
+        Information de la mére
+    </legend>
+    <table class="cadre">
+        <tr class="lignePaire">
+            <td>
+                 <label class="control-label" translate="etatcivilApp.declarationNaissance.name"for="field_child_name">Nom</label><br/>
+            <td>
+            <td>
+                  <span>{{vm.declarationNaissance.informationMere.nom}}</span>
+            <td>
+        </tr>
+        
+        <tr class="ligneImpaire">
+            <td>
+                 <label class="control-label" translate="etatcivilApp.declarationNaissance.firstname"for="field_child_name">Nom</label><br/>
+            <td>
+            <td>
+                  <span>{{vm.declarationNaissance.informationMere.prenom}}</span>
+            <td>
+        </tr>
+        
+         <tr class="lignePaire">
+            <td>
+                 <label class="control-label" translate="etatcivilApp.declarationNaissance.ville"for="field_child_city">Ville</label><br/>
+            <td>
+            <td>
+                  <span>{{vm.declarationNaissance.informationMere.adresse.ville}}</span>
+            <td>
+        </tr>
+        
+         <tr class="ligneImpaire">
+            <td>
+                 <label class="control-label" translate="etatcivilApp.declarationNaissance.codepostale"for="field_child_postalCode">code potale</label><br/>
+            <td>
+            <td>
+                  <span>{{vm.declarationNaissance.informationMere.adresse.codePostale}}</span>
+            <td>
+        </tr>
+        
+         <tr class="lignePaire">
+            <td>
+                 <label class="control-label" translate="etatcivilApp.declarationNaissance.adressComplement"for="field_child_complement_adress">adresse compleentaire</label><br/>
+            <td>
+            <td>
+                  <span>{{vm.declarationNaissance.informationMere.adresse.adresseComplementaire}}</span>
+            <td>
+        </tr>
+        
+
+        <tr class="ligneImpaire">
+            <td>
+                 <label class="control-label" translate="etatcivilApp.declarationNaissance.dateNaissance"for="field_dateDeclaration">Date Declaration</label><br/>
+            <td>
+            <td>
+                  <span>{{vm.declarationNaissance.informationMere.dateNaissance}}</span>
+            <td>
+        </tr>
+     
+       
+     
+    </table>
+   </fieldset>
+
+
+
 
     <button type="submit"
             onclick="window.history.back()"

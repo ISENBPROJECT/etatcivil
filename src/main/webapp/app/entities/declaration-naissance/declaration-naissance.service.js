@@ -16,7 +16,7 @@
                 transformResponse: function (data) {
                     if (data) {
                         data = angular.fromJson(data);
-                        data.dateDeclaration = DateUtils.convertLocalDateFromServer(data.dateDeclaration);
+                        data.dateDeclaration = DateUtils.convertLocalDateFromSer*+-+ver(data.dateDeclaration);
                     }
                     return data;
                 }
@@ -35,6 +35,25 @@
                     return angular.toJson(data);
                 }
             }
+
         });
+
+
     }
+
+/*    function DeclarationNaissance($resource, DateUtils) {
+        var resourceUrl =  'api/searchDeclaration/';
+        return $resource(resourceUrl, {}, {
+        	'search': {
+                method: 'POST',
+                transformResponse: function (data) {
+                	 if (data) {
+                         data = angular.fromJson(data);
+                     }
+                	 return data;
+                },
+                isArray: true
+            }
+        });
+    }*/
 })();

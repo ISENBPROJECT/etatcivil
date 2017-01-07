@@ -1,23 +1,46 @@
-(function() {
+(function () {
     'use strict';
 
     angular
         .module('etatcivilApp')
         .controller('DeclarationTestController', DeclarationTestController);
 
-    DeclarationTestController.$inject = ['$scope', '$state', 'DeclarationNaissance'];
+    DeclarationTestController.$inject = ['$timeout', '$scope', '$stateParams', 'entity', 'DeclarationNaissance', 'Personne', 'Fichier', 'Upload'];
 
-    function DeclarationTestController ($scope, $state, DeclarationNaissance) {
+    function DeclarationTestController($timeout, $scope, $stateParams, entity, DeclarationNaissance, Personne, Fichier, Upload) {
+
         var vm = this;
+        vm.declarationNaissance = entity;
+        vm.datePickerOpenStatus = {};
+        vm.openCalendar = openCalendar;
+        vm.save = save;
+        vm.datePickerOpenStatus.dateDeclaration = false;
+        vm.datePickerOpenStatus.dateNaissanceEnfant = false;
+        vm.datePickerOpenStatus.dateNaissancePere = false;
+        vm.datePickerOpenStatus.dateNaissanceMere = false;
+        vm.personnes = Personne.query();
+        vm.fichiers = Fichier.query();
+        vm.uploadFiles = uploadFiles;
 
-        vm.declarationNaissances = [];
+        function openCalendar(date) {
+            vm.datePickerOpenStatus[date] = true;
+        }
 
-        loadAll();
+        function save() {
+            vm.isSaving = true;
+            DeclarationNaissance.save(vm.declarationNaissance);
+        }
 
-        function loadAll() {
-            DeclarationNaissance.query(function(result) {
-                vm.declarationNaissances = result;
-            });
+        function uploadFiles(files, errFiles) {
+            $scope.files = files;
+            var filename1;
+            files.forEach(function (file) {
+                filename1 = file.name;
+            })
+            var filename2;
+            var fichier = {nomFichier: filename1, chemin: 'C:\/Users\/mroum\/OneDrive\/Documents\/repetatcivil'};
+
+            vm.declarationNaissance.fichier = fichier;
         }
     }
 })();

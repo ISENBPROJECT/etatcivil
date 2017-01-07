@@ -3,15 +3,15 @@
         "adresse" : {
             "home": {
                 "title": "Adresses",
-                "createLabel": "Créer un nouveau Adresse",
-                "createOrEditLabel": "Créer ou éditer un Adresse",
+                "createLabel": "Créer une nouvelle Adresse",
+                "createOrEditLabel": "Créer ou éditer une Adresse",
                 "search": "Recherche pour Adresse"
             },
-            "created": "Un nouveau Adresse a été créé avec l'identifiant {{ param }}",
-            "updated": "Le Adresse avec l'identifiant {{ param }} a été mis à jour",
-            "deleted": "Le Adresse avec l'identifiant {{ param }} a été supprimé",
+            "created": "Une nouvelle Adresse a été créé avec l'identifiant {{ param }}",
+            "updated": "L'Adresse avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "L'Adresse avec l'identifiant {{ param }} a été supprimé",
             "delete": {
-                "question": "Etes-vous certain de vouloir supprimer le Adresse {{ id }} ?"
+                "question": "Etes-vous certain de vouloir supprimer l'Adresse {{ id }} ?"
             },
             "detail": {
                 "title": "Adresse"
