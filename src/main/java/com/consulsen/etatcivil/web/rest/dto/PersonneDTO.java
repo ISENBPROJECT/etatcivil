@@ -22,6 +22,8 @@ public class PersonneDTO implements Serializable {
     private String prenom;
 
     private LocalDate dateNaissance;
+    
+    private String genre;
 
 
     private AdresseDTO adresse;
@@ -62,6 +64,20 @@ public class PersonneDTO implements Serializable {
 	 */
 	public AdresseDTO getAdresse() {
 		return adresse;
+	}
+
+	/**
+	 * @return the genre
+	 */
+	public String getGenre() {
+		return genre;
+	}
+
+	/**
+	 * @param genre the genre to set
+	 */
+	public void setGenre(String genre) {
+		this.genre = genre;
 	}
 
 	/**

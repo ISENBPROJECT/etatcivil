@@ -193,6 +193,31 @@
                         $state.go('^');
                     });
                 }]
+            })
+            
+            .state('declaration-naissance-affichagePdf', {
+                parent: 'declaration-test',
+                url: '/affichagePdf',
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'etatcivilApp.declarationNaissance.detail.title'
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'app/entities/declaration-naissance/affichagePdf.html',
+                        controller: 'DeclarationAffichageController',
+                        controllerAs: 'vm'
+                    }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('declarationNaissance');
+                        return $translate.refresh();
+                    }],
+                    entity: ['$stateParams', 'DeclarationNaissance', function ($stateParams, DeclarationNaissance) {
+                        return DeclarationNaissance.get({id: $stateParams.id}).$promise;
+                    }]
+                }
             });
     }
 

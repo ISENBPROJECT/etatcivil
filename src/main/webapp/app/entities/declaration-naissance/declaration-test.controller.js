@@ -28,7 +28,10 @@
 
         function save() {
             vm.isSaving = true;
-            DeclarationNaissance.save(vm.declarationNaissance);
+            DeclarationNaissance.save(vm.declarationNaissance).onsuccess(function () {
+                alert("enregistrement avec succes");
+                console.log('succes');
+            })
         }
 
         function uploadFiles(files, errFiles) {

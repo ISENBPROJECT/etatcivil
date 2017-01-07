@@ -54,6 +54,7 @@
         <run.addResources>false</run.addResources>
         <sonar-maven-plugin.version>3.0.2</sonar-maven-plugin.version>
         <sonar.exclusions>src/main/webapp/content/**/*.*, src/main/webapp/bower_components/**/*.*, target/www/**/*.*</sonar.exclusions>
+
         <sonar.jacoco.itReportPath>${project.testresult.directory}/coverage/jacoco/jacoco-it.exec</sonar.jacoco.itReportPath>
         <sonar.jacoco.reportPath>${project.testresult.directory}/coverage/jacoco/jacoco.exec</sonar.jacoco.reportPath>
         <sonar.java.codeCoveragePlugin>jacoco</sonar.java.codeCoveragePlugin>
@@ -103,6 +104,12 @@
             <artifactId>hazelcast-wm</artifactId>
             <version>${hazelcast.version}</version>
         </dependency>
+        <!-- jhipster-needle-maven-add-dependency -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itextpdf</artifactId>
+            <version>5.1.0</version>
+        </dependency>
         <dependency>
             <groupId>com.jayway.awaitility</groupId>
             <artifactId>awaitility</artifactId>
@@ -149,13 +156,9 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!-- The HikariCP Java Agent is disabled by default, as it is experimental
-        <dependency>
-            <groupId>com.zaxxer</groupId>
-            <artifactId>HikariCP-agent</artifactId>
-            <version>${HikariCP.version}</version>
-        </dependency>
-        -->
+        <!-- The HikariCP Java Agent is disabled by default, as it is experimental 
+			<dependency> <groupId>com.zaxxer</groupId> <artifactId>HikariCP-agent</artifactId> 
+			<version>${HikariCP.version}</version> </dependency> -->
 
         <dependency>
             <groupId>commons-io</groupId>
@@ -407,6 +410,7 @@
             <version>${spring-security.version}</version>
         </dependency>
         <!-- jhipster-needle-maven-add-dependency -->
+
     </dependencies>
     <build>
         <defaultGoal>spring-boot:run</defaultGoal>
@@ -420,11 +424,13 @@
         </testResources>
         <pluginManagement>
             <plugins>
+
                 <!--
                     This plugin's configuration is used to store Eclipse m2e settings only.
                     It has no influence on the Maven build itself.
                     Remove when the m2e plugin can correctly bind to Maven lifecycle
                 -->
+
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
                     <artifactId>lifecycle-mapping</artifactId>
@@ -515,8 +521,8 @@
                     <resultsFolder>target/gatling/results</resultsFolder>
                     <bodiesFolder>src/test/gatling/bodies</bodiesFolder>
                     <simulationsFolder>src/test/gatling/simulations</simulationsFolder>
-                    <!-- This will force Gatling to ask which simulation to run
-                      This is useful when you have multiple simulations -->
+                    <!-- This will force Gatling to ask which simulation to run This is 
+						useful when you have multiple simulations -->
                     <simulationClass>*</simulationClass>
                 </configuration>
             </plugin>
@@ -543,11 +549,13 @@
                 <configuration>
                     <rules>
                         <requireMavenVersion>
-                            <message>You are running an older version of Maven. JHipster requires at least Maven 3.0</message>
+                            <message>You are running an older version of Maven. JHipster
+								requires at least Maven 3.0</message>
                             <version>[3.0.0,)</version>
                         </requireMavenVersion>
                         <requireJavaVersion>
-                            <message>You are running an older version of Java. JHipster requires at least JDK ${java.version}</message>
+                            <message>You are running an older version of Java. JHipster
+								requires at least JDK ${java.version}</message>
                             <version>[${java.version}.0,)</version>
                         </requireJavaVersion>
                     </rules>
@@ -618,7 +626,8 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <argLine>-Djava.security.egd=file:/dev/./urandom -Xmx256m ${surefireArgLine}</argLine>
+                    <argLine>-Djava.security.egd=file:/dev/./urandom -Xmx256m
+						${surefireArgLine}</argLine>
                     <!-- Force alphabetical order to have a reproducible build -->
                     <runOrder>alphabetical</runOrder>
                 </configuration>
@@ -672,11 +681,13 @@
                         <configuration>
                             <!-- Sets the path to the file which contains the execution data. -->
                             <destFile>${project.testresult.directory}/coverage/jacoco/jacoco.exec</destFile>
-                            <!-- Sets the name of the property containing the settings for JaCoCo runtime agent. -->
+                            <!-- Sets the name of the property containing the settings for JaCoCo 
+								runtime agent. -->
                             <propertyName>surefireArgLine</propertyName>
                         </configuration>
                     </execution>
-                    <!-- Ensures that the code coverage report for unit tests is created after unit tests have been run -->
+                    <!-- Ensures that the code coverage report for unit tests is created 
+						after unit tests have been run -->
                     <execution>
                         <id>post-unit-test</id>
                         <phase>test</phase>
@@ -719,6 +730,7 @@
                     <defaultSchemaName>etatcivil</defaultSchemaName>
                     <username>root</username>
                     <password>ISENB</password>
+
                     <referenceUrl>hibernate:spring:com.consulsen.etatcivil.domain?dialect=org.hibernate.dialect.MySQL5InnoDBDialect&amp;hibernate.ejb.naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy</referenceUrl>
                     <verbose>true</verbose>
                     <logging>debug</logging>
@@ -729,10 +741,11 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <executable>true</executable>
-                    <!--
+      <!--
                     Enable the line below to have remote debugging of your application on port 5005
                     <jvmArguments>-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005</jvmArguments>
                     -->
+
                 </configuration>
             </plugin>
             <!-- jhipster-needle-maven-add-plugin -->
