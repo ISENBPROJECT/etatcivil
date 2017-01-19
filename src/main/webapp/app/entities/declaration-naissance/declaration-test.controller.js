@@ -5,14 +5,15 @@
         .module('etatcivilApp')
         .controller('DeclarationTestController', DeclarationTestController);
 
-    DeclarationTestController.$inject = ['$timeout', '$scope', '$stateParams', 'entity', 'DeclarationNaissance', 'Personne', 'Fichier', 'Upload'];
+    DeclarationTestController.$inject = ['$timeout','$state', '$scope', '$stateParams', 'entity', 'DeclarationNaissance', 'Personne', 'Fichier', 'Upload'];
 
-    function DeclarationTestController($timeout, $scope, $stateParams, entity, DeclarationNaissance, Personne, Fichier, Upload) {
+    function DeclarationTestController($timeout,$state, $scope, $stateParams, entity, DeclarationNaissance, Personne, Fichier, Upload) {
 
         var vm = this;
         vm.declarationNaissance = entity;
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
+        vm.enregistrer = enregistrer;
         vm.save = save;
         vm.datePickerOpenStatus.dateDeclaration = false;
         vm.datePickerOpenStatus.dateNaissanceEnfant = false;
@@ -27,11 +28,19 @@
         }
 
         function save() {
-            vm.isSaving = true;
+        	$state.go('declaration-naissance-detail');
+        }
+        
+        function enregistrer() {
+        
+        	vm.isSaving = true;
             DeclarationNaissance.save(vm.declarationNaissance).onsuccess(function () {
                 alert("enregistrement avec succes");
                 console.log('succes');
             })
+            
+            $state.go('home');
+        	
         }
 
         function uploadFiles(files, errFiles) {

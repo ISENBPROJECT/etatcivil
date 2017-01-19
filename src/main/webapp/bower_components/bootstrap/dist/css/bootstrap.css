@@ -6757,4 +6757,18 @@ button.close {
     display: none !important;
   }
 }
+
+
+.titre {
+
+	background-color : #f7f7f7;
+    border : 1px solid #339999;
+    color :black;
+    padding : 3px 8px; /* haut/bas, droite/gauche (respectivement) */
+    width : 100%;
+    margin-top : 25px;
+    text-align: center;
+    
+	
+	}
 /*# sourceMappingURL=bootstrap.css.map */

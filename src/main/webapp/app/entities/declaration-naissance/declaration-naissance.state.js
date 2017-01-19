@@ -87,8 +87,8 @@
                 }
             })
             .state('declaration-naissance-detail', {
-                parent: 'entity',
-                url: '/declaration-naissance/{id}',
+                parent: 'declaration-test',
+                url: '/detail',
                 data: {
                     authorities: ['ROLE_USER'],
                     pageTitle: 'etatcivilApp.declarationNaissance.detail.title'
@@ -96,18 +96,9 @@
                 views: {
                     'content@': {
                         templateUrl: 'app/entities/declaration-naissance/declaration-naissance-detail.html',
-                        controller: 'DeclarationNaissanceDetailController',
+                        controller: 'DeclarationTestController',
                         controllerAs: 'vm'
                     }
-                },
-                resolve: {
-                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                        $translatePartialLoader.addPart('declarationNaissance');
-                        return $translate.refresh();
-                    }],
-                    entity: ['$stateParams', 'DeclarationNaissance', function ($stateParams, DeclarationNaissance) {
-                        return DeclarationNaissance.get({id: $stateParams.id}).$promise;
-                    }]
                 }
             })
             .state('declaration-naissance.new', {

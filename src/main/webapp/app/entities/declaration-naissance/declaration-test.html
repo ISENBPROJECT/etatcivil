@@ -1,4 +1,4 @@
-<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+<form name="editForm" role="form" novalidate  show-validation>
 
 
     <h4>Joindre une piece justificative</h4>
@@ -28,7 +28,7 @@
 
         <tbody>
         <tr>
-            <td class="childblockHeader">
+            <td class="childfvblockHeader">
                 INFORMATIONS ENFANT
             </td>
 
@@ -431,7 +431,8 @@
             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
             translate="entity.action.cancel">Cancel</span>
         </button>
-        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+        <button type="button" ng-disabled="editForm.$invalid || vm.isSaving" ng-click="vm.save()" class="btn btn-primary">
+<!--          <button type="submit"  class="btn btn-primary"> -->
             <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
         </button>
     </div>

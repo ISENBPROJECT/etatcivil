@@ -1,83 +1,214 @@
 
-<div>
-    <h3>Recapitulatif des informations saisies</h3>
-    <br/>
-   <!--#include virtual="recap-information-enfant.html" -->
 
-<br/>
-    <fieldset class="cadre">
-    <legend align="center"  style="margin-bottom: 1%;margin-top:-5%;">
-    
-   
-        Information de la mére
-    </legend>
-    <table class="cadre">
-        <tr class="lignePaire">
-            <td>
-                 <label class="control-label" translate="etatcivilApp.declarationNaissance.name"for="field_child_name">Nom</label><br/>
-            <td>
-            <td>
-                  <span>{{vm.declarationNaissance.informationMere.nom}}</span>
-            <td>
-        </tr>
-        
-        <tr class="ligneImpaire">
-            <td>
-                 <label class="control-label" translate="etatcivilApp.declarationNaissance.firstname"for="field_child_name">Nom</label><br/>
-            <td>
-            <td>
-                  <span>{{vm.declarationNaissance.informationMere.prenom}}</span>
-            <td>
-        </tr>
-        
-         <tr class="lignePaire">
-            <td>
-                 <label class="control-label" translate="etatcivilApp.declarationNaissance.ville"for="field_child_city">Ville</label><br/>
-            <td>
-            <td>
-                  <span>{{vm.declarationNaissance.informationMere.adresse.ville}}</span>
-            <td>
-        </tr>
-        
-         <tr class="ligneImpaire">
-            <td>
-                 <label class="control-label" translate="etatcivilApp.declarationNaissance.codepostale"for="field_child_postalCode">code potale</label><br/>
-            <td>
-            <td>
-                  <span>{{vm.declarationNaissance.informationMere.adresse.codePostale}}</span>
-            <td>
-        </tr>
-        
-         <tr class="lignePaire">
-            <td>
-                 <label class="control-label" translate="etatcivilApp.declarationNaissance.adressComplement"for="field_child_complement_adress">adresse compleentaire</label><br/>
-            <td>
-            <td>
-                  <span>{{vm.declarationNaissance.informationMere.adresse.adresseComplementaire}}</span>
-            <td>
-        </tr>
-        
 
-        <tr class="ligneImpaire">
-            <td>
-                 <label class="control-label" translate="etatcivilApp.declarationNaissance.dateNaissance"for="field_dateDeclaration">Date Declaration</label><br/>
-            <td>
-            <td>
-                  <span>{{vm.declarationNaissance.informationMere.dateNaissance}}</span>
-            <td>
+
+
+
+
+
+<form name="editForm" role="form" novalidate  show-validation>
+
+   <h2 class="titre"> Recapitulatif des donn&eacute;es saisies</h2>
+    <jhi-alert-error></jhi-alert-error>
+
+
+    <table class="table">
+
+        <tbody>
+        <tr>
+            <td class="childfvblockHeader">
+                INFORMATIONS ENFANT
+            </td>
+
+            <td class="motherblockHeader">
+                INFORMATIONS MERE
+            </td>
+
+            <td class="fatherblockHeader">
+                INFORMATIONS PERE
+            </td>
+
+
         </tr>
-     
-       
-     
+
+        <tr>
+
+            <!--enfant-->
+            <td class="childBlockBorder">
+
+                <!--nom-->
+                <div class="form-group">
+                    <label class="control-label" title="test"  translate="etatcivilApp.declarationNaissance.name"
+                           for="field_child_name">Nom</label>
+                    <label class="form-control inputDeclaration">{{vm.declarationNaissance.informationEnfant.nom}}</label>
+              </div>
+
+                <!--prenom-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.firstname"
+                           for="field_child_firstname">Nom</label>
+                    <label class="form-control inputDeclaration">{{m.declarationNaissance.informationEnfant.prenom}}</label>
+                </div>
+
+                <!--date naissance-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.dateNaissance"
+                           for="field_dateDeclaration">Date Declaration</label>
+                    <label class="form-control inputDeclaration">{{vm.declarationNaissance.informationEnfant.dateNaissance | date:'mediumDate'}}</label>
+                </div>
+
+                <!--commune de naissance-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.ville"
+                           for="field_child_city">commune de naissance</label>
+                    <label class="form-control inputDeclaration">{{vm.declarationNaissance.informationEnfant.adresse.ville}}</label>
+                </div>
+
+                <!--code postal-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.codepostale"
+                           for="field_child_postalCode">code postal</label>
+                    <label class="form-control inputDeclaration">{{vm.declarationNaissance.informationEnfant.adresse.codePostale}}</label>
+                </div>
+
+                <!--adresse complementaire-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.adressComplement"
+                           for="field_child_complement_adress">adresse complementaire</label>
+                    <label class="form-control inputDeclaration">{{vm.declarationNaissance.informationEnfant.adresse.adresseComplementaire}}</label>
+                    </div>
+                </div>
+
+                <!--mention marginale-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.mentionMarginale"
+                           for="field_mentionMarginale">Mention Marginale</label>
+                    <label class="form-control inputDeclaration">{{vm.declarationNaissance.mentionMarginale}}</label>
+                </div>
+
+                <!--date declaration-->
+                <div class="form-group">
+                     <label class="control-label" translate="etatcivilApp.declarationNaissance.dateDeclaration"
+                            for="field_dateDeclaration">Date Declaration</label>
+                     <label class="form-control inputDeclaration">{{vm.declarationNaissance.dateDeclaration | date:'mediumDate'}}</label>
+                    
+                 </div>
+
+            </td>
+
+            <!--mere-->
+            <td class="motherBlockBorder">
+
+                <!--nom-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.name"
+                           for="field_mother_name">Nom</label>
+				    <label class="form-control inputDeclaration">{{vm.declarationNaissance.informationMere.nom}}</label>
+                </div>
+
+                <!--prenom-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.firstname"
+                           for="field_mother_firstname">Nom</label>
+                    <label class="form-control inputDeclaration">{{vm.declarationNaissance.informationMere.prenom}}</label>
+                </div>
+
+                <!--date naissance-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.dateNaissance"
+                           for="field_mother_dateDeclaration">Date Declaration</label>
+                    <label class="form-control inputDeclaration">{{vm.declarationNaissance.informationMere.dateNaissance | date:'mediumDate'}}</label>
+                   
+                </div>
+
+                <!--ville-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.communeDeResidence"
+                           for="field_mother_city">Ville</label>
+                   <label class="form-control inputDeclaration">{{vm.declarationNaissance.informationMere.adresse.ville}}</label>
+                </div>
+
+                <!--code postal-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.codepostale"
+                           for="field_mother_postalCode">code postal</label>
+                     <label class="form-control inputDeclaration">{{vm.declarationNaissance.informationMere.adresse.codePostale}}</label>
+                </div>
+
+                <!--adresse complementaire-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.adressComplement"
+                           for="field_mother_complement_adress">code postal</label>
+                    <label class="form-control inputDeclaration">{{vm.declarationNaissance.informationMere.adresse.adresseComplementaire}}</label>
+                   
+                </div>
+            </td>
+
+            <!--pere-->
+            <td class="fatherBlockBorder">
+
+                <!--nom-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.name"
+                           for="field_father_name">Nom</label>
+                   <label class="form-control inputDeclaration">{{vm.declarationNaissance.informationPere.nom}}</label>
+                </div>
+
+                <!--prenom-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.firstname"
+                           for="field_father_firstname">Nom</label>
+                     <label class="form-control inputDeclaration">{{vm.declarationNaissance.informationPere.prenom}}</label>
+                </div>
+
+                <!--date naissance-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.dateNaissance"
+                           for="field_father_dateNaissance">Date Declaration</label>
+                    <label class="form-control inputDeclaration">{{vm.declarationNaissance.informationPere.dateNaissance | date:'mediumDate'}}</label>
+                </div>
+
+                <!--ville-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.communeDeResidence"
+                           for="field_father_city">Ville</label>
+                    <label class="form-control inputDeclaration">{{vm.declarationNaissance.informationPere.adresse.ville}}</label>
+                </div>
+
+                <!--code postal-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.codepostale"
+                           for="field_father_postalCode">code postal</label>
+                    <label class="form-control inputDeclaration">{{vm.declarationNaissance.informationPere.adresse.codePostale}}</label>
+                </div>
+
+                <!--adresse complementaire-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.adressComplement"
+                           for="field_father_complement_adress">code postal</label>
+                   <label class="form-control inputDeclaration">{{vm.declarationNaissance.informationPere.adresse.adresseComplementaire}}</label>
+                </div>
+
+            </td>
+
+        </tr>
+        </tbody>
     </table>
-   </fieldset>
+
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
+            translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="button"  ng-click="vm.enregistrer();" class="btn btn-primary">
+<!--          <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary"> -->
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+
+</form>
 
 
 
 
-    <button type="submit"
-            onclick="window.history.back()"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
-    </button>
-</div>
