@@ -385,21 +385,21 @@ ui bootstrap tweaks
 .childblockHeader {
     text-align: center;
     text-decoration-color: white;
-    background-color: #55a4ec;
+    background-color: #009688;
     color: white;
 }
 
 .motherblockHeader {
     text-align: center;
     text-decoration-color: white;
-    background-color: #115ca9;
+    background-color: #009688;
     color: white;
 }
 
 .fatherblockHeader {
     text-align: center;
     text-decoration-color: white;
-    background-color: #132146;
+    background-color: #009688;
     color: white;
 }
 
@@ -416,7 +416,7 @@ ui bootstrap tweaks
 }
 
 .inputDeclaration {
-    background-color: rgb(250, 255, 189) !important;
+    background-color: rgb(199, 245, 208) !important;
 }
 
 .inlineInput {
