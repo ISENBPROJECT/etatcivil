@@ -14,6 +14,7 @@
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
         vm.enregistrer = enregistrer;
+        vm.retourDeclaration = retourDeclaration;
         vm.save = save;
         vm.datePickerOpenStatus.dateDeclaration = false;
         vm.datePickerOpenStatus.dateNaissanceEnfant = false;
@@ -42,6 +43,17 @@
             $state.go('home');
         	
         }
+        
+        function retourDeclaration() {
+            
+            $state.go('declaration-test');
+            
+        	
+        }
+        
+        
+        
+        
 
         function uploadFiles(files, errFiles) {
             $scope.files = files;
