@@ -5,11 +5,14 @@
             "password": "Mot de passe",
             "password.placeholder": "Votre mot de passe",
             "rememberme": "Garder la session ouverte",
-            "button": "Connexion"
+            "button": "Connexion",
+            "username": "Nom d'utilisateur",
+            "username.placeholder": "Votre nom d'utilisateur"
         },
         "messages": {
             "error": {
-                "authentication": "<strong>Erreur d'authentification!</strong> Veuillez vérifier vos identifiants de connexion."
+                "authentication": "<strong>Erreur d'authentification!</strong> Veuillez vérifier vos identifiants de connexion.",
+                "register": "Vous n'avez pas encore de compte ? <a class=\"alert-link\" href=\"\" ng-click=\"vm.register()\">Créer un compte</a>"
             }
         },
         "password" : {

@@ -17,12 +17,12 @@
         <div class="col-md-8 col-md-offset-2">
             <form class="form" role="form" ng-submit="vm.login($event)">
                 <div class="form-group">
-                    <label for="username" translate="global.form.username">Login</label>
-                    <input type="text" class="form-control" id="username" placeholder="{{'global.form.username.placeholder' | translate}}" ng-model="vm.username">
+                    <label for="username" translate="login.form.username">Login</label>
+                    <input type="text" class="form-control" id="username" placeholder="{{'login.form.username.placeholder' | translate}}" ng-model="vm.username">
                 </div>
                 <div class="form-group">
                     <label for="password" translate="login.form.password">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="{{'login.form.password.placeholder' | translate}}"
+                    <input type="password" class="form-control" id="password" placeholder="{{'login.form.password.placeholder' | translate }}"
                            ng-model="vm.password">
                 </div>
                 <div class="form-group">
@@ -37,7 +37,7 @@
             <div class="alert alert-warning">
                 <a class="alert-link" href="" ng-click="vm.requestResetPassword()" translate="login.password.forgot">Did you forget your password?</a>
             </div>
-            <div class="alert alert-warning" translate="global.messages.info.register" translate-compile>
+            <div class="alert alert-warning" translate="login.messages.error.register" translate-compile>
                 You don't have an account yet? <a class="alert-link" href="" ng-click="vm.register()">Register a new account</a>
             </div>
         </div>
