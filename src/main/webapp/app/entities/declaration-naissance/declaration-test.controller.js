@@ -23,37 +23,39 @@
         vm.personnes = Personne.query();
         vm.fichiers = Fichier.query();
         vm.uploadFiles = uploadFiles;
+        vm.clear= clear;
 
         function openCalendar(date) {
             vm.datePickerOpenStatus[date] = true;
         }
 
         function save() {
+            vm.editForm.$valid;
         	$state.go('declaration-naissance-detail');
         }
-        
+
         function enregistrer() {
-        
+
         	vm.isSaving = true;
             DeclarationNaissance.save(vm.declarationNaissance).onsuccess(function () {
                 alert("enregistrement avec succes");
                 console.log('succes');
             })
-            
+
             $state.go('home');
-        	
+
         }
-        
+
         function retourDeclaration() {
-            
+
             $state.go('declaration-test');
-            
-        	
+
+
         }
-        
-        
-        
-        
+
+
+
+
 
         function uploadFiles(files, errFiles) {
             $scope.files = files;
@@ -65,6 +67,10 @@
             var fichier = {nomFichier: filename1, chemin: 'C:\/Users\/mroum\/OneDrive\/Documents\/repetatcivil'};
 
             vm.declarationNaissance.fichier = fichier;
+        }
+
+        function clear() {
+            $state.go('annuler');
         }
     }
 })();

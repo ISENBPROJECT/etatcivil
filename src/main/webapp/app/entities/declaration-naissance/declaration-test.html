@@ -1,4 +1,4 @@
-<form name="editForm" role="form" novalidate  show-validation>
+<form name="editForm"  role="form" novalidate show-validation>
 
 
     <h4>Joindre une piece justificative</h4>
@@ -51,13 +51,13 @@
                 <!--nom-->
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.name"
-                           for="field_child_name">Nom</label>
-                    <input type="text" class="form-control inputDeclaration" name="childName" id="field_child_name"
+                           for="childName">Nom</label>
+                    <input type="text" class="form-control inputDeclaration" name="childName" id="childName"
                            ng-model="vm.declarationNaissance.informationEnfant.nom" required
                     />
-                    <div ng-show="editForm.informationEnfant.nom.$invalid">
+                    <div ng-show="editForm.childName.$invalid">
                         <p class="help-block"
-                           ng-show="editForm.informationEnfant.nom.$error.required"
+                           ng-show="editForm.childName.$error.required"
                            translate="entity.validation.required">
                             This field is required.
                         </p>
@@ -69,13 +69,13 @@
                 <!--prenom-->
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.firstname"
-                           for="field_child_firstname">Nom</label>
-                    <input type="text" class="form-control inputDeclaration" name="childName" id="field_child_firstname"
+                           for="childFirstName">Nom</label>
+                    <input type="text" class="form-control inputDeclaration" name="childFirstName" id="childFirstName"
                            ng-model="vm.declarationNaissance.informationEnfant.prenom" required
                     />
-                    <div ng-show="editForm.informationEnfant.prenom.$invalid">
+                    <div ng-show="editForm.childFirstName.$invalid">
                         <p class="help-block"
-                           ng-show="editForm.informationEnfant.prenom.$error.required"
+                           ng-show="editForm.childFirstName.$error.required"
                            translate="entity.validation.required">
                             This field is required.
                         </p>
@@ -83,11 +83,12 @@
                 </div>
 
                 <!--date naissance-->
+
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.dateNaissance"
-                           for="field_dateDeclaration">Date Declaration</label>
+                           for="dateNaissanceEnfant">Date Declaration</label>
                     <div class="input-group">
-                        <input id="field_dateNaissance" type="text" class="form-control inputDeclaration"
+                        <input id="dateNaissanceEnfant" type="date" class="form-control inputDeclaration"
                                name="dateNaissanceEnfant"
                                uib-datepicker-popup="{{dateformat}}"
                                ng-model="vm.declarationNaissance.informationEnfant.dateNaissance"
@@ -98,9 +99,9 @@
                             class="glyphicon glyphicon-calendar"></i></button>
                     </span>
                     </div>
-                    <div ng-show="editForm.declarationNaissance.dateNaissance.$invalid">
+                    <div ng-show="editForm.dateNaissanceEnfant.$invalid">
                         <p class="help-block"
-                           ng-show="editForm.declarationNaissance.dateNaissance.$error.required"
+                           ng-show="editForm.dateNaissanceEnfant.$error.required"
                            translate="entity.validation.required">
                             This field is required.
                         </p>
@@ -110,13 +111,13 @@
                 <!--commune de naissance-->
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.ville"
-                           for="field_child_city">commune de naissance</label>
-                    <input type="text" class="form-control inputDeclaration" name="childName" id="field_child_city"
+                           for="villeNaissanceEnfant">commune de naissance</label>
+                    <input type="text" class="form-control inputDeclaration" name="villeNaissanceEnfant" id="villeNaissanceEnfant"
                            ng-model="vm.declarationNaissance.informationEnfant.adresse.ville" required
                     />
-                    <div ng-show="editForm.informationEnfant.adresse.ville.$invalid">
+                    <div ng-show="editForm.villeNaissanceEnfant.$invalid">
                         <p class="help-block"
-                           ng-show="editForm.informationEnfant.adresse.ville.$error.required"
+                           ng-show="editForm.villeNaissanceEnfant.$error.required"
                            translate="entity.validation.required">
                             This field is required.
                         </p>
@@ -126,14 +127,14 @@
                 <!--code postal-->
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.codepostale"
-                           for="field_child_postalCode">code postal</label>
-                    <input type="text" class="form-control inputDeclaration" name="childName"
-                           id="field_child_postalCode"
+                           for="codePostale">code postal</label>
+                    <input type="text" class="form-control inputDeclaration" name="codePostale"
+                           id="codePostale"
                            ng-model="vm.declarationNaissance.informationEnfant.adresse.codePostale" required
                     />
-                    <div ng-show="editForm.informationEnfant.adresse.codePostale.$invalid">
+                    <div ng-show="editForm.codePostale.$invalid">
                         <p class="help-block"
-                           ng-show="editForm.informationEnfant.adresse.codePostale.$error.required"
+                           ng-show="editForm.codePostale.$error.required"
                            translate="entity.validation.required">
                             This field is required.
                         </p>
@@ -143,51 +144,55 @@
                 <!--adresse complementaire-->
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.adressComplement"
-                           for="field_child_complement_adress">adresse complementaire</label>
-                    <input type="text" class="form-control inputDeclaration" name="childName"
-                           id="field_child_complement_adress"
-                           ng-model="vm.declarationNaissance.informationEnfant.adresse.adresseComplementaire" required
+                           for="adresseCompl">adresse complementaire</label>
+                    <input type="text" class="form-control inputDeclaration" name="adresseCompl"
+                           id="adresseCompl"
+                           ng-model="vm.declarationNaissance.informationEnfant.adresse.adresseComplementaire"
                     />
-                    <div ng-show="editForm.informationEnfant.adresse.adresseComplementaire.$invalid">
+                </div>
+
+                <!--mention marginale-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.mentionMarginale"
+                           for="mentionMarginale">Mention Marginale</label>
+                    <input type="text" class="form-control inputDeclaration" name="mentionMarginale"
+                           id="mentionMarginale"
+                           ng-model="vm.declarationNaissance.mentionMarginale" required
+                    />
+
+                    <div ng-show="editForm.mentionMarginale.$invalid">
                         <p class="help-block"
-                           ng-show="editForm.informationEnfant.adresse.adresseComplementaire.$error.required"
+                           ng-show="editForm.mentionMarginale.$error.required"
                            translate="entity.validation.required">
                             This field is required.
                         </p>
                     </div>
                 </div>
 
-                <!--mention marginale-->
-                <div class="form-group">
-                    <label class="control-label" translate="etatcivilApp.declarationNaissance.mentionMarginale"
-                           for="field_mentionMarginale">Mention Marginale</label>
-                    <input type="text" class="form-control inputDeclaration" name="mentionMarginale" id="field_mentionMarginale"
-                           ng-model="vm.declarationNaissance.mentionMarginale"
-                    />
-                </div>
 
                 <!--date declaration-->
                 <div class="form-group">
-                     <label class="control-label" translate="etatcivilApp.declarationNaissance.dateDeclaration"
-                            for="field_dateDeclaration">Date Declaration</label>
-                     <div class="input-group">
-                         <input id="field_dateDeclaration" type="text" class="form-control inputDeclaration" name="dateDeclaration"
-                                uib-datepicker-popup="{{dateformat}}" ng-model="vm.declarationNaissance.dateDeclaration"
-                                is-open="vm.datePickerOpenStatus.dateDeclaration"
-                                required/>
-                         <span class="input-group-btn">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.dateDeclaration"
+                           for="dateDeclaration">Date Declaration</label>
+                    <div class="input-group">
+                        <input id="dateDeclaration" type="date" class="form-control inputDeclaration"
+                               name="dateDeclaration"
+                               uib-datepicker-popup="{{dateformat}}" ng-model="vm.declarationNaissance.dateDeclaration"
+                               is-open="vm.datePickerOpenStatus.dateDeclaration"
+                               required/>
+                        <span class="input-group-btn">
                      <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDeclaration')"><i
                          class="glyphicon glyphicon-calendar"></i></button>
                  </span>
-                     </div>
-                     <div ng-show="editForm.declarationNaissance.dateDeclaration.$invalid">
-                         <p class="help-block"
-                            ng-show="editForm.declarationNaissance.dateDeclaration.$error.required"
-                            translate="entity.validation.required">
-                             This field is required.
-                         </p>
-                     </div>
-                 </div>
+                    </div>
+                    <div ng-show="editForm.dateDeclaration.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.dateDeclaration.$error.required"
+                           translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
 
             </td>
 
@@ -197,13 +202,13 @@
                 <!--nom-->
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.name"
-                           for="field_mother_name">Nom</label>
-                    <input type="text" class="form-control inputDeclaration" name="childName" id="field_mother_name"
+                           for="nomMere">Nom</label>
+                    <input type="text" class="form-control inputDeclaration" name="nomMere" id="nomMere"
                            ng-model="vm.declarationNaissance.informationMere.nom" required
                     />
-                    <div ng-show="editForm.informationMere.nom.$invalid">
+                    <div ng-show="editForm.nomMere.$invalid">
                         <p class="help-block"
-                           ng-show="editForm.informationMere.nom.$error.required"
+                           ng-show="editForm.nomMere.$error.required"
                            translate="entity.validation.required">
                             This field is required.
                         </p>
@@ -215,14 +220,14 @@
                 <!--prenom-->
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.firstname"
-                           for="field_mother_firstname">Nom</label>
-                    <input type="text" class="form-control inputDeclaration" name="childName"
-                           id="field_mother_firstname"
+                           for="prenomMere">Nom</label>
+                    <input type="text" class="form-control inputDeclaration" name="prenomMere"
+                           id="prenomMere"
                            ng-model="vm.declarationNaissance.informationMere.prenom" required
                     />
-                    <div ng-show="editForm.informationMere.prenom.$invalid">
+                    <div ng-show="editForm.prenomMere.$invalid">
                         <p class="help-block"
-                           ng-show="editForm.informationMere.prenom.$error.required"
+                           ng-show="editForm.prenomMere.$error.required"
                            translate="entity.validation.required">
                             This field is required.
                         </p>
@@ -232,9 +237,9 @@
                 <!--date naissance-->
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.dateNaissance"
-                           for="field_mother_dateDeclaration">Date Declaration</label>
+                           for="dateNaissanceMere">Date Declaration</label>
                     <div class="input-group">
-                        <input id="field_mother_dateDeclaration" type="text" class="form-control inputDeclaration"
+                        <input id="dateNaissanceMere" type="date" class="form-control inputDeclaration"
                                name="dateNaissanceMere"
                                uib-datepicker-popup="{{dateformat}}"
                                ng-model="vm.declarationNaissance.informationMere.dateNaissance"
@@ -245,9 +250,9 @@
                             class="glyphicon glyphicon-calendar"></i></button>
                     </span>
                     </div>
-                    <div ng-show="editForm.declarationNaissance.informationMere.dateNaissance.$invalid">
+                    <div ng-show="editForm.dateNaissanceMere.$invalid">
                         <p class="help-block"
-                           ng-show="editForm.declarationNaissance.informationMere.dateNaissance.$error.required"
+                           ng-show="editForm.dateNaissanceMere.$error.required"
                            translate="entity.validation.required">
                             This field is required.
                         </p>
@@ -257,13 +262,13 @@
                 <!--ville-->
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.communeDeResidence"
-                           for="field_mother_city">Ville</label>
-                    <input type="text" class="form-control inputDeclaration" name="childName" id="field_mother_city"
-                           ng-model="vm.declarationNaissance.informationMere.adresse.ville" required
+                           for="communeResidenceMere">Ville</label>
+                    <input type="text" class="form-control inputDeclaration" name="communeResidenceMere" id="communeResidenceMere"
+                           ng-model="vm.declarationNaissance.communeResidenceMere.ville" required
                     />
-                    <div ng-show="editForm.informationMere.adresse.ville.$invalid">
+                    <div ng-show="editForm.communeResidenceMere.$invalid">
                         <p class="help-block"
-                           ng-show="editForm.informationMere.adresse.ville.$error.required"
+                           ng-show="editForm.communeResidenceMere.$error.required"
                            translate="entity.validation.required">
                             This field is required.
                         </p>
@@ -273,14 +278,14 @@
                 <!--code postal-->
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.codepostale"
-                           for="field_mother_postalCode">code postal</label>
-                    <input type="text" class="form-control inputDeclaration" name="childName"
-                           id="field_mother_postalCode"
+                           for="codePostalMere">code postal</label>
+                    <input type="text" class="form-control inputDeclaration" name="codePostalMere"
+                           id="codePostalMere"
                            ng-model="vm.declarationNaissance.informationMere.adresse.codePostale" required
                     />
-                    <div ng-show="editForm.informationMere.adresse.codePostale.$invalid">
+                    <div ng-show="editForm.codePostalMere.$invalid">
                         <p class="help-block"
-                           ng-show="editForm.informationMere.adresse.codePostale.$error.required"
+                           ng-show="editForm.codePostalMere.$error.required"
                            translate="entity.validation.required">
                             This field is required.
                         </p>
@@ -290,18 +295,11 @@
                 <!--adresse complementaire-->
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.adressComplement"
-                           for="field_mother_complement_adress">code postal</label>
-                    <input type="text" class="form-control inputDeclaration" name="childName"
-                           id="field_mother_complement_adress"
-                           ng-model="vm.declarationNaissance.informationMere.adresse.adresseComplementaire" required
+                           for="adresseComplMere">code postal</label>
+                    <input type="text" class="form-control inputDeclaration" name="adresseComplMere"
+                           id="adresseComplMere"
+                           ng-model="vm.declarationNaissance.informationMere.adresse.adresseComplementaire"
                     />
-                    <div ng-show="editForm.informationMere.adresse.adresseComplementaire.$invalid">
-                        <p class="help-block"
-                           ng-show="editForm.informationMere.adresse.adresseComplementaire.$error.required"
-                           translate="entity.validation.required">
-                            This field is required.
-                        </p>
-                    </div>
                 </div>
 
             </td>
@@ -312,13 +310,13 @@
                 <!--nom-->
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.name"
-                           for="field_father_name">Nom</label>
-                    <input type="text" class="form-control inputDeclaration" name="fatherName" id="field_father_name"
+                           for="nomPere">Nom</label>
+                    <input type="text" class="form-control inputDeclaration" name="nomPere" id="nomPere"
                            ng-model="vm.declarationNaissance.informationPere.nom" required
                     />
-                    <div ng-show="editForm.informationPere.nom.$invalid">
+                    <div ng-show="editForm.nomPere.$invalid">
                         <p class="help-block"
-                           ng-show="editForm.informationPere.nom.$error.required"
+                           ng-show="editForm.nomPere.$error.required"
                            translate="entity.validation.required">
                             This field is required.
                         </p>
@@ -330,14 +328,14 @@
                 <!--prenom-->
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.firstname"
-                           for="field_father_firstname">Nom</label>
-                    <input type="text" class="form-control inputDeclaration" name="fatherFirstName"
-                           id="field_father_firstname"
+                           for="prenomPere">Nom</label>
+                    <input type="text" class="form-control inputDeclaration" name="prenomPere"
+                           id="prenomPere"
                            ng-model="vm.declarationNaissance.informationPere.prenom" required
                     />
-                    <div ng-show="editForm.informationPere.prenom.$invalid">
+                    <div ng-show="editForm.prenomPere.$invalid">
                         <p class="help-block"
-                           ng-show="editForm.informationPere.prenom.$error.required"
+                           ng-show="editForm.prenomPere.$error.required"
                            translate="entity.validation.required">
                             This field is required.
                         </p>
@@ -347,9 +345,9 @@
                 <!--date naissance-->
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.dateNaissance"
-                           for="field_father_dateNaissance">Date Declaration</label>
+                           for="dateNaissancePere">Date Declaration</label>
                     <div class="input-group">
-                        <input id="field_father_dateNaissance" type="text" class="form-control inputDeclaration"
+                        <input id="dateNaissancePere" type="date" class="form-control inputDeclaration"
                                name="dateNaissancePere"
                                uib-datepicker-popup="{{dateformat}}"
                                ng-model="vm.declarationNaissance.informationPere.dateNaissance"
@@ -360,9 +358,9 @@
                             class="glyphicon glyphicon-calendar"></i></button>
                     </span>
                     </div>
-                    <div ng-show="editForm.declarationNaissance.informationPere.dateNaissance.$invalid">
+                    <div ng-show="editForm.dateNaissancePere.$invalid">
                         <p class="help-block"
-                           ng-show="editForm.declarationNaissance.informationPere.dateNaissance.$error.required"
+                           ng-show="editForm.dateNaissancePere.$error.required"
                            translate="entity.validation.required">
                             This field is required.
                         </p>
@@ -372,13 +370,13 @@
                 <!--ville-->
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.communeDeResidence"
-                           for="field_father_city">Ville</label>
-                    <input type="text" class="form-control inputDeclaration" name="childName" id="field_father_city"
+                           for="communeResidencePere">Ville</label>
+                    <input type="text" class="form-control inputDeclaration" name="communeResidencePere" id="communeResidencePere"
                            ng-model="vm.declarationNaissance.informationPere.adresse.ville" required
                     />
-                    <div ng-show="editForm.informationPere.adresse.ville.$invalid">
+                    <div ng-show="editForm.communeResidencePere.$invalid">
                         <p class="help-block"
-                           ng-show="editForm.informationPere.adresse.ville.$error.required"
+                           ng-show="editForm.communeResidencePere.$error.required"
                            translate="entity.validation.required">
                             This field is required.
                         </p>
@@ -388,14 +386,14 @@
                 <!--code postal-->
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.codepostale"
-                           for="field_father_postalCode">code postal</label>
-                    <input type="text" class="form-control inputDeclaration" name="childName"
-                           id="field_father_postalCode"
+                           for="codePostalePere">code postal</label>
+                    <input type="text" class="form-control inputDeclaration" name="codePostalePere"
+                           id="codePostalePere"
                            ng-model="vm.declarationNaissance.informationPere.adresse.codePostale" required
                     />
-                    <div ng-show="editForm.informationPere.adresse.codePostale.$invalid">
+                    <div ng-show="editForm.codePostalePere.$invalid">
                         <p class="help-block"
-                           ng-show="editForm.informationPere.adresse.codePostale.$error.required"
+                           ng-show="editForm.codePostalePere.$error.required"
                            translate="entity.validation.required">
                             This field is required.
                         </p>
@@ -405,18 +403,11 @@
                 <!--adresse complementaire-->
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.adressComplement"
-                           for="field_father_complement_adress">code postal</label>
-                    <input type="text" class="form-control inputDeclaration" name="childName"
-                           id="field_father_complement_adress"
-                           ng-model="vm.declarationNaissance.informationPere.adresse.adresseComplementaire" required
+                           for="adresseComplPere">code postal</label>
+                    <input type="text" class="form-control inputDeclaration" name="adresseComplPere"
+                           id="adresseComplPere"
+                           ng-model="vm.declarationNaissance.informationPere.adresse.adresseComplementaire"
                     />
-                    <div ng-show="editForm.informationPere.adresse.adresseComplementaire.$invalid">
-                        <p class="help-block"
-                           ng-show="editForm.informationPere.adresse.adresseComplementaire.$error.required"
-                           translate="entity.validation.required">
-                            This field is required.
-                        </p>
-                    </div>
                 </div>
 
             </td>
@@ -431,8 +422,9 @@
             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
             translate="entity.action.cancel">Cancel</span>
         </button>
-        <button type="button" ng-disabled="editForm.$invalid || vm.isSaving" ng-click="vm.save()" class="btn btn-primary">
-<!--          <button type="submit"  class="btn btn-primary"> -->
+        <button type="button" ng-click="vm.save()"
+                class="btn btn-primary">
+            <!--          <button type="submit"  class="btn btn-primary"> -->
             <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
         </button>
     </div>
