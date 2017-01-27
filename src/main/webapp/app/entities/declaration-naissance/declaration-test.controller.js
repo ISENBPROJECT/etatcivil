@@ -1,3 +1,4 @@
+
 (function() {
 	'use strict';
 
@@ -94,4 +95,5 @@
 			vm.declarationNaissance.fichier = fichier;
 		}
 	}
+
 })();

@@ -185,7 +185,7 @@
                     });
                 }]
             })
-            
+
             .state('declaration-naissance-affichagePdf', {
                 parent: 'declaration-naissance-detail',
                 url: '/affichagePdf',
