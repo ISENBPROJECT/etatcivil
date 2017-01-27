@@ -182,7 +182,7 @@ public class DeclarationNaissanceService {
 		 DateFormat format_fr = DateFormat.getDateInstance(DateFormat.FULL, Locale.FRENCH);
 		try {
 			pdfTemplate = new PdfReader("template_acte_naissance.pdf");
-			FileOutputStream fileOutputStream = new FileOutputStream(acteNaissance);
+			FileOutputStream fileOutputStream = new FileOutputStream("src/main/webapp/app/document/"+acteNaissance);
 			//ByteArrayOutputStream out = new ByteArrayOutputStream();
 			PdfStamper stamper = new PdfStamper(pdfTemplate, fileOutputStream);
 			stamper.setFormFlattening(true);	
@@ -219,8 +219,9 @@ public class DeclarationNaissanceService {
      */
     public void creerTranscription (DeclarationNaissanceDTO declarationNaissanceDTO) 
     		throws IOException, DocumentException{
-    	
-     String FILE = "C:/workspace/etatcivil/transcription_naissance.pdf";
+   	 
+    		 String FILE = declarationNaissanceDTO.getInformationEnfant().getPrenom()+"_"+declarationNaissanceDTO.getInformationEnfant().getNom()
+			 +"_transcription_naissance.pdf";
   	   Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,
   	      Font.BOLD);
   	   Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12,
@@ -229,7 +230,7 @@ public class DeclarationNaissanceService {
 	 int year = c.get(Calendar.YEAR);
 	 DateFormat format_fr = DateFormat.getDateInstance(DateFormat.FULL, Locale.FRENCH);
   	 Document document = new Document();
-     PdfWriter.getInstance(document, new FileOutputStream(FILE));
+     PdfWriter.getInstance(document, new FileOutputStream("src/main/webapp/app/document/"+FILE));
      document.open();
 	  String  ville_naissance_pere ="Contribel (Guinée)";
 	  String  profession_pere = " Mécanicien";

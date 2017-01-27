@@ -187,7 +187,7 @@
             })
             
             .state('declaration-naissance-affichagePdf', {
-                parent: 'declaration-test',
+                parent: 'declaration-naissance-detail',
                 url: '/affichagePdf',
                 data: {
                     authorities: ['ROLE_USER'],
@@ -196,19 +196,11 @@
                 views: {
                     'content@': {
                         templateUrl: 'app/entities/declaration-naissance/affichagePdf.html',
-                        controller: 'DeclarationAffichageController',
+                        controller: 'DeclarationTestController',
                         controllerAs: 'vm'
                     }
                 },
-                resolve: {
-                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                        $translatePartialLoader.addPart('declarationNaissance');
-                        return $translate.refresh();
-                    }],
-                    entity: ['$stateParams', 'DeclarationNaissance', function ($stateParams, DeclarationNaissance) {
-                        return DeclarationNaissance.get({id: $stateParams.id}).$promise;
-                    }]
-                }
+               
             });
     }
 
