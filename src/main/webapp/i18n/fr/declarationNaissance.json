@@ -39,7 +39,11 @@
             "codepostale":"Code postal",
             "dadfirstname":"Prénom père",
             "momfirstname":"Prénom manan",
-            "numberRegisgtre":"N° registre"
+            "numberRegisgtre":"N° registre",
+            "fonction":"Fonction",
+            "genre":"Genre",
+            "villeDeNaissance":"Ville de naissance",
+            "paysDeNaissance":"Pays de naissance"
         }
     }
 }

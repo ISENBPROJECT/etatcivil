@@ -2,7 +2,7 @@
 <script>
 
   	this.window.scrollTo(0,0);
-  	
+
  </script>
 
 <form name="editForm"  role="form" novalidate show-validation>
@@ -158,11 +158,23 @@
                     />
                 </div>
 
+                `<!--genre-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.genre"
+                           for="genre">genre</label>
+                    <select type="text" class="form-control inputDeclaration" name="genre"
+                           id="genre"
+                           ng-model="vm.declarationNaissance.informationEnfant.genre">
+                        <option>FEMININ</option>
+                        <option>MASCULIN</option>
+                    </select>
+                </div>
+
                 <!--mention marginale-->
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.mentionMarginale"
                            for="mentionMarginale">Mention Marginale</label>
-                    <input type="text" class="form-control inputDeclaration" name="mentionMarginale"
+                    <textarea type="text" class="form-control inputDeclaration" name="mentionMarginale"
                            id="mentionMarginale"
                            ng-model="vm.declarationNaissance.mentionMarginale" required
                     />
@@ -178,7 +190,7 @@
 
 
                 <!--date declaration-->
-                <div class="form-group">
+              <!--  <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.dateDeclaration"
                            for="dateDeclaration">Date Declaration</label>
                     <div class="input-group">
@@ -199,7 +211,7 @@
                             This field is required.
                         </p>
                     </div>
-                </div>
+                </div>-->
 
             </td>
 
@@ -281,7 +293,51 @@
                         </p>
                     </div>
                 </div>
-
+                <!--fonction-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.fonction"
+                           for="fonctionMere">Fonction</label>
+                    <input type="text" class="form-control inputDeclaration" name="fonctionMere" id="fonctionMere"
+                           ng-model="vm.declarationNaissance.informationMere.fonction" required
+                    />
+                    <div ng-show="editForm.fonctionMere.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.fonctionMere.$error.required"
+                           translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
+                <!--pays de naissance-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.paysDeNaissance"
+                           for="paysDeNaissanceMere">Pays de Naissance</label>
+                    <input type="text" class="form-control inputDeclaration" name="paysDeNaissanceMere" id="paysDeNaissanceMere"
+                           ng-model="vm.declarationNaissance.informationMere.paysNaissance" required
+                    />
+                    <div ng-show="editForm.paysDeNaissanceMere.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.paysDeNaissanceMere.$error.required"
+                           translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
+                <!--ville de naissance-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.villeDeNaissance"
+                           for="villeDeNaissanceMere">Ville</label>
+                    <input type="text" class="form-control inputDeclaration" name="villeDeNaissanceMere" id="villeDeNaissanceMere"
+                           ng-model="vm.declarationNaissance.informationMere.villeNaissance" required
+                    />
+                    <div ng-show="editForm.villeDeNaissanceMere.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.villeDeNaissanceMere.$error.required"
+                           translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
                 <!--code postal-->
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.codepostale"
@@ -390,6 +446,51 @@
                     </div>
                 </div>
 
+                <!--fonction-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.fonction"
+                           for="fonctionPere">Ville</label>
+                    <input type="text" class="form-control inputDeclaration" name="fonctionPere" id="fonctionPere"
+                           ng-model="vm.declarationNaissance.informationPere.fonction" required
+                    />
+                    <div ng-show="editForm.fonctionPere.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.fonctionPere.$error.required"
+                           translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
+                <!--pays de naissance-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.fonction"
+                           for="paysDeNaissancePere">Ville</label>
+                    <input type="text" class="form-control inputDeclaration" name="paysDeNaissancePere" id="paysDeNaissancePere"
+                           ng-model="vm.declarationNaissance.informationPere.paysNaissance" required
+                    />
+                    <div ng-show="editForm.paysDeNaissancePere.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.paysDeNaissancePere.$error.required"
+                           translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
+                <!--ville de naissance-->
+                <div class="form-group">
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.fonction"
+                           for="villeDeNaissancePere">Ville</label>
+                    <input type="text" class="form-control inputDeclaration" name="villeDeNaissancePere" id="villeDeNaissancePere"
+                           ng-model="vm.declarationNaissance.informationPere.villeNaissance" required
+                    />
+                    <div ng-show="editForm.villeDeNaissancePere.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.villeDeNaissancePere.$error.required"
+                           translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
                 <!--code postal-->
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.codepostale"

@@ -66,13 +66,13 @@
 		function ouvirActeNaissancePopup() {
 
 			var fichier = 'app/document/'+ vm.declarationNaissance.informationEnfant.prenom + '_'+ vm.declarationNaissance.informationEnfant.nom + '_acte_naissance.pdf';
-			ff = window.open(fichier, "popup", "width=900,height=600")
+			 window.open(fichier, "popup", "width=900,height=600")
 		}
-		
+
 		function ouvirTranscriptionPopup() {
 
 			var fichier = 'app/document/'+ vm.declarationNaissance.informationEnfant.prenom + '_'+ vm.declarationNaissance.informationEnfant.nom + '_transcription_naissance.pdf';
-			ff = window.open(fichier, "popup", "width=900,height=600")
+			window.open(fichier, "popup", "width=900,height=600")
 		}
 
 		function retourAccueil() {
