@@ -40,6 +40,7 @@
 		}
 
 		function save() {
+            console.log(entity);
 			$state.go('declaration-naissance-detail');
 		}
 
