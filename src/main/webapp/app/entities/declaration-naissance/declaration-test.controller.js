@@ -90,7 +90,7 @@
 			var filename2;
 			var fichier = {
 				nomFichier : filename1,
-				chemin : 'C:\/Users\/mroum\/OneDrive\/Documents\/repetatcivil'
+				chemin : 'src\/main\/webapp\/app\/document'
 			};
 
 			vm.declarationNaissance.fichier = fichier;

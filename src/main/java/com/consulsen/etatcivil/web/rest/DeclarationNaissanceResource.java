@@ -155,11 +155,11 @@ public class DeclarationNaissanceResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("declarationNaissance", id.toString())).build();
     }
 
-    @RequestMapping(value = "/searchDeclaration",
+    @RequestMapping(value = "/declaration-naissances/{id}",
         method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<DeclarationNaissanceDTO> serachDeclarationNaissance(@Valid @RequestBody String data) {
+    public List<DeclarationNaissanceDTO> searchDeclarationNaissance(@Valid @RequestBody String data) {
         log.debug("REST request to search DeclarationNaissance");
         Long numeroRegistre;
         String nom;
@@ -186,7 +186,8 @@ public class DeclarationNaissanceResource {
             produces = MediaType.APPLICATION_JSON_VALUE)
         @Timed
         public ResponseEntity<File> upload(@Valid @RequestBody String filename) throws URISyntaxException, IOException {
-        URL url = new URL("C:\\Users\\mroum\\OneDrive\\Documents\\repetatcivil");
+        URL url = new URL("src\\main\\webapp\\app\\document"); 
+
             File file = new File(URLDecoder.decode(url.getFile(),"UTF-8"));
             return  null;
         }

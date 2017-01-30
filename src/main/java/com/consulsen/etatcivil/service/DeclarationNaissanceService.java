@@ -1,6 +1,5 @@
 package com.consulsen.etatcivil.service;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -9,7 +8,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -21,17 +19,20 @@ import java.util.Locale;
 import java.util.stream.Collectors;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.consulsen.etatcivil.domain.DeclarationNaissance;
 import com.consulsen.etatcivil.repository.DeclarationNaissanceRepository;
 import com.consulsen.etatcivil.web.rest.dto.DeclarationNaissanceDTO;
+import com.consulsen.etatcivil.web.rest.dto.PersonneDTO;
 import com.consulsen.etatcivil.web.rest.mapper.DeclarationNaissanceMapper;
-import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
@@ -64,7 +65,7 @@ public class DeclarationNaissanceService {
     private static String path_source = "C:\\Users\\Serigne26\\Pictures\\";
 	private static String path_destination = "D:\\Outils\\";
 
-
+	 private static String UNDEFINED = "undefined";
     /**
      * Save a declarationNaissance.
      *
@@ -89,6 +90,29 @@ public class DeclarationNaissanceService {
         return result;
     }
 
+    
+   
+        public List<DeclarationNaissanceDTO> serachDeclarationNaissance(String data) {
+            log.debug("REST request to search DeclarationNaissance");
+            Long numeroRegistre;
+            String nom;
+            String prenom;
+            LocalDate dateNaissance;
+            data = StringUtils.substring(data, 0);
+            String[] datasSearch = StringUtils.split(data,",");
+            DeclarationNaissanceDTO declarationNaissanceDTO = new DeclarationNaissanceDTO();
+            PersonneDTO personneDTO = new PersonneDTO();
+            nom = datasSearch[1].startsWith(UNDEFINED) ? "": datasSearch[1];
+            personneDTO.setNom(nom);
+            prenom = datasSearch[2].startsWith(UNDEFINED) ? "": datasSearch[2];
+            personneDTO.setPrenom(prenom);
+    		dateNaissance = datasSearch[3].startsWith(UNDEFINED) ? null: LocalDate.parse(datasSearch[3]);
+    		personneDTO.setDateNaissance(dateNaissance);
+            declarationNaissanceDTO.setInformationEnfant(personneDTO);
+            numeroRegistre = datasSearch[0].startsWith(UNDEFINED) ? null: Long.parseLong(datasSearch[0]);
+            declarationNaissanceDTO.setId(numeroRegistre);
+            return findByCriteria(declarationNaissanceDTO);
+        }
 
     /**
      *  Get all the declarationNaissances.
