@@ -24,7 +24,7 @@
             "numeroCarteIdentite": "Numero Carte Identite",
             "numeroPassPort": "Numero Pass Port",
             "identifiantPersonne": "Identifiant Personne",
-            "identifiantFichier": "Identifiant Fichier"
+            "identifiantFichier": "Identifiant Fichier",
         }
     }
 }
