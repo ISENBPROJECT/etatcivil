@@ -18,20 +18,18 @@ import javax.persistence.ManyToOne;
 
 public interface DeclarationNaissanceMapper {
 
- 
+
     @Mapping(source = "identifiantEnfant", target = "informationEnfant")
     @Mapping(source = "identifiantPere", target = "informationPere")
     @Mapping(source = "identifiantMere", target = "informationMere")
-    @Mapping(source = "identifiantFichier", target = "fichier")
     DeclarationNaissanceDTO declarationNaissanceToDeclarationNaissanceDTO(DeclarationNaissance declarationNaissance);
 
     //List<DeclarationNaissanceDTO> declarationNaissancesToDeclarationNaissanceDTOs(List<DeclarationNaissance> declarationNaissances);
-  
+
     @Mapping(source = "informationEnfant", target = "identifiantEnfant")
     @Mapping(source = "informationPere", target = "identifiantPere")
     @Mapping(source = "informationMere", target = "identifiantMere")
-    @Mapping(source = "fichier", target = "identifiantFichier")
-
+    @Mapping(target = "fichiers", ignore = true)
     DeclarationNaissance declarationNaissanceDTOToDeclarationNaissance(DeclarationNaissanceDTO declarationNaissanceDTO);
 
     //List<DeclarationNaissance> declarationNaissanceDTOsToDeclarationNaissances(List<DeclarationNaissanceDTO> declarationNaissanceDTOs);

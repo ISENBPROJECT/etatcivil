@@ -1,9 +1,9 @@
 package com.consulsen.etatcivil.web.rest.dto;
 
-import javax.validation.constraints.*;
+import com.consulsen.etatcivil.domain.DeclarationNaissance;
+
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 
@@ -20,6 +20,8 @@ public class FichierDTO implements Serializable {
     @NotNull
     private String chemin;
 
+    @NotNull
+    private DeclarationNaissanceDTO declarationNaissance;
 
     public Long getId() {
         return id;
@@ -28,6 +30,7 @@ public class FichierDTO implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getNomFichier() {
         return nomFichier;
     }
@@ -35,6 +38,7 @@ public class FichierDTO implements Serializable {
     public void setNomFichier(String nomFichier) {
         this.nomFichier = nomFichier;
     }
+
     public String getChemin() {
         return chemin;
     }
@@ -54,7 +58,7 @@ public class FichierDTO implements Serializable {
 
         FichierDTO fichierDTO = (FichierDTO) o;
 
-        if ( ! Objects.equals(id, fichierDTO.id)) return false;
+        if (!Objects.equals(id, fichierDTO.id)) return false;
 
         return true;
     }
@@ -64,12 +68,21 @@ public class FichierDTO implements Serializable {
         return Objects.hashCode(id);
     }
 
+    public DeclarationNaissanceDTO getDeclarationNaissance() {
+        return declarationNaissance;
+    }
+
+    public void setDeclarationNaissance(DeclarationNaissanceDTO declarationNaissance) {
+        this.declarationNaissance = declarationNaissance;
+    }
+
     @Override
     public String toString() {
         return "FichierDTO{" +
             "id=" + id +
-            ", nomFichier='" + nomFichier + "'" +
-            ", chemin='" + chemin + "'" +
+            ", nomFichier='" + nomFichier + '\'' +
+            ", chemin='" + chemin + '\'' +
+            ", declarationNaissance=" + declarationNaissance +
             '}';
     }
 }

@@ -33,6 +33,10 @@
                 transformRequest: function (data) {
                     data.dateDeclaration = DateUtils.convertLocalDateToServer(data.dateDeclaration);
                     return angular.toJson(data);
+                },
+                transformResponse: function (data) {
+                    console.log(data);
+                    return data;
                 }
             },
             'search': {

@@ -81,7 +81,7 @@
                             informationPere: {nom :null, prenom :null, dateNaissance :null,fonction :null,villeNaissance :null,paysNaissance :null, adresse:{codePostale:null,ville:null,adresseComplementaire:null}},
                             informationMere: {nom :null, prenom :null, dateNaissance :null,fonction :null,villeNaissance :null,paysNaissance :null, adresse:{codePostale:null,ville:null,adresseComplementaire:null}},
                             mentionMarginale: null,
-                            fichier:{}
+                            fichiers:[]
                         };
                     }
                 }

@@ -1,5 +1,6 @@
 package com.consulsen.etatcivil.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -7,7 +8,9 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A DeclarationNaissance.
@@ -28,24 +31,25 @@ public class DeclarationNaissance implements Serializable {
     private LocalDate dateDeclaration;
 
 
-    @ManyToOne (cascade = {CascadeType.ALL})
-    @JoinColumn(name="identifiant_enfant")
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "identifiant_enfant")
     private Personne identifiantEnfant;
 
-    @ManyToOne (cascade = {CascadeType.ALL})
-    @JoinColumn(name="identifiant_pere")
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "identifiant_pere")
     private Personne identifiantPere;
 
-    @ManyToOne (cascade = {CascadeType.ALL})
-    @JoinColumn(name="identifiant_mere")
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "identifiant_mere")
     private Personne identifiantMere;
 
     @Column(name = "mention_marginale")
     private String mentionMarginale;
 
-    @ManyToOne (cascade = {CascadeType.ALL})
-    @JoinColumn(name="identifiant_fichier_id")
-    private Fichier identifiantFichier;
+    @OneToMany(mappedBy = "identifiant_declaration_id")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Fichier> fichiers = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -63,51 +67,50 @@ public class DeclarationNaissance implements Serializable {
         this.dateDeclaration = dateDeclaration;
     }
 
- 
 
     /**
-	 * @return the identifiantEnfant
-	 */
-	public Personne getIdentifiantEnfant() {
-		return identifiantEnfant;
-	}
+     * @return the identifiantEnfant
+     */
+    public Personne getIdentifiantEnfant() {
+        return identifiantEnfant;
+    }
 
-	/**
-	 * @param identifiantEnfant the identifiantEnfant to set
-	 */
-	public void setIdentifiantEnfant(Personne identifiantEnfant) {
-		this.identifiantEnfant = identifiantEnfant;
-	}
+    /**
+     * @param identifiantEnfant the identifiantEnfant to set
+     */
+    public void setIdentifiantEnfant(Personne identifiantEnfant) {
+        this.identifiantEnfant = identifiantEnfant;
+    }
 
-	/**
-	 * @return the identifiantPere
-	 */
-	public Personne getIdentifiantPere() {
-		return identifiantPere;
-	}
+    /**
+     * @return the identifiantPere
+     */
+    public Personne getIdentifiantPere() {
+        return identifiantPere;
+    }
 
-	/**
-	 * @param identifiantPere the identifiantPere to set
-	 */
-	public void setIdentifiantPere(Personne identifiantPere) {
-		this.identifiantPere = identifiantPere;
-	}
+    /**
+     * @param identifiantPere the identifiantPere to set
+     */
+    public void setIdentifiantPere(Personne identifiantPere) {
+        this.identifiantPere = identifiantPere;
+    }
 
-	/**
-	 * @return the identifiantMere
-	 */
-	public Personne getIdentifiantMere() {
-		return identifiantMere;
-	}
+    /**
+     * @return the identifiantMere
+     */
+    public Personne getIdentifiantMere() {
+        return identifiantMere;
+    }
 
-	/**
-	 * @param identifiantMere the identifiantMere to set
-	 */
-	public void setIdentifiantMere(Personne identifiantMere) {
-		this.identifiantMere = identifiantMere;
-	}
+    /**
+     * @param identifiantMere the identifiantMere to set
+     */
+    public void setIdentifiantMere(Personne identifiantMere) {
+        this.identifiantMere = identifiantMere;
+    }
 
-	public String getMentionMarginale() {
+    public String getMentionMarginale() {
         return mentionMarginale;
     }
 
@@ -116,13 +119,12 @@ public class DeclarationNaissance implements Serializable {
     }
 
 
-
-    public Fichier getIdentifiantFichier() {
-        return identifiantFichier;
+    public Set<Fichier> getFichiers() {
+        return fichiers;
     }
 
-    public void setIdentifiantFichier(Fichier fichier) {
-        this.identifiantFichier = fichier;
+    public void setFichiers(Set<Fichier> fichiers) {
+        this.fichiers = fichiers;
     }
 
     @Override
@@ -134,7 +136,7 @@ public class DeclarationNaissance implements Serializable {
             return false;
         }
         DeclarationNaissance declarationNaissance = (DeclarationNaissance) o;
-        if(declarationNaissance.id == null || id == null) {
+        if (declarationNaissance.id == null || id == null) {
             return false;
         }
         return Objects.equals(id, declarationNaissance.id);
@@ -146,15 +148,19 @@ public class DeclarationNaissance implements Serializable {
     }
 
     /* (non-Javadoc)
-	 * @see java.lang.Object#toString()
+     * @see java.lang.Object#toString()
 	 */
-	@Override
-	public String toString() {
-		return "DeclarationNaissance [id=" + id + ", dateDeclaration=" + dateDeclaration + ", identifiantEnfant="
-				+ identifiantEnfant + ", identifiantPere=" + identifiantPere + ", identifiantMere=" + identifiantMere
-				+ ", mentionMarginale=" + mentionMarginale + ", numeroCarteIdentite="
-				+ ", identifiantFichier=" + identifiantFichier + "]";
-	}
-    
-    
+
+    @Override
+    public String toString() {
+        return "DeclarationNaissance{" +
+            "id=" + id +
+            ", dateDeclaration=" + dateDeclaration +
+            ", identifiantEnfant=" + identifiantEnfant +
+            ", identifiantPere=" + identifiantPere +
+            ", identifiantMere=" + identifiantMere +
+            ", mentionMarginale='" + mentionMarginale + '\'' +
+            ", fichiers=" + fichiers +
+            '}';
+    }
 }

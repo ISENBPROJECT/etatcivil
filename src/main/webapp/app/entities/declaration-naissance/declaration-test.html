@@ -94,18 +94,18 @@
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.dateNaissance"
                            for="dateNaissanceEnfant">Date Declaration</label>
-                    <div class="input-group">
+                    <!--<div class="input-group">-->
                         <input id="dateNaissanceEnfant" type="date" class="form-control inputDeclaration"
                                name="dateNaissanceEnfant"
                                uib-datepicker-popup="{{dateformat}}"
                                ng-model="vm.declarationNaissance.informationEnfant.dateNaissance"
                                is-open="vm.datePickerOpenStatus.dateNaissanceEnfant"
                                required/>
-                        <span class="input-group-btn">
+                       <!-- <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateNaissanceEnfant')"><i
                             class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-                    </div>
+                    </span>-->
+                    <!--</div>-->
                     <div ng-show="editForm.dateNaissanceEnfant.$invalid">
                         <p class="help-block"
                            ng-show="editForm.dateNaissanceEnfant.$error.required"
@@ -135,7 +135,7 @@
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.codepostale"
                            for="codePostale">code postal</label>
-                    <input type="text" class="form-control inputDeclaration" name="codePostale"
+                    <input type="number" class="form-control inputDeclaration" name="codePostale"
                            id="codePostale"
                            ng-model="vm.declarationNaissance.informationEnfant.adresse.codePostale" required
                     />
@@ -187,32 +187,6 @@
                         </p>
                     </div>
                 </div>
-
-
-                <!--date declaration-->
-              <!--  <div class="form-group">
-                    <label class="control-label" translate="etatcivilApp.declarationNaissance.dateDeclaration"
-                           for="dateDeclaration">Date Declaration</label>
-                    <div class="input-group">
-                        <input id="dateDeclaration" type="date" class="form-control inputDeclaration"
-                               name="dateDeclaration"
-                               uib-datepicker-popup="{{dateformat}}" ng-model="vm.declarationNaissance.dateDeclaration"
-                               is-open="vm.datePickerOpenStatus.dateDeclaration"
-                               required/>
-                        <span class="input-group-btn">
-                     <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDeclaration')"><i
-                         class="glyphicon glyphicon-calendar"></i></button>
-                 </span>
-                    </div>
-                    <div ng-show="editForm.dateDeclaration.$invalid">
-                        <p class="help-block"
-                           ng-show="editForm.dateDeclaration.$error.required"
-                           translate="entity.validation.required">
-                            This field is required.
-                        </p>
-                    </div>
-                </div>-->
-
             </td>
 
             <!--mere-->
@@ -257,18 +231,18 @@
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.dateNaissance"
                            for="dateNaissanceMere">Date Declaration</label>
-                    <div class="input-group">
+                    <!--<div class="input-group">-->
                         <input id="dateNaissanceMere" type="date" class="form-control inputDeclaration"
                                name="dateNaissanceMere"
                                uib-datepicker-popup="{{dateformat}}"
                                ng-model="vm.declarationNaissance.informationMere.dateNaissance"
                                is-open="vm.datePickerOpenStatus.dateNaissanceMere"
                                required/>
-                        <span class="input-group-btn">
+                        <!--<span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateNaissanceMere')"><i
                             class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-                    </div>
+                    </span>-->
+                   <!-- </div>-->
                     <div ng-show="editForm.dateNaissanceMere.$invalid">
                         <p class="help-block"
                            ng-show="editForm.dateNaissanceMere.$error.required"
@@ -342,7 +316,7 @@
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.codepostale"
                            for="codePostalMere">code postal</label>
-                    <input type="text" class="form-control inputDeclaration" name="codePostalMere"
+                    <input type="number" class="form-control inputDeclaration" name="codePostalMere"
                            id="codePostalMere"
                            ng-model="vm.declarationNaissance.informationMere.adresse.codePostale" required
                     />
@@ -409,18 +383,18 @@
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.dateNaissance"
                            for="dateNaissancePere">Date Declaration</label>
-                    <div class="input-group">
+                    <!--<div class="input-group">-->
                         <input id="dateNaissancePere" type="date" class="form-control inputDeclaration"
                                name="dateNaissancePere"
                                uib-datepicker-popup="{{dateformat}}"
                                ng-model="vm.declarationNaissance.informationPere.dateNaissance"
                                is-open="vm.datePickerOpenStatus.dateNaissancePere"
                                required/>
-                        <span class="input-group-btn">
+                        <!--<span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateNaissancePere')"><i
                             class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-                    </div>
+                    </span>-->
+                   <!-- </div>-->
                     <div ng-show="editForm.dateNaissancePere.$invalid">
                         <p class="help-block"
                            ng-show="editForm.dateNaissancePere.$error.required"
@@ -463,7 +437,7 @@
                 </div>
                 <!--pays de naissance-->
                 <div class="form-group">
-                    <label class="control-label" translate="etatcivilApp.declarationNaissance.fonction"
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.paysDeNaissance"
                            for="paysDeNaissancePere">Ville</label>
                     <input type="text" class="form-control inputDeclaration" name="paysDeNaissancePere" id="paysDeNaissancePere"
                            ng-model="vm.declarationNaissance.informationPere.paysNaissance" required
@@ -478,7 +452,7 @@
                 </div>
                 <!--ville de naissance-->
                 <div class="form-group">
-                    <label class="control-label" translate="etatcivilApp.declarationNaissance.fonction"
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.villeDeNaissance"
                            for="villeDeNaissancePere">Ville</label>
                     <input type="text" class="form-control inputDeclaration" name="villeDeNaissancePere" id="villeDeNaissancePere"
                            ng-model="vm.declarationNaissance.informationPere.villeNaissance" required
@@ -495,7 +469,7 @@
                 <div class="form-group">
                     <label class="control-label" translate="etatcivilApp.declarationNaissance.codepostale"
                            for="codePostalePere">code postal</label>
-                    <input type="text" class="form-control inputDeclaration" name="codePostalePere"
+                    <input type="number" class="form-control inputDeclaration" name="codePostalePere"
                            id="codePostalePere"
                            ng-model="vm.declarationNaissance.informationPere.adresse.codePostale" required
                     />
@@ -531,7 +505,7 @@
             translate="entity.action.cancel">Cancel</span>
         </button>
 
-        <button type="button" ng-disabled="editForm.$invalid || vm.isSaving" ng-click="vm.save()" class="btn btn-primary">
+        <button type="button" ng-disabled="editForm.$invalid || vm.isSaving || !vm.noFile" ng-click="vm.save()" class="btn btn-primary">
 
             <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
         </button>

@@ -33,10 +33,9 @@ public class Fichier implements Serializable {
     @Column(name = "chemin", nullable = false)
     private String chemin;
 
-    @OneToMany(mappedBy = "identifiantFichier")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<DeclarationNaissance> declarationNaissances = new HashSet<>();
+    @ManyToOne (cascade = {CascadeType.ALL})
+    @JoinColumn(name="identifiant_declaration_id")
+    private DeclarationNaissance declarationNaissance;
 
     public Long getId() {
         return id;
@@ -62,13 +61,14 @@ public class Fichier implements Serializable {
         this.chemin = chemin;
     }
 
-    public Set<DeclarationNaissance> getDeclarationNaissances() {
-        return declarationNaissances;
+    public DeclarationNaissance getDeclarationNaissance() {
+        return declarationNaissance;
     }
 
-    public void setDeclarationNaissances(Set<DeclarationNaissance> declarationNaissances) {
-        this.declarationNaissances = declarationNaissances;
+    public void setDeclarationNaissance(DeclarationNaissance declarationNaissance) {
+        this.declarationNaissance = declarationNaissance;
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -94,8 +94,9 @@ public class Fichier implements Serializable {
     public String toString() {
         return "Fichier{" +
             "id=" + id +
-            ", nomFichier='" + nomFichier + "'" +
-            ", chemin='" + chemin + "'" +
+            ", nomFichier='" + nomFichier + '\'' +
+            ", chemin='" + chemin + '\'' +
+            ", declarationNaissance=" + declarationNaissance +
             '}';
     }
 }
