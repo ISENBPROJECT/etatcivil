@@ -76,10 +76,10 @@
 
                     entity: function () {
                         return {
-                            dateDeclaration: null,
-                            informationEnfant: {nom :null, prenom :null, dateNaissance :null, adresse:{codePostale:null,ville:null,adresseComplementaire:null}},
-                            informationPere: {nom :null, prenom :null, dateNaissance :null, adresse:{codePostale:null,ville:null,adresseComplementaire:null}},
-                            informationMere: {nom :null, prenom :null, dateNaissance :null, adresse:{codePostale:null,ville:null,adresseComplementaire:null}},
+                            dateDeclaration: new Date(),
+                            informationEnfant: {nom :null,genre :null, prenom :null, dateNaissance :null, adresse:{codePostale:null,ville:null,adresseComplementaire:null}},
+                            informationPere: {nom :null, prenom :null, dateNaissance :null,fonction :null,villeNaissance :null,paysNaissance :null, adresse:{codePostale:null,ville:null,adresseComplementaire:null}},
+                            informationMere: {nom :null, prenom :null, dateNaissance :null,fonction :null,villeNaissance :null,paysNaissance :null, adresse:{codePostale:null,ville:null,adresseComplementaire:null}},
                             mentionMarginale: null,
                             fichier:{}
                         };
@@ -185,9 +185,9 @@
                     });
                 }]
             })
-            
+
             .state('declaration-naissance-affichagePdf', {
-                parent: 'declaration-test',
+                parent: 'declaration-naissance-detail',
                 url: '/affichagePdf',
                 data: {
                     authorities: ['ROLE_USER'],
@@ -196,19 +196,11 @@
                 views: {
                     'content@': {
                         templateUrl: 'app/entities/declaration-naissance/affichagePdf.html',
-                        controller: 'DeclarationAffichageController',
+                        controller: 'DeclarationTestController',
                         controllerAs: 'vm'
                     }
                 },
-                resolve: {
-                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                        $translatePartialLoader.addPart('declarationNaissance');
-                        return $translate.refresh();
-                    }],
-                    entity: ['$stateParams', 'DeclarationNaissance', function ($stateParams, DeclarationNaissance) {
-                        return DeclarationNaissance.get({id: $stateParams.id}).$promise;
-                    }]
-                }
+
             });
     }
 

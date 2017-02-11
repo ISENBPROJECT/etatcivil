@@ -34,17 +34,8 @@
                     data.dateDeclaration = DateUtils.convertLocalDateToServer(data.dateDeclaration);
                     return angular.toJson(data);
                 }
-            }
-
-        });
-
-
-    }
-
-/*    function DeclarationNaissance($resource, DateUtils) {
-        var resourceUrl =  'api/searchDeclaration/';
-        return $resource(resourceUrl, {}, {
-        	'search': {
+            },
+            'search': {
                 method: 'POST',
                 transformResponse: function (data) {
                 	 if (data) {
@@ -54,6 +45,24 @@
                 },
                 isArray: true
             }
+
         });
-    }*/
+
+
+    }
+//    function DeclarationNaissance($resource, DateUtils) {
+//        var resourceUrl =  'api/searchDeclaration/';
+//        return $resource(resourceUrl, {}, {
+//        	'search': {
+//                method: 'POST',
+//                transformResponse: function (data) {
+//                	 if (data) {
+//                         data = angular.fromJson(data);
+//                     }
+//                	 return data;
+//                },
+//                isArray: true
+//            }
+//        });
+//    }
 })();

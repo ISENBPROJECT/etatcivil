@@ -423,6 +423,11 @@ ui bootstrap tweaks
     display: inline;
 }
 
+.couleurBouton {
+	background-color: #009688;
+	color: white;
+}
+
 /* ==========================================================================
 Fix error field display
 ========================================================================== */

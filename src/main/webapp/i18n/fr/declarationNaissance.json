@@ -36,8 +36,13 @@
             "communeDeResidence":"Commune de residence",
             "codepostale":"Code postal",
             "dadfirstname":"Prénom père",
-            "momfirstname":"Prénom maman",
-            "numberRegisgtre":"N° registre"
+            "momfirstname":"Prénom manan",
+            "numberRegisgtre":"N° registre",
+            "fonction":"Fonction",
+            "genre":"Genre",
+            "villeDeNaissance":"Ville de naissance",
+            "paysDeNaissance":"Pays de naissance"
+
         }
     }
 }

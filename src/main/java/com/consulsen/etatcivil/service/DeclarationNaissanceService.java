@@ -19,15 +19,19 @@ import java.util.Locale;
 import java.util.stream.Collectors;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.consulsen.etatcivil.domain.DeclarationNaissance;
 import com.consulsen.etatcivil.repository.DeclarationNaissanceRepository;
 import com.consulsen.etatcivil.web.rest.dto.DeclarationNaissanceDTO;
+import com.consulsen.etatcivil.web.rest.dto.PersonneDTO;
 import com.consulsen.etatcivil.web.rest.mapper.DeclarationNaissanceMapper;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -61,7 +65,7 @@ public class DeclarationNaissanceService {
     private static String path_source = "C:\\Users\\Serigne26\\Pictures\\";
 	private static String path_destination = "D:\\Outils\\";
 
-
+	 private static String UNDEFINED = "undefined";
     /**
      * Save a declarationNaissance.
      *
@@ -86,6 +90,29 @@ public class DeclarationNaissanceService {
         return result;
     }
 
+    
+   
+        public List<DeclarationNaissanceDTO> serachDeclarationNaissance(String data) {
+            log.debug("REST request to search DeclarationNaissance");
+            Long numeroRegistre;
+            String nom;
+            String prenom;
+            LocalDate dateNaissance;
+            data = StringUtils.substring(data, 0);
+            String[] datasSearch = StringUtils.split(data,",");
+            DeclarationNaissanceDTO declarationNaissanceDTO = new DeclarationNaissanceDTO();
+            PersonneDTO personneDTO = new PersonneDTO();
+            nom = datasSearch[1].startsWith(UNDEFINED) ? "": datasSearch[1];
+            personneDTO.setNom(nom);
+            prenom = datasSearch[2].startsWith(UNDEFINED) ? "": datasSearch[2];
+            personneDTO.setPrenom(prenom);
+    		dateNaissance = datasSearch[3].startsWith(UNDEFINED) ? null: LocalDate.parse(datasSearch[3]);
+    		personneDTO.setDateNaissance(dateNaissance);
+            declarationNaissanceDTO.setInformationEnfant(personneDTO);
+            numeroRegistre = datasSearch[0].startsWith(UNDEFINED) ? null: Long.parseLong(datasSearch[0]);
+            declarationNaissanceDTO.setId(numeroRegistre);
+            return findByCriteria(declarationNaissanceDTO);
+        }
 
     /**
      *  Get all the declarationNaissances.
@@ -180,7 +207,7 @@ public class DeclarationNaissanceService {
 		 DateFormat format_fr = DateFormat.getDateInstance(DateFormat.FULL, Locale.FRENCH);
 		try {
 			pdfTemplate = new PdfReader("template_acte_naissance.pdf");
-			FileOutputStream fileOutputStream = new FileOutputStream(acteNaissance);
+			FileOutputStream fileOutputStream = new FileOutputStream("src/main/webapp/app/document/"+acteNaissance);
 			//ByteArrayOutputStream out = new ByteArrayOutputStream();
 			PdfStamper stamper = new PdfStamper(pdfTemplate, fileOutputStream);
 			stamper.setFormFlattening(true);	
@@ -217,8 +244,9 @@ public class DeclarationNaissanceService {
      */
     public void creerTranscription (DeclarationNaissanceDTO declarationNaissanceDTO) 
     		throws IOException, DocumentException{
-    	
-     String FILE = "C:/workspace/etatcivil/transcription_naissance.pdf";
+   	 
+    		 String FILE = declarationNaissanceDTO.getInformationEnfant().getPrenom()+"_"+declarationNaissanceDTO.getInformationEnfant().getNom()
+			 +"_transcription_naissance.pdf";
   	   Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,
   	      Font.BOLD);
   	   Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12,
@@ -227,7 +255,7 @@ public class DeclarationNaissanceService {
 	 int year = c.get(Calendar.YEAR);
 	 DateFormat format_fr = DateFormat.getDateInstance(DateFormat.FULL, Locale.FRENCH);
   	 Document document = new Document();
-     PdfWriter.getInstance(document, new FileOutputStream(FILE));
+     PdfWriter.getInstance(document, new FileOutputStream("src/main/webapp/app/document/"+FILE));
      document.open();
 	  String  ville_naissance_pere ="Contribel (Guinée)";
 	  String  profession_pere = " Mécanicien";

@@ -73,6 +73,9 @@
                             return {
                                 nom: null,
                                 prenom: null,
+                                fonction :null,
+                                villeNaissance :null,
+                                paysNaissance :null,
                                 dateNaissance: null,
                                 id: null
                             };

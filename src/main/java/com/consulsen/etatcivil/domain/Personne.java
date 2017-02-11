@@ -33,9 +33,16 @@ public class Personne implements Serializable {
     @NotNull
     @Column(name = "prenom", nullable = false)
     private String prenom;
-    
-    
-   
+
+    @Column(name = "fonction", nullable = true)
+    private String fonction;
+
+    @Column(name = "ville_naissance", nullable = false)
+    private String villeDeNaissance;
+
+    @Column(name = "pays_naissance", nullable = false)
+    private String paysDeNaissance;
+
     @Column(name = "genre", nullable = true)
     private String genre;
 
@@ -98,8 +105,30 @@ public class Personne implements Serializable {
     public void setDeclarationNaissances(Set<DeclarationNaissance> declarationNaissances) {
         this.declarationNaissances = declarationNaissances;
     }
-    
-    
+
+    public String getFonction() {
+        return fonction;
+    }
+
+    public void setFonction(String fonction) {
+        this.fonction = fonction;
+    }
+
+    public String getVilleDeNaissance() {
+        return villeDeNaissance;
+    }
+
+    public void setVilleDeNaissance(String villeDeNaissance) {
+        this.villeDeNaissance = villeDeNaissance;
+    }
+
+    public String getPaysDeNaissance() {
+        return paysDeNaissance;
+    }
+
+    public void setPaysDeNaissance(String paysDeNaissance) {
+        this.paysDeNaissance = paysDeNaissance;
+    }
 
     /**
 	 * @return the genre
@@ -115,33 +144,41 @@ public class Personne implements Serializable {
 		this.genre = genre;
 	}
 
-	@Override
+    @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
         Personne personne = (Personne) o;
-        if(personne.id == null || id == null) {
+
+        if (id != null ? !id.equals(personne.id) : personne.id != null) return false;
+        if (nom != null ? !nom.equals(personne.nom) : personne.nom != null) return false;
+        if (prenom != null ? !prenom.equals(personne.prenom) : personne.prenom != null) return false;
+        if (fonction != null ? !fonction.equals(personne.fonction) : personne.fonction != null) return false;
+        if (villeDeNaissance != null ? !villeDeNaissance.equals(personne.villeDeNaissance) : personne.villeDeNaissance != null)
             return false;
-        }
-        return Objects.equals(id, personne.id);
+        if (paysDeNaissance != null ? !paysDeNaissance.equals(personne.paysDeNaissance) : personne.paysDeNaissance != null)
+            return false;
+        if (genre != null ? !genre.equals(personne.genre) : personne.genre != null) return false;
+        if (dateNaissance != null ? !dateNaissance.equals(personne.dateNaissance) : personne.dateNaissance != null)
+            return false;
+        if (adresse != null ? !adresse.equals(personne.adresse) : personne.adresse != null) return false;
+        return declarationNaissances != null ? declarationNaissances.equals(personne.declarationNaissances) : personne.declarationNaissances == null;
+
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "Personne{" +
-            "id=" + id +
-            ", nom='" + nom + "'" +
-            ", prenom='" + prenom + "'" +
-            ", dateNaissance='" + dateNaissance + "'" +
-            '}';
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (nom != null ? nom.hashCode() : 0);
+        result = 31 * result + (prenom != null ? prenom.hashCode() : 0);
+        result = 31 * result + (fonction != null ? fonction.hashCode() : 0);
+        result = 31 * result + (villeDeNaissance != null ? villeDeNaissance.hashCode() : 0);
+        result = 31 * result + (paysDeNaissance != null ? paysDeNaissance.hashCode() : 0);
+        result = 31 * result + (genre != null ? genre.hashCode() : 0);
+        result = 31 * result + (dateNaissance != null ? dateNaissance.hashCode() : 0);
+        result = 31 * result + (adresse != null ? adresse.hashCode() : 0);
+        result = 31 * result + (declarationNaissances != null ? declarationNaissances.hashCode() : 0);
+        return result;
     }
 }

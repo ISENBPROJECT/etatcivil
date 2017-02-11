@@ -1,17 +1,22 @@
-<body ng-app="testApp">
-  <div class="container" ng-controller="AppCtrl">
-    <div class="clearfix">
 
-      <header class="p2 bright-blue bg-blue">
-        <div class="container sm-table">
-          <div class="sm-table-cell py4">
-            <h1 class="h0 mt0 mb0 white inline">AngularJS PDF Viewer</h1>
-            <a class="h0 button dark-gray" href="C:\Users\A617407\Desktop\template_acte_naissance.pdf" target="_blank">github</a>
-          </div>
-        </div>
-      </header>
+<html>
 
-      <pdf-viewer delegate-handle="relativity-special-general-theory" url="pdfUrl" scale="1" show-toolbar="true"></pdf-viewer>
-    </div>
-  </div>
+<body>
+
+   <h2 class="titre"> Impression des documents</h2>
+    <br><br>
+<button  class="h0 couleurBouton  dark-gray thumbnail blockPageAccueil" ng-click ="vm.ouvirActeNaissancePopup();">Imprimer l'acte de naissance</button> 
+ 
+ <button  class="h0 couleurBouton dark-gray thumbnail blockPageAccueil" ng-click ="vm.ouvirTranscriptionPopup();">Imprimer la transcription</button> 
+ 
+
+ <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.retourAccueil();">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;Retour</span>
+        </button>
+      
+   </div>
 </body>
+ 
+</html>
+

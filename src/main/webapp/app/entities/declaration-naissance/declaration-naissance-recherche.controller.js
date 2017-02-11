@@ -18,7 +18,8 @@
         	console.log(vm.declarationNaissance.informationEnfant.prenom);
         	var dataSearch = vm.declarationNaissance.id+','+vm.declarationNaissance.informationEnfant.nom+','
         		+vm.declarationNaissance.informationEnfant.prenom+','+vm.declarationNaissance.informationEnfant.dateNaissance;
-            DeclarationNaissance.search(dataSearch, onSaveSuccess, onSaveError);
+            DeclarationNaissance.search(dataSearch);
+                                 
         }
         
         function onSaveSuccess(result) {
