@@ -114,8 +114,12 @@ public class DeclarationNaissanceResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<DeclarationNaissanceDTO> getAllDeclarationNaissances() {
+    public List<DeclarationNaissanceDTO> getDeclarationNaissances() {
+    	
+    	
+    	
         log.debug("REST request to get all DeclarationNaissances");
+       // declarationNaissanceService.findByCriteria(declarationNaissanceDTO)
         return declarationNaissanceService.findAll();
     }
 
@@ -125,19 +129,19 @@ public class DeclarationNaissanceResource {
      * @param id the id of the declarationNaissanceDTO to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the declarationNaissanceDTO, or with status 404 (Not Found)
      */
-    @RequestMapping(value = "/declaration-naissances/{id}",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    public ResponseEntity<DeclarationNaissanceDTO> getDeclarationNaissance(@PathVariable Long id) {
-        log.debug("REST request to get DeclarationNaissance : {}", id);
-        DeclarationNaissanceDTO declarationNaissanceDTO = declarationNaissanceService.findOne(id);
-        return Optional.ofNullable(declarationNaissanceDTO)
-            .map(result -> new ResponseEntity<>(
-                result,
-                HttpStatus.OK))
-            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    }
+//    @RequestMapping(value = "/declaration-naissances/{id}",
+//        method = RequestMethod.GET,
+//        produces = MediaType.APPLICATION_JSON_VALUE)
+//    @Timed
+//    public ResponseEntity<DeclarationNaissanceDTO> getDeclarationNaissance(@PathVariable Long id) {
+//        log.debug("REST request to get DeclarationNaissance : {}", id);
+//        DeclarationNaissanceDTO declarationNaissanceDTO = declarationNaissanceService.findOne(id);
+//        return Optional.ofNullable(declarationNaissanceDTO)
+//            .map(result -> new ResponseEntity<>(
+//                result,
+//                HttpStatus.OK))
+//            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+//    }
 
     /**
      * DELETE  /declaration-naissances/:id : delete the "id" declarationNaissance.
@@ -155,11 +159,11 @@ public class DeclarationNaissanceResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("declarationNaissance", id.toString())).build();
     }
 
-    @RequestMapping(value = "/declaration-naissances/{id}",
-        method = RequestMethod.POST,
+    @RequestMapping(value = "/declaration-naissances/{data}",
+        method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<DeclarationNaissanceDTO> searchDeclarationNaissance(@Valid @RequestBody String data) {
+    public List<DeclarationNaissanceDTO> searchDeclarationRecherche(@PathVariable String data) {
         log.debug("REST request to search DeclarationNaissance");
         Long numeroRegistre;
         String nom;

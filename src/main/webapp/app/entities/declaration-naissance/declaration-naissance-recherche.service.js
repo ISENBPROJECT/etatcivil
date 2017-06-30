@@ -2,12 +2,12 @@
     'use strict';
     angular
         .module('etatcivilApp')
-        .factory('DeclarationNaissance', DeclarationNaissance);
+        .factory('DeclarationRecherche', DeclarationRecherche);
 
-    DeclarationNaissance.$inject = ['$resource', 'DateUtils'];
+    DeclarationRecherche.$inject = ['$resource', 'DateUtils'];
 
-    function DeclarationNaissance ($resource, DateUtils) {
-        var resourceUrl =  'api/declaration-naissances/:id';
+    function DeclarationRecherche ($resource, DateUtils) {
+        var resourceUrl =  'api/declaration-naissance-recherche';
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: false},
@@ -41,7 +41,6 @@
                 transformResponse: function (data) {
                 	 if (data) {
                          data = angular.fromJson(data);
-                         data.dateDeclaration = DateUtils.convertLocalDateToServer(data.dateDeclaration);
                      }
                 	 return data;
                 },

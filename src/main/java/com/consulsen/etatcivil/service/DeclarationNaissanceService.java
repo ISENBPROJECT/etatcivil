@@ -92,7 +92,7 @@ public class DeclarationNaissanceService {
 
     
    
-        public List<DeclarationNaissanceDTO> serachDeclarationNaissance(String data) {
+        public List<DeclarationNaissanceDTO> searchDeclarationNaissance(String data) {
             log.debug("REST request to search DeclarationNaissance");
             Long numeroRegistre;
             String nom;

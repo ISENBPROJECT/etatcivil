@@ -2,7 +2,7 @@
     <h2 translate="etatcivilApp.declarationNaissance.home.title">Declaration Naissances</h2>
     <jhi-alert></jhi-alert>
     
-    <form name="searchForm" role="form" ng-submit="vm.search()">
+    <form >
 	    <div>
 	 		<!--nom-->
 	        <div class="form-group">
@@ -46,7 +46,7 @@
 	                    </span>
 	            </div>
 	        </div>
-	        <button type="submit" class="btn btn-primary">
+	        <button type="button" class="btn btn-primary" ng-click="vm.search()">
 	            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="etatcivilApp.declarationNaissance.action.search">Rechercher</span>
 	        </button>
 	    </div>
