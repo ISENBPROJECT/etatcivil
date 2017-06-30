@@ -2,6 +2,8 @@
     "home": {
         "title": "Welcome, Java Hipster!",
         "subtitle": "This is your homepage",
+        "rechercherActeNaissanceTranscris":"Rechercher acte de naissance transcris",
+        "transcriptionActeNaissance":"Transcription d'une naissance",
         "logged": {
             "message": "You are logged in as user \"{{username}}\"."
         },

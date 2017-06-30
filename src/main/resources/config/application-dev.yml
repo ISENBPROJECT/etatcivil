@@ -21,7 +21,11 @@ spring:
         url: jdbc:mysql://localhost:3306/etatcivil?useUnicode=true&characterEncoding=utf8&useSSL=false
         name:
         username: root
+<<<<<<< HEAD
         password: ISENB
+=======
+        password: Pourquoi25!
+>>>>>>> cd2d9a5fe4e6c7e32a312524af6a231da03ded9f
         hikari:
             data-source-properties:
                 cachePrepStmts: true

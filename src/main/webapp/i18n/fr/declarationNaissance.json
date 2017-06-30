@@ -34,8 +34,6 @@
             "adressComplement":"Adresse Complémentaire",
             "ville":"Commune de naissance",
             "communeDeResidence":"Commune de residence",
-            "rechercherActeNaissanceTranscris":"Rechercher acte de naissance transcris",
-            "transcriptionActeNaissance":"Transcription d'une naissance",
             "codepostale":"Code postal",
             "dadfirstname":"Prénom père",
             "momfirstname":"Prénom manan",
@@ -44,6 +42,7 @@
             "genre":"Genre",
             "villeDeNaissance":"Ville de naissance",
             "paysDeNaissance":"Pays de naissance"
+
         }
     }
 }

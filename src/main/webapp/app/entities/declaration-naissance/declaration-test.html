@@ -187,32 +187,6 @@
                         </p>
                     </div>
                 </div>
-
-
-                <!--date declaration-->
-              <!--  <div class="form-group">
-                    <label class="control-label" translate="etatcivilApp.declarationNaissance.dateDeclaration"
-                           for="dateDeclaration">Date Declaration</label>
-                    <div class="input-group">
-                        <input id="dateDeclaration" type="date" class="form-control inputDeclaration"
-                               name="dateDeclaration"
-                               uib-datepicker-popup="{{dateformat}}" ng-model="vm.declarationNaissance.dateDeclaration"
-                               is-open="vm.datePickerOpenStatus.dateDeclaration"
-                               required/>
-                        <span class="input-group-btn">
-                     <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateDeclaration')"><i
-                         class="glyphicon glyphicon-calendar"></i></button>
-                 </span>
-                    </div>
-                    <div ng-show="editForm.dateDeclaration.$invalid">
-                        <p class="help-block"
-                           ng-show="editForm.dateDeclaration.$error.required"
-                           translate="entity.validation.required">
-                            This field is required.
-                        </p>
-                    </div>
-                </div>-->
-
             </td>
 
             <!--mere-->
@@ -463,7 +437,7 @@
                 </div>
                 <!--pays de naissance-->
                 <div class="form-group">
-                    <label class="control-label" translate="etatcivilApp.declarationNaissance.fonction"
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.paysDeNaissance"
                            for="paysDeNaissancePere">Ville</label>
                     <input type="text" class="form-control inputDeclaration" name="paysDeNaissancePere" id="paysDeNaissancePere"
                            ng-model="vm.declarationNaissance.informationPere.paysNaissance" required
@@ -478,7 +452,7 @@
                 </div>
                 <!--ville de naissance-->
                 <div class="form-group">
-                    <label class="control-label" translate="etatcivilApp.declarationNaissance.fonction"
+                    <label class="control-label" translate="etatcivilApp.declarationNaissance.villeDeNaissance"
                            for="villeDeNaissancePere">Ville</label>
                     <input type="text" class="form-control inputDeclaration" name="villeDeNaissancePere" id="villeDeNaissancePere"
                            ng-model="vm.declarationNaissance.informationPere.villeNaissance" required

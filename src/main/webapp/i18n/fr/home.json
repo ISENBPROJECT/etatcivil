@@ -4,6 +4,8 @@
         "title": "Bienvenue",
         "subtitle": "Application de Gestion des Etats civils",
         "consulat":"Consulat du Sénégal à Bordeaux",
+        "rechercherActeNaissanceTranscris":"Rechercher acte de naissance transcris",
+        "transcriptionActeNaissance":"Transcription d'une naissance",
         "logged": {
             "message": "Vous êtes connecté en tant que \"{{username}}\"."
         },

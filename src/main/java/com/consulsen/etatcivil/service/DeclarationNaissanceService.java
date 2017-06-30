@@ -196,13 +196,14 @@ public class DeclarationNaissanceService {
      * 
      * Cette fonction permet d'éditer l'extrait de naissance
      */
-    public String creerExtraitNaissance (DeclarationNaissanceDTO declarationNaissanceDTO, Long registre){ 
+    public String creerExtraitNaissance (DeclarationNaissanceDTO declarationNaissanceDTO, Long id){ 
 		 PdfReader pdfTemplate;
 		 String acteNaissance = declarationNaissanceDTO.getInformationEnfant().getPrenom()+"_"+declarationNaissanceDTO.getInformationEnfant().getNom()
 				 +"_acte_naissance.pdf";
 		// SimpleDateFormat dateDeclaration = null;
 		 Calendar c = Calendar.getInstance();
 		 int year = c.get(Calendar.YEAR);
+		 String registre = year+"-"+id;
 		 DateFormat format_fr = DateFormat.getDateInstance(DateFormat.FULL, Locale.FRENCH);
 		try {
 			pdfTemplate = new PdfReader("template_acte_naissance.pdf");
@@ -211,7 +212,7 @@ public class DeclarationNaissanceService {
 			PdfStamper stamper = new PdfStamper(pdfTemplate, fileOutputStream);
 			stamper.setFormFlattening(true);	
 			stamper.getAcroFields().setField("annee",Integer.toString(year));
-			stamper.getAcroFields().setField("registre", Long.toString(registre));
+			stamper.getAcroFields().setField("registre", registre);
 			stamper.getAcroFields().setField("dateNaissance", format_fr.format(fromLocalDate(declarationNaissanceDTO.getInformationEnfant().getDateNaissance())));			
 			stamper.getAcroFields().setField("lieu",declarationNaissanceDTO.lieuDeclaration);
 			stamper.getAcroFields().setField("lieuNaissance", declarationNaissanceDTO.getInformationEnfant().getAdresse().getVille());
